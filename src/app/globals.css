@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -23,4 +23,93 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+#submit_btn {
+  background: #c61e52;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font: 700 14px/70px sans-serif;
+  text-transform: uppercase;
+  height: 70px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  width: 220px;
+  will-change: background;
+}
+#submit_btn:hover {
+  background: #b11344;
+}
+
+.click {
+  border-radius: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+.click.feedback {
+  animation: feedback 0.6s ease-out;
+}
+
+@keyframes feedback {
+  0% {
+    background: rgba(255, 255, 255, 0.2);
+    height: 0px;
+    width: 0px;
+  }
+  100% {
+    background: rgba(255, 255, 255, 0);
+    height: 400px;
+    width: 400px;
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, -50px);
+  }
+  50% {
+    transform: translate(-30px, 0px);
+  }
+  75% {
+    opacity: tre;
+  }
+  100% {
+    transform: translate(0, 99);
+  }
+}
+
+.floating {
+  animation: floating 3s infinite linear;
+}
+
+@keyframes clipPath {
+  from {
+    clip: rect(0px, 0px, 190px, 0px);
+  }
+  to {
+    clip: rect(0px, 190px, 190px, 0px);
+  }
 }
