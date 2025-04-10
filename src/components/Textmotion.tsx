@@ -10,7 +10,7 @@ const box = {
 };
 const TextSlideInFromStripe = () => {
   return (
-    <div className="flex items-center justify-center h-20 w-80 bg-indigo-700/15 ">
+    <div className="flex h-20 w-80 items-center justify-center bg-indigo-700/15">
       {/* Тонкая полоска */}
       {/* <motion.div
         style={{ originY: 1 }}
@@ -31,7 +31,7 @@ const TextSlideInFromStripe = () => {
         // animate={{ height: "auto", opacity: 1, }} // Текст выезжает и становится видимым
         // exit={{ height: 0, y: 0, opacity: 0 }} // Текст исчезает
         whileHover={{}} // Длительность и повторение анимации
-        className="text-white text-md font-bold  overflow-hidden z-0"
+        className="text-md z-0 overflow-hidden font-bold text-white"
       >
         <Link href="/photoshop">Hello World </Link>
       </motion.div>

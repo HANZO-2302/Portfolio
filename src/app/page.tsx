@@ -8,8 +8,8 @@ import SubmitButton from '@/components/folderSubmitButton/SubmitButton';
 export default function Home() {
   // const pathname = usePathname();
   return (
-    <div className="grid items-center justify-items-center min-h-screen p-1 pb-4 gap-16 sm:p-20 bg-gray-900 text-gray-100">
-      <main className="flex-col items-center px-4 py-4 relative z-0">
+    <div className="grid min-h-screen items-center justify-items-center gap-16 bg-gray-900 p-1 pb-4 text-gray-100 sm:p-20">
+      <main className="relative z-0 flex-col items-center px-4 py-4">
         <SubmitButton />
         <Animate />
       </main>

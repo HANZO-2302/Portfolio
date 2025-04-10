@@ -4,10 +4,10 @@ import Animate from '@/components/AnimatePresence';
 
 export default function Premiere() {
   return (
-    <div className="flex flex-col min-h-screen  bg-gray-900">
-      <main className="grow flex items-center justify-center  ">
+    <div className="flex min-h-screen flex-col bg-gray-900">
+      <main className="flex grow items-center justify-center">
         <Animate />
-        <h1 className=" text-gray-100">Projects Premiere Pro</h1>
+        <h1 className="text-gray-100">Projects Premiere Pro</h1>
       </main>
     </div>
   );

@@ -5,7 +5,10 @@ import './SubmitButton.css';
 import Link from 'next/link';
 
 const SubmitButton = () => {
-  const [position, setPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
+  const [position, setPosition] = useState<{ top: number; left: number }>({
+    top: 0,
+    left: 0,
+  });
   const buttonRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
@@ -31,7 +34,7 @@ const SubmitButton = () => {
     <div
       ref={buttonRef}
       onClick={handleClick}
-      className="transition-transform duration-300 submit_btn z-0"
+      className="submit_btn z-0 transition-transform duration-300"
     >
       <span className="click" style={{ top: position.top, left: position.left }}></span>
       <Link href={'/contacts'}>Contacts</Link>

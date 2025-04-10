@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 export default function AnimatedGradient() {
   return (
     <motion.div
-      className="w-full h-screen flex items-center justify-center text-white font-bold text-4xl"
+      className="flex h-screen w-full items-center justify-center text-4xl font-bold text-white"
       style={{
         background: 'linear-gradient(90deg, #ff7eb3, #ff758c, #0128fb)',
         backgroundSize: '200% 200%',

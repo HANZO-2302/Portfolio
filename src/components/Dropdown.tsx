@@ -50,14 +50,14 @@ const Dropdown: React.FC<DropdownProps> = () => {
           onClick={toggleDropdown}
           aria-expanded={isOpen}
           type="button"
-          className="flex items-center rounded-md mt-[-8px] text-amber-50 uppercase font-normal"
+          className="mt-[-8px] flex items-center rounded-md font-normal text-amber-50 uppercase"
         >
           Project
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="size-5 mt-1 relative -right-1"
+            className="relative -right-1 mt-1 size-5"
           >
             <path
               fillRule="evenodd"
@@ -69,9 +69,7 @@ const Dropdown: React.FC<DropdownProps> = () => {
 
         {isMounted && (
           <div
-            className={`absolute left-0 z-10 mt-10 w-48 transition-all duration-300 ease-in-out transform 
-              divide-y divide-gray-200 rounded-lg border border-gray-100 bg-white text-left text-sm drop-shadow-md 
-              ${isOpen ? 'opacity-100' : 'opacity-0 '}`}
+            className={`absolute left-0 z-10 mt-10 w-48 transform divide-y divide-gray-200 rounded-lg border border-gray-100 bg-white text-left text-sm drop-shadow-md transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0'}`}
           >
             <div className="p-1">
               <Link href="/photoshop" legacyBehavior>
