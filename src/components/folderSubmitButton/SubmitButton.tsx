@@ -34,7 +34,7 @@ const SubmitButton = () => {
     <div
       ref={buttonRef}
       onClick={handleClick}
-      className="submit_btn z-0 transition-transform duration-300"
+      className="submit_btn z-10 transition-transform duration-300"
     >
       <span className="click" style={{ top: position.top, left: position.left }}></span>
       <Link href={'/contacts'}>Contacts</Link>

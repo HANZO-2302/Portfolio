@@ -9,7 +9,7 @@ const outfit = Outfit({
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div className={`${outfit.className} antialiased`}>
-      <main>{children}</main>
+      <main className="">{children}</main>
       <Sidebar />
     </div>
   );

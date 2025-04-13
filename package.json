@@ -12,6 +12,7 @@
     "check:format": "prettier . --check"
   },
   "dependencies": {
+    "framer-motion": "^12.6.3",
     "motion": "^12.6.3",
     "next": "15.2.4",
     "react": "^19.0.0",

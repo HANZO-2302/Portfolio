@@ -10,13 +10,10 @@ const outfit = Outfit({
 
 export default function Contacts() {
   return (
-    <div
-      className={`relative flex min-h-screen flex-col bg-gray-900 ${outfit.className} antialiased`}
-    >
-      <main className="relative z-0 flex grow items-center justify-center">
-        <h1 className="text-gray-100">Contacts</h1>
+    <div className={`flex min-h-screen flex-col bg-gray-900 ${outfit.className} antialiased`}>
+      <main className="flex flex-grow items-center justify-center text-gray-100">
+        <h1>Contacts</h1>
         <Animate />
-
         <BackgroundDots />
       </main>
     </div>
