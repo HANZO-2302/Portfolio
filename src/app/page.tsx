@@ -1,6 +1,6 @@
 'use client';
 // import Image from "next/image";
-import BackgroundDots from '@/components/folderBackgroundDots/BackgroundDots';
+// import BackgroundDots from '@/components/folderBackgroundDots/BackgroundDots';
 import Animate from '@/components/AnimatePresence';
 import SubmitButton from '@/components/folderSubmitButton/SubmitButton';
 // import { usePathname } from "next/navigation";
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-gray-900">
       <main className="flex flex-grow items-center justify-center">
-        <BackgroundDots />
+        {/* <BackgroundDots /> */}
         <SubmitButton />
         <Animate />
       </main>

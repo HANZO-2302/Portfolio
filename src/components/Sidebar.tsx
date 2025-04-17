@@ -101,11 +101,11 @@ export default function Sidebar() {
         }`}
       >
         <Image
-          src="/topaz.png"
+          src="/topaz.svg"
           alt="Icon"
-          width={34}
-          height={34}
-          className="relative left-[10px] mt-1 h-[26px] w-[26px] drop-shadow-md/20"
+          width={24}
+          height={24}
+          className="relative left-3 drop-shadow-md/20"
         />
         <Link
           href="/projects/topaz"

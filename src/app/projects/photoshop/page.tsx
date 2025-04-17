@@ -1,17 +1,17 @@
 'use client';
+import Image from 'next/image';
 import Animate from '@/components/AnimatePresence';
+import PhotoCarousel from '@/components/PhotoCarousel';
 
-export default function Photoshop() {
+const Photoshop: React.FC = () => {
   return (
     <div className="flex min-h-screen flex-col bg-gray-900">
       <main className="flex flex-grow items-center justify-center text-gray-100">
+        <PhotoCarousel />
+
         <Animate />
-        <h1>Projects Photoshop</h1>
-        <span className="relative flex size-9">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-          <span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
-        </span>
       </main>
     </div>
   );
-}
+};
+export default Photoshop;

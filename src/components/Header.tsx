@@ -2,8 +2,6 @@
 import { JetBrains_Mono, Outfit } from 'next/font/google';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { FaTimes } from 'react-icons/fa';
-import { FiMenu } from 'react-icons/fi';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
@@ -14,8 +12,8 @@ const outfit = Outfit({
 });
 
 const menuItems = [
-  { href: '/', text: 'Home' },
-  { href: '/contacts', text: 'Contacts' },
+  { href: '/', text: 'Home', icon: '/home.svg' },
+  { href: '/contacts', text: 'Contacts', icon: '/contacts.svg' },
   { href: '/projects/photoshop', text: 'Photoshop', icon: '/photoshop.svg' },
   { href: '/projects/illustrator', text: 'illustrator', icon: '/illustrator.svg' },
   { href: '/projects/lightroom', text: 'lightroom', icon: '/lightroom.svg' },
@@ -33,35 +31,43 @@ const jetBrainsMono = JetBrains_Mono({
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
-  // Закрытие меню при скролле
-  // useEffect(() => {
-  //     const handleScroll = () => {
-  //         if (isOpen) {
-  //             setIsOpen(false);
-  //         }
-  //     };
-
-  //     window.addEventListener('scroll', handleScroll);
-  //     return () => window.removeEventListener('scroll', handleScroll);
-  // }, [isOpen]);
-
   // Закрытие меню при клике вне его области
-  // useEffect(() => {
-  //     const handleClickOutside = (event) => {
-  //     if (menuRef.current && !menuRef.current.contains(event.target)) {
-  //         setIsOpen(false);
-  //     }
-  //     };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // 1. Добавляем проверку на buttonRef (кнопку меню)
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
 
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //     return () => document.removeEventListener("mousedown", handleClickOutside);
-  // }, []);
+    // 2. Добавляем закрытие по клавише Escape
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    // 3. Используем 'click' вместо 'mousedown' для лучшей совместимости
+    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('keydown', handleEscape);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(prev => !prev);
   };
 
   return (
@@ -95,31 +101,27 @@ const Header = () => {
 
         {/* Кнопка меню для мобильных устройств ----------------------------------------------------------------------- */}
         <button
-          className="flex w-full items-center justify-end focus:outline-hidden sm:hidden"
-          aria-label="Toggle menu"
+          ref={buttonRef}
+          className="relative flex w-full items-center justify-end focus:outline-hidden sm:hidden"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
           onClick={toggleMenu}
         >
-          <div className="relative">
-            <FiMenu
-              className={`absolute top-[-16px] left-[calc(50%-38px)] size-8 text-gray-100 transition-all duration-300 ${
-                isOpen ? 'mt-6 scale-0 opacity-0' : 'opacity-100'
-              }`}
-            />
-            <FaTimes
-              className={`absolute top-[-14px] left-[calc(50%-36px)] size-7 text-gray-100 transition-all duration-300 ${
-                isOpen ? 'rotate-90 opacity-100' : 'opacity-0'
-              }`}
-            />
-            <div
-              className={`absolute top-[-20px] left-[calc(50%-46px)] h-10 w-12 rounded-lg border border-gray-100 transition-all duration-300 ${
-                isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
-              }`}
-            ></div>
-            <div
-              className={`absolute top-[-24px] left-[calc(50%-46px)] h-12 w-12 rounded-full border border-gray-100 transition-all duration-300 ${
-                isOpen ? 'opacity-100' : 'scale-0 opacity-0'
-              }`}
-            ></div>
+          <div
+            className={`absolute right-3 flex text-gray-100 transition-all duration-300 ${
+              isOpen ? 'translate-y-full scale-90 opacity-0' : 'scle-100 translate-y-0 opacity-100'
+            }`}
+          >
+            Menu
+            <span className="absolute bottom-0 left-0 h-0.5 w-full bg-orange-500"></span>
+          </div>
+          <div
+            className={`absolute right-2 flex text-gray-100 transition-all duration-300 ${
+              isOpen ? 'translate-x-0 scale-100 opacity-100' : 'translate-x-full scale-90 opacity-0'
+            }`}
+          >
+            Close
+            <span className="absolute bottom-0 left-0 h-0.5 w-full bg-orange-500"></span>
           </div>
         </button>
 
@@ -158,27 +160,29 @@ const Header = () => {
       </div>
 
       {/* Выпадающее меню для маленьких экранов----------------------------------------------------------------------- */}
+
       {/* mode="wait" */}
       <AnimatePresence>
         {isOpen && (
           <motion.nav
             ref={menuRef}
-            initial={{ opacity: '0%' }}
-            animate={{ opacity: '100%' }}
+            initial={{ opacity: 0, x: 300 }}
+            animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: '0%' }}
-            transition={{ duration: 0.1, ease: 'easeInOut' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
             className={`absolute right-0 flex h-screen w-full justify-center rounded-bl-md bg-gray-700 ${outfit.className} text-gray-50 antialiased text-shadow-sm/30 sm:hidden`}
+            aria-modal="true"
           >
             <motion.ul
               initial="hidden"
               animate="visible"
               variants={{
-                hidden: { opacity: '0%' },
+                hidden: { opacity: 0 },
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.07,
-                    // delayChildren: 0.5, задержкка
+                    staggerChildren: 0.05,
+                    delayChildren: 0.1, //задержкка
                   },
                 },
               }}
@@ -188,10 +192,10 @@ const Header = () => {
                 <motion.li
                   key={index}
                   variants={{
-                    hidden: { opacity: 0, x: -40 },
-                    visible: { opacity: 1, x: 0 },
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1 },
                   }}
-                  className="w-full drop-shadow-md"
+                  className="relative left-4 flex w-full drop-shadow-md"
                 >
                   <Link
                     href={item.href}
@@ -200,9 +204,9 @@ const Header = () => {
                     prefetch={true}
                     className="flex items-center"
                   >
-                    {item.icon && (
+                    {/* {item.icon && (
                       <Image src={item.icon} alt="Icon" width={24} height={24} className="mr-2" />
-                    )}
+                    )} */}
                     {item.text}
                   </Link>
                 </motion.li>
@@ -211,98 +215,9 @@ const Header = () => {
           </motion.nav>
         )}
       </AnimatePresence>
-      {/* <nav
-        ref={menuRef}
-        className={`absolute top-full flex h-screen w-full justify-center rounded-bl-md bg-gray-700 ${outfit.className} text-gray-50 antialiased transition-opacity duration-300 ease-in-out text-shadow-sm/30 ${isOpen ? 'opacity-[100%]' : 'opacity-[0%]'} sm:hidden`}
-      >
-        <ul className="mt-4 flex w-full flex-col items-start space-y-5 pl-4 text-left text-2xl text-gray-200 duration-300 ease-in-out">
-          <li className="w-full">
-            <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center">
-              Home
-            </Link>
-          </li>
-          <li className="w-full">
-            <Link href="/contacts" onClick={() => setIsOpen(false)} className="flex items-center">
-              Contacts
-            </Link>
-          </li>
-          <li className="w-full drop-shadow-md">
-            <Link
-              href="/projects/photoshop"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center"
-            >
-              <Image src="/photoshop.svg" alt="Icon" width={24} height={24} className="mr-2" />
-              Photoshop
-            </Link>
-          </li>
-          <li className="w-full drop-shadow-md">
-            <Link
-              href="/projects/photoshop"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center"
-            >
-              <Image src="/photoshop.svg" alt="Icon" width={24} height={24} className="mr-2" />
-              Photoshop
-            </Link>
-          </li>
-          <li className="w-full drop-shadow-md">
-            <Link
-              href="/projects/photoshop"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center"
-            >
-              <Image src="/photoshop.svg" alt="Icon" width={24} height={24} className="mr-2" />
-              Photoshop
-            </Link>
-          </li>
-          <li className="w-full drop-shadow-md">
-            <Link
-              href="/projects/photoshop"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center"
-            >
-              <Image src="/photoshop.svg" alt="Icon" width={24} height={24} className="mr-2" />
-              Photoshop
-            </Link>
-          </li>
-          <li className="w-full drop-shadow-md">
-            <Link
-              href="/projects/photoshop"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center"
-            >
-              <Image src="/photoshop.svg" alt="Icon" width={24} height={24} className="mr-2" />
-              Photoshop
-            </Link>
-          </li>
-          <li className="w-full drop-shadow-md">
-            <Link
-              href="/projects/photoshop"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center"
-            >
-              <Image src="/photoshop.svg" alt="Icon" width={24} height={24} className="mr-2" />
-              Photoshop
-            </Link>
-          </li>
-          <li className="w-full drop-shadow-md">
-            <Link
-              href="/projects/photoshop"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center"
-            >
-              <Image src="/photoshop.svg" alt="Icon" width={24} height={24} className="mr-2" />
-              Photoshop
-            </Link>
-          </li>
-        </ul>
-      </nav> */}
       <div className="botton-0 fixed z-50 h-1 w-full bg-gray-300 inset-shadow-sm/60"></div>
     </header>
   );
 };
 
 export { Header };
-
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

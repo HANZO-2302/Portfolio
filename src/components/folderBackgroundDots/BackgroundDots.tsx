@@ -25,37 +25,39 @@ export default function BackgroundDots({ count = 50 }: BackgroundDotsProps) {
   const [dotsData, setDotsData] = useState<DotData[]>([]);
 
   useEffect(() => {
-    const data: DotData[] = Array.from({ length: count }, () => {
-      const wrapperAnimationDuration = `${Math.random() * 30 + 20}s`;
-      const wrapperAnimationDelay = `${-(Math.random() * 10)}s`;
-      const dotAnimationDuration = `${Math.random() * 20 + 10}s`;
-      const dotAnimationDelay = `${-(Math.random() * 10)}s`;
+    if (typeof window !== 'undefined') {
+      const data: DotData[] = Array.from({ length: count }, () => {
+        const wrapperAnimationDuration = `${Math.random() * 30 + 20}s`;
+        const wrapperAnimationDelay = `${-(Math.random() * 10)}s`;
+        const dotAnimationDuration = `${Math.random() * 20 + 10}s`;
+        const dotAnimationDelay = `${-(Math.random() * 10)}s`;
 
-      const dotSize = Math.random() * 20 + 1;
-      const transformOriginX = `${Math.random() > 0.5 ? '-' : ''}${Math.floor(
-        Math.random() * 15,
-      )}px`;
-      const transformOriginY = `${Math.random() > 0.5 ? '-' : ''}${Math.floor(
-        Math.random() * 15,
-      )}px`;
+        const dotSize = Math.random() * 20 + 1;
+        const transformOriginX = `${Math.random() > 0.5 ? '-' : ''}${Math.floor(
+          Math.random() * 15,
+        )}px`;
+        const transformOriginY = `${Math.random() > 0.5 ? '-' : ''}${Math.floor(
+          Math.random() * 15,
+        )}px`;
 
-      return {
-        wrapper: {
-          top: `${Math.random() * 90 + 5}%`,
-          left: `${Math.random() * 90 + 5}%`,
-          animationDuration: wrapperAnimationDuration,
-          animationDelay: wrapperAnimationDelay,
-        },
-        dot: {
-          size: dotSize,
-          transformOrigin: `${transformOriginX} ${transformOriginY}`,
-          animationDuration: dotAnimationDuration,
-          animationDelay: dotAnimationDelay,
-        },
-      };
-    });
+        return {
+          wrapper: {
+            top: `${Math.random() * 90 + 5}%`,
+            left: `${Math.random() * 90 + 5}%`,
+            animationDuration: wrapperAnimationDuration,
+            animationDelay: wrapperAnimationDelay,
+          },
+          dot: {
+            size: dotSize,
+            transformOrigin: `${transformOriginX} ${transformOriginY}`,
+            animationDuration: dotAnimationDuration,
+            animationDelay: dotAnimationDelay,
+          },
+        };
+      });
 
-    setDotsData(data);
+      setDotsData(data);
+    }
   }, [count]);
 
   return (
