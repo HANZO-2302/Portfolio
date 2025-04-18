@@ -1,7 +1,7 @@
 'use client';
-import Image from 'next/image';
+
 import Animate from '@/components/AnimatePresence';
-import PhotoCarousel from '@/components/PhotoCarousel';
+import PhotoCarousel from '@/components/PhotoCarousel/PhotoCarousel';
 
 const Photoshop: React.FC = () => {
   return (

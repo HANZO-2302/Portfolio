@@ -29,42 +29,42 @@ const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
 });
 
-const Header = () => {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
   // Закрытие меню при клике вне его области
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      // 1. Добавляем проверку на buttonRef (кнопку меню)
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        buttonRef.current &&
-        !buttonRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     // 1. Добавляем проверку на buttonRef (кнопку меню)
+  //     if (
+  //       menuRef.current &&
+  //       !menuRef.current.contains(event.target as Node) &&
+  //       buttonRef.current &&
+  //       !buttonRef.current.contains(event.target as Node)
+  //     ) {
+  //       setIsOpen(false);
+  //     }
+  //   };
 
-    // 2. Добавляем закрытие по клавише Escape
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsOpen(false);
-      }
-    };
+  //   // 2. Добавляем закрытие по клавише Escape
+  //   const handleEscape = (event: KeyboardEvent) => {
+  //     if (event.key === 'Escape') {
+  //       setIsOpen(false);
+  //     }
+  //   };
 
-    // 3. Используем 'click' вместо 'mousedown' для лучшей совместимости
-    document.addEventListener('click', handleClickOutside);
-    document.addEventListener('keydown', handleEscape);
+  //   // 3. Используем 'click' вместо 'mousedown' для лучшей совместимости
+  //   document.addEventListener('click', handleClickOutside);
+  //   document.addEventListener('keydown', handleEscape);
 
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener('click', handleClickOutside);
+  //     document.removeEventListener('keydown', handleEscape);
+  //   };
+  // }, []);
 
   const toggleMenu = () => {
     setIsOpen(prev => !prev);
@@ -130,6 +130,7 @@ const Header = () => {
           <ul className="flex space-x-10">
             <li className="overflow-hidden">
               <Link
+                prefetch={true}
                 href="/"
                 className={`" relative inline-block py-[0.1em] text-gray-400 transition-transform duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-50 after:content-[attr(data-hover)] hover:translate-y-full ${pathname === '/' ? 'translate-y-full' : ''}`}
                 data-hover="Home"
@@ -139,6 +140,7 @@ const Header = () => {
             </li>
             <li className="overflow-hidden">
               <Link
+                prefetch={true}
                 href="/contacts"
                 className={`" relative inline-block py-[0.1em] text-gray-400 transition-transform duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-50 after:content-[attr(data-hover)] hover:translate-y-full ${pathname.startsWith('/contacts') ? 'translate-y-full' : ' '}`}
                 data-hover="Contacts"
@@ -148,6 +150,7 @@ const Header = () => {
             </li>
             <li className="overflow-hidden">
               <Link
+                prefetch={true}
                 href="/projects"
                 className={`" relative inline-block py-[0.1em] text-gray-400 transition-transform duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-50 after:content-[attr(data-hover)] hover:translate-y-full ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
                 data-hover="projects"
@@ -166,10 +169,10 @@ const Header = () => {
         {isOpen && (
           <motion.nav
             ref={menuRef}
-            initial={{ opacity: 0, x: 300 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: '0%' }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.01, ease: 'easeInOut' }}
             className={`absolute right-0 flex h-screen w-full justify-center rounded-bl-md bg-gray-700 ${outfit.className} text-gray-50 antialiased text-shadow-sm/30 sm:hidden`}
             aria-modal="true"
           >
@@ -181,8 +184,8 @@ const Header = () => {
                 visible: {
                   opacity: 1,
                   transition: {
-                    staggerChildren: 0.05,
-                    delayChildren: 0.1, //задержкка
+                    staggerChildren: 0.03,
+                    // delayChildren: 0.01, //задержкка
                   },
                 },
               }}
@@ -195,13 +198,12 @@ const Header = () => {
                     hidden: { opacity: 0 },
                     visible: { opacity: 1 },
                   }}
-                  className="relative left-4 flex w-full drop-shadow-md"
+                  className="relative left-4 flex w-full text-shadow-md/95"
                 >
                   <Link
                     href={item.href}
                     onClick={() => setTimeout(() => setIsOpen(false), 400)}
                     // onClick={() => setIsOpen(false)}
-                    prefetch={true}
                     className="flex items-center"
                   >
                     {/* {item.icon && (
@@ -218,6 +220,4 @@ const Header = () => {
       <div className="botton-0 fixed z-50 h-1 w-full bg-gray-300 inset-shadow-sm/60"></div>
     </header>
   );
-};
-
-export { Header };
+}

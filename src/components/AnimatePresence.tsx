@@ -14,7 +14,7 @@ export default function Animate() {
         initial={{ opacity: '100%' }}
         animate={{ opacity: '0%' }}
         exit={{ opacity: '100%' }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        transition={{ duration: 0.4, ease: 'easeInOut' }}
         // onAnimationComplete={() => console.log("Animation complete")}
       />
     </AnimatePresence>

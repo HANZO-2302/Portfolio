@@ -69,7 +69,7 @@ const Dropdown: React.FC<DropdownProps> = () => {
 
         {isMounted && (
           <div
-            className={`absolute left-0 z-10 mt-10 w-48 transform divide-y divide-gray-200 rounded-lg border border-gray-100 bg-white text-left text-sm drop-shadow-md transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute left-0 z-10 mt-10 w-48 transform divide-y divide-gray-200 rounded-lg border border-gray-100 bg-gray-300 text-left text-sm drop-shadow-md transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0'}`}
           >
             <div className="p-1">
               <Link href="/photoshop" legacyBehavior>
