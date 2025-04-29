@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const outfit = Outfit({
   variable: '--font-outfit',
@@ -71,7 +72,9 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed z-50 w-full bg-gray-800 ${jetBrainsMono.className} antialiased`}>
+    <header
+      className={`fixed z-50 w-full bg-gray-200 duration-500 dark:bg-gray-800 dark:duration-500 ${jetBrainsMono.className} antialiased`}
+    >
       <div className="mx-auto flex max-w-xl justify-between px-4 py-2">
         {/* Логотип */}
         <div className="relative flex w-full items-center">
@@ -87,36 +90,39 @@ export default function Header() {
             className="aspect-square overflow-hidden rounded-full border-2 border-orange-500 object-cover object-[50%_10%]"
           />
 
-          <div className="relative left-2 flex flex-col transition-all duration-300 hover:left-3">
-            <h1 className="text-lg leading-tight font-normal text-gray-200 transition-all duration-300">
+          <div className="relative left-2 flex flex-col transition-normal duration-500 hover:left-3">
+            <h1 className="text-lg leading-tight font-normal text-gray-950 transition-all dark:text-gray-200 dark:duration-500">
               <Link href="/">Hanzo</Link>
             </h1>
             <div className="h-[2px] w-full rounded-lg bg-orange-500" />
 
-            <h1 className="text-lg leading-tight font-normal text-gray-200 transition-all duration-300">
+            <h1 className="text-lg leading-tight font-normal text-gray-950 transition-all duration-300 dark:text-gray-200 dark:duration-500">
               <Link href="/">Digital</Link>
             </h1>
           </div>
+          <div className="relative left-15 sm:hidden">
+            <ThemeSwitcher />
+          </div>
         </div>
 
-        {/* Кнопка меню для мобильных устройств ----------------------------------------------------------------------- */}
+        {/* Кнопка меню для мобильных устройств  */}
         <button
           ref={buttonRef}
-          className="relative flex w-full items-center justify-end focus:outline-hidden sm:hidden"
+          className="relative focus:outline-none sm:hidden"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
           onClick={toggleMenu}
         >
           <div
-            className={`absolute right-3 flex text-gray-100 transition-all duration-300 ${
+            className={`relative top-2 flex text-gray-950 transition-normal duration-300 dark:text-gray-200 ${
               isOpen ? 'translate-y-full scale-90 opacity-0' : 'scle-100 translate-y-0 opacity-100'
             }`}
           >
             Menu
-            <span className="absolute bottom-0 left-0 h-0.5 w-full bg-orange-500"></span>
+            <span className="absolute bottom-0 -left-0.5 h-0.5 w-11 bg-orange-500"></span>
           </div>
           <div
-            className={`absolute right-2 flex text-gray-100 transition-all duration-300 ${
+            className={`relative -top-4 right-2 flex text-gray-950 transition-normal duration-300 dark:text-gray-200 ${
               isOpen ? 'translate-x-0 scale-100 opacity-100' : 'translate-x-full scale-90 opacity-0'
             }`}
           >
@@ -125,14 +131,13 @@ export default function Header() {
           </div>
         </button>
 
-        {/* Меню для больших экранов -----------------------------------------------------------------------*/}
-        <nav className="font-raleway mx-auto hidden font-normal uppercase sm:flex sm:items-center sm:space-x-10">
+        {/* Меню для больших экранов */}
+        <nav className="relative left-15 mx-auto hidden font-normal uppercase sm:flex sm:items-center">
           <ul className="flex space-x-10">
             <li className="overflow-hidden">
               <Link
-                prefetch={true}
                 href="/"
-                className={`" relative inline-block py-[0.1em] text-gray-400 transition-transform duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-50 after:content-[attr(data-hover)] hover:translate-y-full ${pathname === '/' ? 'translate-y-full' : ''}`}
+                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:after:text-gray-200 ${pathname === '/' ? 'translate-y-full' : ''}`}
                 data-hover="Home"
               >
                 Home
@@ -140,9 +145,8 @@ export default function Header() {
             </li>
             <li className="overflow-hidden">
               <Link
-                prefetch={true}
                 href="/contacts"
-                className={`" relative inline-block py-[0.1em] text-gray-400 transition-transform duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-50 after:content-[attr(data-hover)] hover:translate-y-full ${pathname.startsWith('/contacts') ? 'translate-y-full' : ' '}`}
+                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:after:text-gray-200 ${pathname.startsWith('/contacts') ? 'translate-y-full' : ' '}`}
                 data-hover="Contacts"
               >
                 Contacts
@@ -150,19 +154,21 @@ export default function Header() {
             </li>
             <li className="overflow-hidden">
               <Link
-                prefetch={true}
                 href="/projects"
-                className={`" relative inline-block py-[0.1em] text-gray-400 transition-transform duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-50 after:content-[attr(data-hover)] hover:translate-y-full ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
-                data-hover="projects"
+                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:after:text-gray-200 ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
+                data-hover="Projects"
               >
-                projects
+                Projects
               </Link>
             </li>
           </ul>
+          <div className="relative left-10">
+            <ThemeSwitcher />
+          </div>
         </nav>
       </div>
 
-      {/* Выпадающее меню для маленьких экранов----------------------------------------------------------------------- */}
+      {/* Выпадающее меню для маленьких экранов */}
 
       {/* mode="wait" */}
       <AnimatePresence>
@@ -173,7 +179,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.01, ease: 'easeInOut' }}
-            className={`absolute right-0 flex h-screen w-full justify-center rounded-bl-md bg-gray-700 ${outfit.className} text-gray-50 antialiased text-shadow-sm/30 sm:hidden`}
+            className={`absolute right-0 flex h-screen w-full justify-center bg-gray-300 dark:bg-gray-800 dark:duration-500 ${outfit.className} antialiased sm:hidden`}
             aria-modal="true"
           >
             <motion.ul
@@ -189,7 +195,7 @@ export default function Header() {
                   },
                 },
               }}
-              className="mt-4 flex w-full flex-col items-start space-y-5 pl-4 text-left text-2xl text-gray-200"
+              className="mt-4 flex w-full flex-col items-start space-y-5 pl-4"
             >
               {menuItems.map((item, index) => (
                 <motion.li
@@ -198,7 +204,7 @@ export default function Header() {
                     hidden: { opacity: 0 },
                     visible: { opacity: 1 },
                   }}
-                  className="relative left-4 flex w-full text-shadow-md/95"
+                  className="relative left-4 flex w-full text-left text-2xl text-gray-800 dark:text-gray-200"
                 >
                   <Link
                     href={item.href}

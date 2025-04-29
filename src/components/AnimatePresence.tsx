@@ -10,7 +10,7 @@ export default function Animate() {
       {/* mode="wait" */}
       <motion.div
         key={pathname} // Уникальный ключ
-        className="pointer-events-none fixed inset-0 z-40 bg-gray-900"
+        className="pointer-events-none fixed inset-0 z-40 bg-gray-300 dark:bg-gray-900"
         initial={{ opacity: '100%' }}
         animate={{ opacity: '0%' }}
         exit={{ opacity: '100%' }}

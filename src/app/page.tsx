@@ -9,7 +9,7 @@ import SubmitButton from '@/components/folderSubmitButton/SubmitButton';
 export default function Home() {
   // const pathname = usePathname();
   return (
-    <div className="flex min-h-screen flex-col bg-gray-900">
+    <div className="flex min-h-screen flex-col">
       <main className="flex flex-grow items-center justify-center">
         {/* <BackgroundDots /> */}
         <SubmitButton />

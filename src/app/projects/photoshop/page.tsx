@@ -5,8 +5,8 @@ import PhotoCarousel from '@/components/PhotoCarousel/PhotoCarousel';
 
 const Photoshop: React.FC = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-gray-900">
-      <main className="flex flex-grow items-center justify-center text-gray-100">
+    <div className="flex min-h-screen flex-col">
+      <main className="flex flex-grow items-center justify-center">
         <PhotoCarousel />
 
         <Animate />
