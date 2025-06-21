@@ -1,14 +1,13 @@
-'use client';
+// 'use client';
 
-import Animate from '@/components/AnimatePresence';
+import Animate from '@/components/AnimatePage';
+import Photo from '@/components/Photo/Photo';
 
 export default function Figma() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex flex-grow items-center justify-center">
-        <h1>Projects Figma</h1>
-        <Animate />
-      </main>
+    <div className="md:ml-[194px]">
+      <Animate />
+      <Photo />
     </div>
   );
 }

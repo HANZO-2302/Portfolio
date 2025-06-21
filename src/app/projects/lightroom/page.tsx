@@ -1,18 +1,13 @@
-'use client';
-
-import Animate from '@/components/AnimatePresence';
+import Animate from '@/components/AnimatePage';
+import Photo from '@/components/Photo/Photo';
 
 export default function lightroom() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex flex-grow items-center justify-center">
-        <Animate />
-        <div className="flex-col">
-          <h1>Projects lightroom</h1>
-          <h1>Projects lightroom</h1>
-          <h1>Projects lightroom</h1>
-        </div>
-      </main>
+    <div className="md:ml-[194px]">
+      <Animate />
+      <Photo />
     </div>
   );
 }
+//flex min-h-screen flex-col
+//flex flex-grow items-center justify-center

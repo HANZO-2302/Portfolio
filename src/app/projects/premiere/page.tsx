@@ -1,14 +1,11 @@
-'use client';
-
-import Animate from '@/components/AnimatePresence';
+import Animate from '@/components/AnimatePage';
+import Photo from '@/components/Photo/Photo';
 
 export default function Premiere() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex flex-grow items-center justify-center">
-        <Animate />
-        <h1>Projects Premiere Pro</h1>
-      </main>
+    <div className="md:ml-[194px]">
+      <Animate />
+      <Photo />
     </div>
   );
 }

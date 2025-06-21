@@ -1,20 +1,30 @@
-'use client';
-// import Image from "next/image";
-// import BackgroundDots from '@/components/folderBackgroundDots/BackgroundDots';
-import Animate from '@/components/AnimatePresence';
-import SubmitButton from '@/components/folderSubmitButton/SubmitButton';
-// import { usePathname } from "next/navigation";
-// import { AnimatePresence, motion } from "motion/react";
+// import Animate from '@/components/AnimatePage';
+// import Carousel from '@/components/Carousel/Carousel';
+// // import Image from "next/image";
+// // import BackgroundDots from '@/components/folderBackgroundDots/BackgroundDots';
+// import SubmitButton from '@/components/SubmitButton/SubmitButton';
+// // import { usePathname } from "next/navigation";
+// // import { AnimatePresence, motion } from "motion/react";
 
+// import ZoomGallery from '@/components/ZoomGallery/ExpandingCardsWithModal';
+
+// export default function Home() {
+//   // const pathname = usePathname();
+//   return (
+//     <div id="app">
+//       <Carousel />
+//       <Animate />
+//       {/* <SubmitButton /> */}
+//     </div>
+//   );
+// }
+import Animate from '@/components/AnimatePage';
+import BeforeAfterGallery from '@/components/BeforeAfterGallery';
 export default function Home() {
-  // const pathname = usePathname();
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex flex-grow items-center justify-center">
-        {/* <BackgroundDots /> */}
-        <SubmitButton />
-        <Animate />
-      </main>
+    <div className="">
+      <BeforeAfterGallery />
+      <Animate />
     </div>
   );
 }

@@ -1,0 +1,56 @@
+.submit_btn {
+  background: #a33030;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font: 700 14px/70px sans-serif;
+  text-transform: uppercase;
+  height: 70px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 0.5s ease-in;
+  width: 220px;
+  will-change: background;
+  text-align: center;
+}
+
+.submit_btn:hover {
+  background: #3757f9;
+}
+
+.click {
+  border-radius: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+.click.feedback {
+  animation: feedback 0.6s ease-out;
+}
+
+@keyframes feedback {
+  0% {
+    background: rgba(255, 255, 255, 0.2);
+    height: 0px;
+    width: 0px;
+  }
+  100% {
+    background: rgba(255, 255, 255, 0);
+    height: 400px;
+    width: 400px;
+  }
+}
+
+@keyframes clipPath {
+  from {
+    clip: rect(0px, 0px, 190px, 0px);
+  }
+  to {
+    clip: rect(0px, 190px, 190px, 0px);
+  }
+}

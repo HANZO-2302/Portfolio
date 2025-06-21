@@ -1,17 +1,13 @@
 'use client';
+import Animate from '@/components/AnimatePage';
+import BeforeAfterGallery from '@/components/BeforeAfterGallery';
+import ZoomGallery from '@/components/ZoomGallery/ExpandingCardsWithModal';
 
-import Animate from '@/components/AnimatePresence';
-import PhotoCarousel from '@/components/PhotoCarousel/PhotoCarousel';
-
-const Photoshop: React.FC = () => {
+export default function Photoshop() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex flex-grow items-center justify-center">
-        <PhotoCarousel />
-
-        <Animate />
-      </main>
+    <div className="md:ml-[194px]">
+      <BeforeAfterGallery />
+      <Animate />
     </div>
   );
-};
-export default Photoshop;
+}

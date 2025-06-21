@@ -1,3 +1,4 @@
+
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/preflight.css' layer(base);
@@ -5,9 +6,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-html {
-  scroll-behavior: smooth;
-}
 
 /* Отключаем стандартное поведение скролла на touch-устройствах */
 @media (pointer: coarse) {
@@ -26,5 +24,27 @@ html {
     border: 0 solid;
     margin: 0;
     padding: 0;
+  }
+}
+@layer utilities {
+  .scroll-touch-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+/* html, body {
+  height: 100%;
+} */
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

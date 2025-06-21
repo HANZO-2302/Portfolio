@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
-import ThemeSwitcher from './ThemeSwitcher';
+import ThemeToggle from './ThemeToggle';
 
 const outfit = Outfit({
   variable: '--font-outfit',
@@ -75,17 +75,17 @@ export default function Header() {
     <header
       className={`fixed z-50 w-full bg-gray-200 duration-500 dark:bg-gray-800 dark:duration-500 ${jetBrainsMono.className} antialiased`}
     >
-      <div className="mx-auto flex max-w-xl justify-between px-4 py-2">
+      <div className="mx-auto flex max-w-2xl justify-between px-4 py-2">
         {/* Логотип */}
-        <div className="relative flex w-full items-center">
+        <div className="relative flex shrink-0 items-center px-2">
           <Image
             src="/logo_mob.jpg"
             alt="logo Icon"
-            quality={20}
+            // quality={20}
             // fill={true} // {true} | {false}
             width={50}
             height={50}
-            priority={true}
+            priority
             // loading="eager" // {lazy} | {eager}
             className="aspect-square overflow-hidden rounded-full border-2 border-orange-500 object-cover object-[50%_10%]"
           />
@@ -100,30 +100,29 @@ export default function Header() {
               <Link href="/">Digital</Link>
             </h1>
           </div>
-          <div className="relative left-15 sm:hidden">
-            <ThemeSwitcher />
-          </div>
         </div>
-
+        <div className="md:hidden">
+          <ThemeToggle />
+        </div>
         {/* Кнопка меню для мобильных устройств  */}
         <button
           ref={buttonRef}
-          className="relative focus:outline-none sm:hidden"
+          className="relative block focus:outline-none md:hidden"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
           onClick={toggleMenu}
         >
           <div
-            className={`relative top-2 flex text-gray-950 transition-normal duration-300 dark:text-gray-200 ${
-              isOpen ? 'translate-y-full scale-90 opacity-0' : 'scle-100 translate-y-0 opacity-100'
+            className={`relative top-2 flex text-gray-950 transition-all duration-300 dark:text-gray-200 ${
+              isOpen ? 'translate-y-5 scale-0 opacity-0' : 'scle-100 translate-y-0 opacity-100'
             }`}
           >
             Menu
-            <span className="absolute bottom-0 -left-0.5 h-0.5 w-11 bg-orange-500"></span>
+            <span className="absolute bottom-0 left-0 h-0.5 w-10 bg-orange-500"></span>
           </div>
           <div
-            className={`relative -top-4 right-2 flex text-gray-950 transition-normal duration-300 dark:text-gray-200 ${
-              isOpen ? 'translate-x-0 scale-100 opacity-100' : 'translate-x-full scale-90 opacity-0'
+            className={`relative right-2 bottom-4 flex text-gray-950 transition-all duration-300 dark:text-gray-200 ${
+              isOpen ? 'translate-y-0 scale-100 opacity-100' : '-translate-y-5 scale-0 opacity-0'
             }`}
           >
             Close
@@ -132,7 +131,7 @@ export default function Header() {
         </button>
 
         {/* Меню для больших экранов */}
-        <nav className="relative left-15 mx-auto hidden font-normal uppercase sm:flex sm:items-center">
+        <nav className="relative hidden max-w-full font-normal uppercase md:flex md:items-center md:justify-center">
           <ul className="flex space-x-10">
             <li className="overflow-hidden">
               <Link
@@ -162,24 +161,23 @@ export default function Header() {
               </Link>
             </li>
           </ul>
-          <div className="relative left-10">
-            <ThemeSwitcher />
-          </div>
         </nav>
+        <div className="hidden md:block">
+          <ThemeToggle />
+        </div>
       </div>
 
       {/* Выпадающее меню для маленьких экранов */}
-
       {/* mode="wait" */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isOpen && (
           <motion.nav
             ref={menuRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.01, ease: 'easeInOut' }}
-            className={`absolute right-0 flex h-screen w-full justify-center bg-gray-300 dark:bg-gray-800 dark:duration-500 ${outfit.className} antialiased sm:hidden`}
+            // exit={{ opacity: 0 }}
+            transition={{ duration: 0.03, ease: 'easeInOut' }}
+            className={`absolute flex h-screen w-full justify-center bg-gray-300 from-gray-900 to-gray-500 to-100% dark:bg-linear-150 dark:duration-500 ${outfit.className} antialiased md:hidden`}
             aria-modal="true"
           >
             <motion.ul
@@ -190,12 +188,14 @@ export default function Header() {
                 visible: {
                   opacity: 1,
                   transition: {
+                    duration: 0.09,
+                    ease: 'easeInOut',
                     staggerChildren: 0.03,
-                    // delayChildren: 0.01, //задержкка
+                    // delayChildren: 0.03, //задержкка
                   },
                 },
               }}
-              className="mt-4 flex w-full flex-col items-start space-y-5 pl-4"
+              className="mt-2 flex max-h-[calc(100vh-6rem)] w-full flex-col items-start space-y-5 overflow-y-auto bg-amber-700/0 pl-6"
             >
               {menuItems.map((item, index) => (
                 <motion.li
@@ -204,7 +204,7 @@ export default function Header() {
                     hidden: { opacity: 0 },
                     visible: { opacity: 1 },
                   }}
-                  className="relative left-4 flex w-full text-left text-2xl text-gray-800 dark:text-gray-200"
+                  className="relative flex w-full text-left text-2xl text-gray-800 dark:text-gray-200"
                 >
                   <Link
                     href={item.href}

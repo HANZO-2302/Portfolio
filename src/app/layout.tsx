@@ -3,8 +3,8 @@ import { Outfit } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { ThemeProvider } from '@/components/ThemeProvider';
-import ThemeScript from '@/components/ThemeScript';
+import Animate from '@/components/AnimatePage';
+import PageTransition from '@/components/PageTransition';
 
 const outFit = Outfit({ subsets: ['latin'] });
 
@@ -19,18 +19,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth sm:scroll-auto">
+    <html lang="en" suppressHydrationWarning className="scrollbar-hide">
       <head>
-        <ThemeScript />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.theme;
+                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (theme === 'dark' || (!theme && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (_) {}
+              })();
+            `,
+          }}
+        />
       </head>
+
       <body
-        className={`${outFit.className} bg-gray-300 text-gray-800 antialiased transition-all duration-500 dark:bg-gray-900 dark:text-gray-200 dark:duration-500`}
+        className={`${outFit.className}scrollbar-hide size-full overflow-x-hidden bg-gray-300 from-gray-900 to-gray-500 text-gray-800 antialiased transition-all duration-500 dark:bg-linear-100 dark:text-gray-200 dark:duration-500`}
       >
-        <ThemeProvider>
-          <Header />
-          <main>{children}</main>
+        <Header />
+
+        <div className="flex min-h-screen flex-col">
+          <main className="grow overflow-x-hidden">{children}</main>
           <Footer />
-        </ThemeProvider>
+        </div>
       </body>
     </html>
   );
