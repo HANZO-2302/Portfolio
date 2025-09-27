@@ -73,12 +73,12 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed z-50 w-full bg-gray-200 duration-500 dark:bg-gray-800 dark:duration-500 ${jetBrainsMono.className} antialiased`}
+      className={`fixed z-50 w-full bg-gray-200 duration-50 dark:bg-gray-800 dark:duration-50 ${jetBrainsMono.className} antialiased`}
     >
       <div className="mx-auto flex max-w-2xl justify-between px-4 py-2">
         {/* Логотип */}
         <div className="relative flex shrink-0 items-center px-2">
-          <Image
+          {/* <Image
             src="/logo_mob.jpg"
             alt="logo Icon"
             // quality={20}
@@ -87,17 +87,17 @@ export default function Header() {
             height={50}
             priority
             // loading="eager" // {lazy} | {eager}
-            className="aspect-square overflow-hidden rounded-full border-2 border-orange-500 object-cover object-[50%_10%]"
-          />
+            className="aspect-square overflow-hidden rounded-full border-2 border-orange-500 object-cover object-[50%_10%] transition-all duration-500 hover:scale-105"
+          /> */}
 
-          <div className="relative left-2 flex flex-col transition-normal duration-500 hover:left-3">
-            <h1 className="text-lg leading-tight font-normal text-gray-950 transition-all dark:text-gray-200 dark:duration-500">
-              <Link href="/">Hanzo</Link>
+          <div className="relative left-2 flex flex-col transition-all duration-500 hover:left-3">
+            <h1 className="text-lg leading-tight font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
+              <Link href="/">Portfolio</Link>
             </h1>
             <div className="h-[2px] w-full rounded-lg bg-orange-500" />
 
-            <h1 className="text-lg leading-tight font-normal text-gray-950 transition-all duration-300 dark:text-gray-200 dark:duration-500">
-              <Link href="/">Digital</Link>
+            <h1 className="text-lg leading-tight font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
+              <Link href="/">Igor Menyailov</Link>
             </h1>
           </div>
         </div>
@@ -169,7 +169,7 @@ export default function Header() {
 
       {/* Выпадающее меню для маленьких экранов */}
       {/* mode="wait" */}
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
         {isOpen && (
           <motion.nav
             ref={menuRef}
@@ -177,7 +177,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             // exit={{ opacity: 0 }}
             transition={{ duration: 0.03, ease: 'easeInOut' }}
-            className={`absolute flex h-screen w-full justify-center bg-gray-300 from-gray-900 to-gray-500 to-100% dark:bg-linear-150 dark:duration-500 ${outfit.className} antialiased md:hidden`}
+            className={`absolute top-17 left-0 flex h-screen w-full justify-center bg-gray-300 from-gray-900 to-gray-500 to-100% dark:bg-linear-150 dark:duration-500 ${outfit.className} overflow-hidden antialiased md:hidden`}
             aria-modal="true"
           >
             <motion.ul
@@ -195,7 +195,11 @@ export default function Header() {
                   },
                 },
               }}
-              className="mt-2 flex max-h-[calc(100vh-6rem)] w-full flex-col items-start space-y-5 overflow-y-auto bg-amber-700/0 pl-6"
+              className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent mt-2 flex h-full w-full flex-col items-start space-y-5 overflow-y-auto overscroll-contain pr-6 pl-6 sm:max-h-[calc(100vh-4rem)] sm:py-4"
+              style={{
+                scrollbarWidth: 'thin',
+                scrollbarColor: '#9CA3AF transparent',
+              }}
             >
               {menuItems.map((item, index) => (
                 <motion.li
@@ -204,7 +208,63 @@ export default function Header() {
                     hidden: { opacity: 0 },
                     visible: { opacity: 1 },
                   }}
-                  className="relative flex w-full text-left text-2xl text-gray-800 dark:text-gray-200"
+                  className="relative flex w-full flex-shrink-0 py-2 text-left text-2xl text-gray-800 dark:text-gray-200"
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setTimeout(() => setIsOpen(false), 400)}
+                    // onClick={() => setIsOpen(false)}
+                    className="flex w-full touch-manipulation items-center"
+                  >
+                    {/* {item.icon && (
+                <Image src={item.icon} alt="Icon" width={24} height={24} className="mr-2" />
+              )} */}
+      {/* {item.text}
+                  </Link>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.nav>
+        )}
+      </AnimatePresence> */}
+      <AnimatePresence mode="wait">
+        {isOpen && (
+          <motion.nav
+            ref={menuRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.03, ease: 'easeInOut' }}
+            className={`absolute flex h-screen w-full justify-center bg-gray-300 from-gray-950 to-gray-600 to-100% select-none dark:bg-linear-100 dark:duration-500 ${outfit.className} antialiased md:hidden`}
+            aria-modal="true"
+          >
+            <motion.ul
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    duration: 0.1,
+                    ease: 'easeInOut',
+                    staggerChildren: 0.05,
+                    // delayChildren: 0.3, //задержкка
+                  },
+                },
+              }}
+              className="scroll-touch-smooth mt-6 flex max-h-[calc(100vh-7rem)] w-full flex-col items-start space-y-5 overflow-y-scroll overscroll-contain pr-6 pl-6"
+            >
+              {/* <Cosmos />
+              <BackgroundDots /> */}
+              {menuItems.map((item, index) => (
+                <motion.li
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1 },
+                  }}
+                  className="relative flex w-full border-b border-gray-400/40 pb-5 text-left text-2xl text-gray-800 dark:text-gray-200"
                 >
                   <Link
                     href={item.href}
@@ -223,6 +283,7 @@ export default function Header() {
           </motion.nav>
         )}
       </AnimatePresence>
+
       <div className="botton-0 fixed z-50 h-1 w-full bg-gray-300 inset-shadow-sm/60"></div>
     </header>
   );

@@ -72,10 +72,10 @@ export default function ThemeToggle() {
   };
 
   return (
-    <div className="flex items-center space-x-4 rounded-lg bg-gray-200 p-1 duration-500 dark:bg-gray-800 dark:duration-500">
+    <div className="flex items-center space-x-4 rounded-lg bg-gray-200 p-1 duration-50 dark:bg-gray-800">
       <button
         onClick={() => handleSetTheme('light')}
-        className={`rounded-md p-2 duration-500 ${
+        className={`rounded-md p-2 duration-50 ${
           theme === 'light' ? 'bg-gray-800 text-gray-100' : 'text-gray-700 dark:text-gray-300'
         }`}
         aria-label="Светлая тема"
@@ -97,7 +97,7 @@ export default function ThemeToggle() {
 
       <button
         onClick={() => handleSetTheme('dark')}
-        className={`rounded-md p-2 duration-500 ${
+        className={`rounded-md p-2 duration-50 ${
           theme === 'dark' ? 'bg-gray-200 text-gray-900' : 'text-gray-700 dark:text-gray-300'
         }`}
         aria-label="Темная тема"

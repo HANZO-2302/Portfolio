@@ -1,6 +1,9 @@
 // 'use client';
 import Animate from '@/components/AnimatePage';
-import SubmitButton from '@/components/SubmitButton/SubmitButton';
+import Footer from '@/components/Footer';
+import PhotoBeforAfter from '@/components/PhotoBeforAfter';
+import Silk from '@/components/Silk';
+// import SubmitButton from '@/components/SubmitButton/SubmitButton';
 // import { Outfit } from 'next/font/google';
 
 // const outfit = Outfit({
@@ -10,9 +13,18 @@ import SubmitButton from '@/components/SubmitButton/SubmitButton';
 
 export default function Contacts() {
   return (
-    <div>
+    <div className="flex min-h-screen flex-col">
+      <main className="grow overflow-x-hidden">
+        <PhotoBeforAfter />
+      </main>
       <Animate />
-      <SubmitButton />
+      <Footer />
     </div>
+    // <div className="flex min-h-screen flex-col">
+    //   <main className="grow overflow-x-hidden bg-amber-500"></main>
+    //   <PhotoBeforAfter />
+    //   <Animate />
+    //   <Footer />
+    // </div>
   );
 }

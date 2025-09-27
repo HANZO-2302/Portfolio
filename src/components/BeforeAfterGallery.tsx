@@ -125,7 +125,9 @@ const BeforeAfterGallery = () => {
                   scale: 0.9,
                   transition: { type: 'tween', duration: 0.15 },
                 }}
-                className="relative rounded-lg object-contain shadow-xl outline-2 outline-offset-2 outline-gray-500"
+                className="relative rounded-lg object-contain shadow-xl" //original
+
+                // className=" relative w-full max-w-[90vw] rounded-lg object-contain outline-2 outline-offset-2 outline-gray-500 sm:h-80 md:h-full" //Photo
               >
                 {/* Кнопка закрытия */}
                 <button
@@ -148,15 +150,56 @@ const BeforeAfterGallery = () => {
                     <path d="m9 9 6 6" />
                   </svg>
                 </button>
-                <div className="relative h-full w-full rounded-lg">
+                {/* Кнопки навигации */}
+                <button
+                  className="absolute top-1/2 right-2 z-50 flex -translate-y-1/2 transform items-center justify-center rounded-lg bg-white/50 p-2 text-black drop-shadow-md/90 transition-all duration-200 hover:bg-gray-200"
+                  onClick={e => {
+                    e.stopPropagation();
+                    swiperRef.current?.slideNext();
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 md:h-6 md:w-6"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <button
+                  className="absolute top-1/2 left-2 z-50 flex -translate-y-1/2 transform items-center justify-center rounded-lg bg-white/50 p-2 text-black drop-shadow-md/90 transition-all duration-200 hover:bg-gray-200"
+                  onClick={e => {
+                    e.stopPropagation();
+                    swiperRef.current?.slidePrev();
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 md:h-6 md:w-6"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <div className="relative flex h-full w-full items-center justify-center rounded-lg">
                   <Swiper
                     loop={true}
-                    // slidesPerGroup={1}
+                    slidesPerGroup={1}
                     loopAddBlankSlides={true}
                     loopPreventsSliding={false} // Улучшает плавность
                     modules={[Navigation, EffectCreative]}
                     onSwiper={swiper => (swiperRef.current = swiper)}
-                    className="h-full max-h-[80vh] max-w-[90vw] rounded-lg bg-gray-950 sm:max-w-[70vw] md:max-w-[80vw] lg:max-w-[50vw]"
+                    className="h-full max-h-[90vh] max-w-[90vw] rounded-lg object-contain outline-2 outline-offset-2 outline-gray-500 sm:max-w-[70vw] md:max-w-[90vw] md:object-cover lg:max-w-[48vw]" //original
                     navigation={{
                       prevEl: '.swiper-button-prev',
                       nextEl: '.swiper-button-next',
@@ -224,6 +267,7 @@ const BeforeAfterGallery = () => {
                         />
                       </div>
                     </SwiperSlide>
+
                     <SwiperSlide>
                       <div className="flex h-full w-full items-center justify-center">
                         <Image
@@ -279,47 +323,6 @@ const BeforeAfterGallery = () => {
                       </div>
                     </SwiperSlide>
                   </Swiper>
-                  {/* Кнопки навигации */}
-                  <button
-                    className="absolute top-1/2 right-2 z-50 flex -translate-y-1/2 transform items-center justify-center rounded-lg bg-white/50 p-2 text-black drop-shadow-md/90 transition-all duration-200 hover:bg-gray-200"
-                    onClick={e => {
-                      e.stopPropagation();
-                      swiperRef.current?.slideNext();
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 md:h-6 md:w-6"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    className="absolute top-1/2 left-2 z-50 flex -translate-y-1/2 transform items-center justify-center rounded-lg bg-white/50 p-2 text-black drop-shadow-md/90 transition-all duration-200 hover:bg-gray-200"
-                    onClick={e => {
-                      e.stopPropagation();
-                      swiperRef.current?.slidePrev();
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 md:h-6 md:w-6"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </button>
                 </div>
               </DialogPanel>
             </div>

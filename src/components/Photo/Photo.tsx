@@ -41,7 +41,7 @@ const Photo: React.FC<PhotoProps> = ({
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 16vw"
               alt={`Слайд ${index + 1}`}
-              className="rounded-lg object-cover object-[10%_10%] shadow-lg/60 duration-300 hover:scale-95 hover:shadow-xs/60"
+              className="rounded-lg object-cover object-[10%_10%] shadow-lg/60 transition-all duration-300 hover:scale-95 hover:shadow-xs/60"
               priority={index === 0}
             />
           </div>
@@ -93,7 +93,7 @@ const Photo: React.FC<PhotoProps> = ({
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="lucide lucide-square-x-icon lucide-square-x h-5 w-5 text-white/80 drop-shadow-md/90 hover:text-white/95 md:h-8 md:w-8"
+                    className="lucide lucide-square-x-icon lucide-square-x h-5 w-5 text-white/80 drop-shadow-md/90 hover:text-white/95 md:h-6 md:w-6"
                   >
                     <rect width="18" height="18" x="3" y="3" rx="9" ry="9" />
                     <path d="m15 9-6 6" />
@@ -106,7 +106,7 @@ const Photo: React.FC<PhotoProps> = ({
                     alt="До"
                     width={800}
                     height={800}
-                    className="w-full max-w-[90vw] rounded-lg object-contain outline-2 outline-offset-2 outline-gray-500 sm:h-80 md:h-full"
+                    className="w-full max-w-[90vw] rounded-lg object-contain ring-1 ring-gray-400 sm:h-80 md:h-full"
                     priority
                   />
                 </div>

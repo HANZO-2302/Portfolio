@@ -21,12 +21,14 @@
     opacity: 0;
     transform: rotate(0deg);
   }
-  25%,
-  75% {
+  25%{
     opacity: 1;
   }
   50% {
     opacity: 0;
+  }
+  75% {
+    opacity: 1;
   }
   100% {
     opacity: 0;
@@ -70,9 +72,10 @@
 }
 
 /* @keyframes colorChange {
-  0% { background: #165ab4; }
+  0% { background: #FF6900; }
+  10% { background: #c7c7c7; }
   25% { background: #f06d16; }
-  50% { background: #53e753; }
-  75% { background: #ead80f; }
-  100% { background: #165ab4; }
+  50% { background: #49ff7a; }
+  75% { background: #7dafff; }
+  100% { background: #FF6900; }
 } */

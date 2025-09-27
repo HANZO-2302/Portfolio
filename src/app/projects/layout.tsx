@@ -1,6 +1,7 @@
 import { Outfit } from 'next/font/google';
 import Sidebar from '@/components/Sidebar';
 import Animate from '@/components/AnimatePage';
+import Footer from '@/components/Footer';
 
 const outfit = Outfit({
   variable: '--font-outfit',
@@ -10,11 +11,12 @@ const outfit = Outfit({
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div
-      className={`${outfit.className} text-gray-800 antialiased transition-all duration-500 dark:text-gray-200 dark:duration-500`}
+      className={`${outfit.className} flex min-h-screen flex-col text-gray-800 antialiased transition-all dark:text-gray-200`}
     >
-      <main>{children}</main>
+      <main className="grow overflow-x-hidden">{children}</main>
       <Animate />
       <Sidebar />
+      <Footer />
     </div>
   );
 }

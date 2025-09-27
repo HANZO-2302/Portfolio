@@ -9,7 +9,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="fixed top-[66px] left-0 z-40 hidden min-h-screen w-48 overflow-y-auto bg-gray-400 text-left text-sm md:block dark:bg-gray-700 dark:text-shadow-sm/25">
+    <div className="fixed top-[66px] left-0 z-30 hidden min-h-screen w-48 overflow-y-auto bg-gray-400 text-left text-sm md:block dark:bg-gray-700 dark:text-shadow-sm/25">
       <Animate />
       <div
         className={`relative left-0 mt-3 flex w-full items-center justify-start overflow-hidden from-gray-600 to-gray-400 hover:bg-gradient-to-r hover:text-shadow-md/30 dark:from-gray-700 dark:to-gray-800 dark:hover:bg-gradient-to-r ${
