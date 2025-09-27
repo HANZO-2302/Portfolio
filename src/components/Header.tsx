@@ -73,12 +73,12 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed z-50 w-full bg-gray-200 duration-50 dark:bg-gray-800 dark:duration-50 ${jetBrainsMono.className} antialiased`}
+      className={`fixed z-50 w-full bg-gray-200 dark:bg-gray-800 ${jetBrainsMono.className} antialiased`}
     >
-      <div className="mx-auto flex max-w-2xl justify-between px-4 py-2">
+      <div className="mx-auto flex max-w-2xl items-center justify-between px-6 py-2">
         {/* Логотип */}
-        <div className="relative flex shrink-0 items-center px-2">
-          {/* <Image
+
+        {/* <Image
             src="/logo_mob.jpg"
             alt="logo Icon"
             // quality={20}
@@ -90,18 +90,18 @@ export default function Header() {
             className="aspect-square overflow-hidden rounded-full border-2 border-orange-500 object-cover object-[50%_10%] transition-all duration-500 hover:scale-105"
           /> */}
 
-          <div className="relative left-2 flex flex-col transition-all duration-500 hover:left-3">
-            <h1 className="text-lg leading-tight font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
-              <Link href="/">Portfolio</Link>
-            </h1>
-            <div className="h-[2px] w-full rounded-lg bg-orange-500" />
+        <div className="relative flex flex-col rounded-xl border-2 border-orange-500 p-2">
+          <h1 className="text-lg leading-4.5 font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
+            <Link href="/">Portfolio</Link>
+          </h1>
+          <div className="h-[1px] w-full rounded-lg bg-gray-400" />
 
-            <h1 className="text-lg leading-tight font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
-              <Link href="/">Igor Menyailov</Link>
-            </h1>
-          </div>
+          <h1 className="text-xs font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
+            <Link href="/">Igor Menyailov</Link>
+          </h1>
         </div>
-        <div className="md:hidden">
+
+        <div className="flex items-center justify-center md:hidden">
           <ThemeToggle />
         </div>
         {/* Кнопка меню для мобильных устройств  */}

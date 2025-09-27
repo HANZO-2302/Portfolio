@@ -173,7 +173,7 @@ export default function SmoothScrollPage() {
         type="button"
         onClick={() => setOpen(prev => !prev)}
         aria-expanded={open}
-        className={`${comFortaa.className} gallery__item h-20 w-full cursor-pointer rounded-xl border text-3xl text-gray-800 dark:text-gray-200`}
+        className={`${comFortaa.className} gallery__item h-20 w-full cursor-pointer rounded-xl border text-3xl text-gray-800 shadow-xl dark:text-gray-200`}
       >
         <div className="relative flex h-full w-full items-center justify-center">
           <motion.div className="flex items-center justify-center" whileTap={{ scale: 0.95 }}>
@@ -281,7 +281,7 @@ export default function SmoothScrollPage() {
               className="hero-section relative mx-auto mt-16 grid grid-cols-1 gap-2 rounded-3xl border border-gray-400/70 bg-gray-300 p-4 shadow-xl backdrop-blur-md transition-colors will-change-transform sm:max-w-xl sm:grid-cols-2 md:max-w-6xl dark:border-gray-600 dark:bg-gray-800/80"
             >
               {/* Анимированная картинка слева */}
-              <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-gray-500 shadow-xl md:mx-auto md:ml-0 md:max-w-md">
+              <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-gray-500 md:mx-auto md:ml-0 md:max-w-md">
                 {/* фото */}
                 <Image
                   src="/logo5.png"
@@ -408,7 +408,7 @@ export default function SmoothScrollPage() {
           {/* portfolio */}
           <div className="portfolio mt-15 flex flex-col items-center justify-center">
             <div className="container mx-auto">
-              <main className="gallery mx-auto mt-20 grid w-full max-w-6xl grid-cols-1 justify-items-center gap-x-2 px-4 pb-70 md:mt-30 md:grid-cols-2">
+              <main className="gallery mx-auto mt-20 grid w-full max-w-6xl grid-cols-1 justify-items-center gap-x-2 px-4 pb-80 md:mt-30 md:grid-cols-2">
                 {/* Left */}
                 <div
                   data-speed="0.9"
@@ -426,7 +426,7 @@ export default function SmoothScrollPage() {
                   </div>
                   {/* </motion.div> */}
 
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <Image
                       src="/html5.svg"
                       alt=""
@@ -445,7 +445,7 @@ export default function SmoothScrollPage() {
                       className="drop-shadow-xs/10"
                     />
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <Image
                       src="/tailwind.svg"
                       alt="CSS3 logo"
@@ -455,7 +455,7 @@ export default function SmoothScrollPage() {
                     />
                     Tailwind CSS
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <Image
                       src="/js.svg"
                       alt=""
@@ -474,7 +474,7 @@ export default function SmoothScrollPage() {
                       className="-translate-x-[8px] drop-shadow-xs/90"
                     />
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <Image
                       src="/react.svg"
                       alt=""
@@ -502,7 +502,7 @@ export default function SmoothScrollPage() {
                       />
                     </svg>
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <Image
                       src="/gsap.svg"
                       alt=""
@@ -521,7 +521,7 @@ export default function SmoothScrollPage() {
                       className="drop-shadow-xs/80"
                     />
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <Image
                       src="/figma2.svg"
                       alt=""
@@ -540,7 +540,7 @@ export default function SmoothScrollPage() {
                       className="translate-x-[4px] drop-shadow-xs/30"
                     />
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <Image src="/git.svg" alt="" width={65} height={65} />
                     <span className="px-2">Git</span>
                     <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-400"></span>
@@ -572,7 +572,7 @@ export default function SmoothScrollPage() {
                     />
                     Python
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <Image
                       src="/django.svg"
                       alt=""
@@ -582,7 +582,7 @@ export default function SmoothScrollPage() {
                     />
                     Django
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <svg
                       viewBox="0 0 56 56"
                       fill="currentColor"
@@ -596,7 +596,7 @@ export default function SmoothScrollPage() {
                     </svg>
                     Flask
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <Image
                       src="/fastapi.svg"
                       alt=""
@@ -606,7 +606,7 @@ export default function SmoothScrollPage() {
                     />
                     FastAPI
                   </div>
-                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border">
+                  <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border shadow-xl">
                     <span className="px-2">SQL</span>
                     <span className="mx-3 h-6 w-px bg-gray-400"></span>
                     <span className="px-2">MySQL</span>
