@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="absolute top-0 h-1 w-full bg-gray-300 inset-shadow-sm/60"></div>
       <div className="container mx-auto flex flex-wrap items-center justify-center gap-6">
         <a
-          className="flex items-center gap-2 text-gray-700 hover:underline dark:text-gray-200"
+          className="flex items-center gap-2 text-gray-800 hover:underline dark:text-gray-200"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
@@ -16,7 +16,7 @@ export default function Footer() {
           Learn
         </a>
         <a
-          className="flex items-center gap-2 text-gray-700 hover:underline dark:text-gray-200"
+          className="flex items-center gap-2 text-gray-800 hover:underline dark:text-gray-200"
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
@@ -25,7 +25,7 @@ export default function Footer() {
           Examples
         </a>
         <a
-          className="flex items-center gap-2 text-gray-700 hover:underline dark:text-gray-200"
+          className="flex items-center gap-2 text-gray-800 hover:underline dark:text-gray-200"
           href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
@@ -33,7 +33,7 @@ export default function Footer() {
           <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
           Go to nextjs.org →
         </a>
-        <p className="text-gray-700 dark:text-gray-200">© 2025 My Next.js App</p>
+        <p className="text-gray-800 dark:text-gray-200">© 2025 My Next.js App</p>
       </div>
     </footer>
   );

@@ -14,7 +14,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${outfit.className} flex min-h-screen flex-col text-gray-800 antialiased transition-all dark:text-gray-200`}
     >
       <main className="grow overflow-x-hidden">{children}</main>
-      <Animate />
+      {/* <Animate /> */}
       <Sidebar />
       <Footer />
     </div>

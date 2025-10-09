@@ -234,7 +234,7 @@ const PhotoBeforAfter = () => {
 
   return (
     <>
-      <div className="mt-18 grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="mt-0 grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {images.map(pair => (
           <div
             key={pair.id}

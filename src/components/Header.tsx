@@ -16,8 +16,8 @@ const menuItems = [
   { href: '/', text: 'Home', icon: '/home.svg' },
   { href: '/contacts', text: 'Contacts', icon: '/contacts.svg' },
   { href: '/projects/photoshop', text: 'Photoshop', icon: '/photoshop.svg' },
-  { href: '/projects/illustrator', text: 'illustrator', icon: '/illustrator.svg' },
-  { href: '/projects/lightroom', text: 'lightroom', icon: '/lightroom.svg' },
+  { href: '/projects/illustrator', text: 'Illustrator', icon: '/illustrator.svg' },
+  { href: '/projects/lightroom', text: 'Lightroom', icon: '/lightroom.svg' },
   { href: '/projects/figma', text: 'Figma', icon: '/figma.svg' },
   { href: '/projects/topaz', text: 'Topaz Gigapixel AI', icon: '/topaz.png' },
   { href: '/projects/after', text: 'After Effects', icon: '/after_effects.svg' },
@@ -90,16 +90,19 @@ export default function Header() {
             className="aspect-square overflow-hidden rounded-full border-2 border-orange-500 object-cover object-[50%_10%] transition-all duration-500 hover:scale-105"
           /> */}
 
-        <div className="relative flex flex-col rounded-xl border-2 border-orange-500 p-2">
+        <motion.div
+          whileTap={{ scale: 0.95 }}
+          className="relative flex flex-col rounded-xl border-2 border-orange-500 p-2"
+        >
           <h1 className="text-lg leading-4.5 font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
             <Link href="/">Portfolio</Link>
           </h1>
-          <div className="h-[1px] w-full rounded-lg bg-gray-400" />
+          <div className="h-[0.5px] w-full rounded-lg bg-gray-500" />
 
           <h1 className="text-xs font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
             <Link href="/">Igor Menyailov</Link>
           </h1>
-        </div>
+        </motion.div>
 
         <div className="flex items-center justify-center md:hidden">
           <ThemeToggle />
@@ -153,7 +156,7 @@ export default function Header() {
             </li>
             <li className="overflow-hidden">
               <Link
-                href="/projects"
+                href="/projects/photoshop"
                 className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:after:text-gray-200 ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
                 data-hover="Projects"
               >

@@ -1,12 +1,20 @@
-'use client';
+// 'use client';
 import Animate from '@/components/AnimatePage';
-import BeforeAfterGallery from '@/components/BeforeAfterGallery';
+import Image from 'next/image';
 import PhotoBeforAfter from '@/components/PhotoBeforAfter';
-import ZoomGallery from '@/components/ZoomGallery/ExpandingCardsWithModal';
 
 export default function Photoshop() {
   return (
-    <div className="md:ml-[194px]">
+    <div className="mt-20 md:ml-48">
+      <div className="flex">
+        {/* фиксируем блок под иконку */}
+        <h1 className="mx-auto flex items-center text-4xl leading-none font-semibold lg:text-6xl">
+          <span className="relative mr-4 inline-block h-[2em] w-[3em] align-baseline">
+            <Image src="/adobe-logo.svg" alt="Icon" fill className="object-contain" />
+          </span>
+          Photoshop
+        </h1>
+      </div>
       <PhotoBeforAfter />
       <Animate />
     </div>

@@ -1,12 +1,13 @@
 // import BackgroundDots from '@/components/folderBackgroundDots/BackgroundDots';
 import Animate from '@/components/AnimatePage';
-import PixelBlast from '@/components/PixelBlast';
-import Silk from '@/components/Silk';
+import PhotoBeforAfter from '@/components/PhotoBeforAfter';
 
 export default function Projects() {
   return (
-    <div>
-      <Animate />
+    <div className="md:ml-[194px]">
+      {/* <h1 className="mt-26 flex justify-center text-5xl md:mt-23 lg:text-8xl">Adobe Photoshop</h1>
+      <PhotoBeforAfter />
+      <Animate /> */}
     </div>
   );
 }

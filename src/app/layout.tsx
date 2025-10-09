@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Silk from '@/components/Silk';
+// import Footer from '@/components/Footer';
+// import Silk from '@/components/Silk';
 // import Animate from '@/components/AnimatePage';
 // import PageTransition from '@/components/PageTransition';
 
@@ -40,7 +40,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${outFit.className} scrollbar-hide size-full overflow-x-hidden bg-gray-300 from-gray-950 to-gray-600 text-gray-800 antialiased transition-all dark:bg-linear-90 dark:text-gray-200`}
+        className={`${outFit.className} scrollbar-hide size-full overflow-x-hidden bg-gray-300 from-gray-950 to-gray-700 text-gray-800 antialiased transition-all dark:bg-gradient-to-r dark:text-gray-200`}
       >
         <Header />
         <div className="flex min-h-screen flex-col">
