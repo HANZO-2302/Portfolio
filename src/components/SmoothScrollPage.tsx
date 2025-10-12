@@ -192,10 +192,14 @@ export default function SmoothScrollPage() {
         type="button"
         onClick={() => setOpen(prev => !prev)}
         aria-expanded={open}
-        className={`${comFortaa.className} gallery__item h-20 w-full cursor-pointer rounded-xl border border-gray-400/60 bg-gray-400/30 text-3xl font-bold text-gray-800 shadow-lg dark:border-gray-600 dark:bg-gray-800/80 dark:text-gray-200`}
+        className={`${comFortaa.className} gallery__item h-20 w-full cursor-pointer rounded-xl border border-gray-400/60 bg-gray-400/30 text-gray-800 shadow-lg dark:border-gray-600 dark:bg-gray-800/80 dark:text-gray-200`}
       >
         <div className="relative flex h-full w-full items-center justify-center">
-          <motion.div className="flex items-center justify-center" whileTap={{ scale: 0.95 }}>
+          <motion.div
+            transition={{ ease: 'easeInOut' }}
+            whileTap={{ scale: 0.95, opacity: 0 }}
+            className="flex items-center justify-center"
+          >
             {/* Заголовок — скрываем при open */}
             <h3
               className={`absolute text-2xl transition-opacity duration-300 ${open ? 'opacity-0' : 'opacity-100'}`}
@@ -205,11 +209,11 @@ export default function SmoothScrollPage() {
 
             {/* Описание — плавно раскрывается */}
             <div
-              className={`relative transition-[opacity] duration-300 ${
+              className={`relative transition-opacity duration-300 ${
                 open ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              <p className="flex items-center justify-center p-3 text-left text-sm font-light text-gray-800 transition-opacity duration-500 select-none dark:text-gray-200">
+              <p className="flex items-center justify-center p-2 text-left text-sm font-light text-gray-800 dark:text-gray-200">
                 {description}
               </p>
             </div>
@@ -297,24 +301,24 @@ export default function SmoothScrollPage() {
           >
             <div
               data-speed="0.9"
-              className="hero-section relative mx-auto mt-15 grid grid-cols-1 gap-2 rounded-3xl border border-gray-400/60 bg-gray-400/30 p-4 shadow-lg will-change-transform sm:max-w-xl md:mt-20 md:max-w-6xl md:grid-cols-2 dark:border-gray-600 dark:bg-gray-800/80"
+              className="hero-section relative mx-auto mt-15 grid max-w-5xl grid-cols-1 gap-2 rounded-3xl border border-gray-400/60 bg-gray-400/30 p-4 shadow-lg will-change-transform md:mt-20 md:grid-cols-2 dark:border-gray-600 dark:bg-gray-800/80"
             >
               {/* Анимированная картинка слева */}
-              <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-gray-600/60 shadow-sm/20 md:mx-auto md:ml-0 md:max-w-md">
+              <div className="relative mx-auto aspect-[4/3] h-full w-full max-w-md overflow-hidden rounded-2xl border border-gray-600/60 shadow-sm/20 md:mx-auto md:ml-0">
                 {/* фото */}
                 <Image
                   src="/logo5.png"
                   alt="Hero image"
                   fill
-                  className="object-cover object-[65%_50%]"
+                  className="h-full w-full object-cover object-[90%_10%]"
                   // style={{ transformOrigin: 'top' }}
                 />
               </div>
 
               {/* Заголовок */}
-              <div className="mt-5 w-full text-center md:mt-0">
+              <div className="w-full text-center">
                 <motion.h1
-                  className="relative text-3xl font-bold text-gray-900 uppercase md:text-4xl lg:text-6xl dark:text-gray-100"
+                  className="relative text-3xl font-extrabold text-gray-900 uppercase antialiased md:text-4xl lg:text-6xl dark:text-gray-200"
                   initial="hidden"
                   animate="visible"
                   variants={{
@@ -326,7 +330,7 @@ export default function SmoothScrollPage() {
                   {text.split('').map((char, index) => (
                     <motion.span
                       key={index}
-                      className="inline-block will-change-transform" //underline decoration-orange-500 underline-offset-3
+                      className="inline-block antialiased will-change-transform" //underline decoration-orange-500 underline-offset-3
                       variants={trailerVariants}
                     >
                       {char === ' ' ? '\u00A0' : char}
@@ -342,7 +346,7 @@ export default function SmoothScrollPage() {
                   transition={{ duration: 0.5, delay: 1, ease: 'easeInOut' }}
                 >
                   <p
-                    className={`${comFortaa.className} aboutText text-center text-[14px] leading-relaxed whitespace-pre-line text-gray-900 will-change-transform md:text-[17px] lg:text-2xl dark:text-gray-100`}
+                    className={`${comFortaa.className} aboutText text-center text-base text-gray-900 antialiased will-change-transform lg:text-xl dark:text-gray-200`}
                   >
                     {aboutText}
                   </p>
@@ -360,7 +364,7 @@ export default function SmoothScrollPage() {
           >
             <div
               data-speed="0.9"
-              className="hero-footer mx-auto mt-15 grid h-auto w-full max-w-6xl grid-cols-2 gap-4 rounded-3xl border border-gray-400/60 bg-gray-400/30 p-4 text-[14px] shadow-lg md:h-25 md:grid-cols-3 md:px-4 md:text-lg dark:border-gray-600 dark:bg-gray-800/80"
+              className="hero-footer mx-auto mt-12 grid h-auto w-full max-w-6xl grid-cols-2 gap-4 rounded-3xl border border-gray-400/60 bg-gray-400/30 p-4 text-[14px] shadow-lg md:h-25 md:max-w-5xl md:grid-cols-3 md:px-4 md:text-lg dark:border-gray-600 dark:bg-gray-800/80"
             >
               {/* Telegram */}
               <a
@@ -649,9 +653,9 @@ export default function SmoothScrollPage() {
               {/* Right */}
               <div
                 data-speed="0.9"
-                className="gallery__right flex w-full max-w-md flex-col gap-y-4 pb-10 text-2xl text-gray-800 will-change-transform dark:text-gray-200"
+                className="gallery__right flex w-full max-w-md flex-col gap-y-4 pb-10 text-gray-800 will-change-transform dark:text-gray-200"
               >
-                <div className="gallery__item mt-20 flex w-full items-center justify-center text-6xl font-bold md:mt-0 md:text-6xl">
+                <div className="gallery__item mt-20 flex w-full items-center justify-center text-6xl font-bold md:mt-0">
                   Soft Skills
                 </div>
                 <div className="flex flex-col gap-y-4">

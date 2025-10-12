@@ -73,9 +73,9 @@ export default function GeometricaTech() {
           </g>
         </svg>
       </div>
-      <span className="relative mx-5 my-0 flex h-0 w-80 items-center justify-center place-self-center border-b border-gray-600 md:h-20 md:w-0 md:border-l dark:border-gray-400"></span>
+      <span className="relative mx-5 my-2 flex h-0 w-80 items-center justify-center place-self-center border-b border-gray-600 md:py-8 md:w-0 md:border-l dark:border-gray-400"></span>
       <h1
-        className={`${comFortaa.className} p-4 text-center text-lg leading-relaxed font-bold md:text-lg dark:text-gray-300`}
+        className={`${comFortaa.className} p-3 text-center text-xl tracking-wide text-balance md:text-left md:text-2xl dark:text-gray-300`}
       >
         Прошел курс «Python-разработчик. Специалист» в GeekBrains (2023)
       </h1>

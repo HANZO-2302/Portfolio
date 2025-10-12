@@ -1,11 +1,9 @@
-
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/preflight.css' layer(base);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
 @custom-variant dark (&:where(.dark, .dark *));
-
 
 /* Отключаем стандартное поведение скролла на touch-устройствах */
 @media (pointer: coarse) {
@@ -33,7 +31,6 @@
   }
 }
 
-
 /* html, body {
   height: 100%;
 } */
@@ -42,7 +39,7 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
