@@ -2,7 +2,7 @@ import { Comfortaa } from 'next/font/google';
 
 const comFortaa = Comfortaa({ subsets: ['cyrillic'] });
 
-export default function GeometricaTech() {
+export default function GeekBrains() {
   return (
     <div className="mx-auto grid h-auto w-full max-w-5xl justify-items-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg md:grid-cols-[1fr_auto_1fr] dark:border-gray-600 dark:bg-gray-800/80">
       <div className="flex items-center gap-4">
@@ -73,9 +73,9 @@ export default function GeometricaTech() {
           </g>
         </svg>
       </div>
-      <span className="relative mx-5 my-2 flex h-0 w-80 items-center justify-center place-self-center border-b border-gray-600 md:py-8 md:w-0 md:border-l dark:border-gray-400"></span>
+      <span className="relative my-0 flex h-0 w-80 place-self-center border-b border-gray-600 md:mx-15 md:my-8 md:w-0 md:border-l md:py-8 dark:border-gray-500"></span>
       <h1
-        className={`${comFortaa.className} p-3 text-center text-xl tracking-wide text-balance md:text-left md:text-2xl dark:text-gray-300`}
+        className={`${comFortaa.className} my-4 flex items-center justify-center text-center text-base tracking-wide text-balance md:text-left md:text-xl dark:text-gray-300`}
       >
         Прошел курс «Python-разработчик. Специалист» в GeekBrains (2023)
       </h1>

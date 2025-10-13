@@ -14,8 +14,10 @@ const outfit = Outfit({
 export default function Contacts() {
   return (
     <div className="flex min-h-screen flex-col">
-      <main className="grow overflow-x-hidden"></main>
-      <PhotoBeforAfter />
+      <main className="mt-18 grow overflow-x-hidden border">
+        <PhotoBeforAfter />
+      </main>
+
       <Animate />
       <Footer />
     </div>

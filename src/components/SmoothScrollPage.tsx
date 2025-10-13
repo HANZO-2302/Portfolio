@@ -10,9 +10,9 @@ import { useGSAP } from '@gsap/react';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
 import { Comfortaa } from 'next/font/google';
-import Link from 'next/link';
-import { Mail, Send, FileText } from 'lucide-react';
-import GeometricaTech from './GeometricaTech';
+import { FileDown } from 'lucide-react';
+import GeekBrains from './GeekBrains';
+import ElectricBorder from './ElectricBorder';
 
 const comFortaa = Comfortaa({ subsets: ['cyrillic'] });
 
@@ -294,9 +294,9 @@ export default function SmoothScrollPage() {
         <div className="flex min-h-screen flex-col">
           {/* header */}
           <motion.div
-            initial={{ y: -50, opacity: 0, scale: 0.98 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            initial={{ opacity: 0, y: -50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, ease: 'backOut' }}
             className="p-4"
           >
             <div
@@ -357,42 +357,101 @@ export default function SmoothScrollPage() {
 
           {/* Contacts */}
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            initial={{ opacity: 0, y: -50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, delay: 1.5, ease: 'easeInOut' }}
+            transition={{ duration: 0.5, delay: 1.5, ease: 'backOut' }}
             className="px-4"
           >
             <div
               data-speed="0.9"
-              className="hero-footer mx-auto mt-12 grid h-auto w-full max-w-6xl grid-cols-2 gap-4 rounded-3xl border border-gray-400/60 bg-gray-400/30 p-4 text-[14px] shadow-lg md:h-25 md:max-w-5xl md:grid-cols-3 md:px-4 md:text-lg dark:border-gray-600 dark:bg-gray-800/80"
+              className="hero-footer mx-auto mt-12 grid w-full max-w-5xl grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center rounded-3xl border border-gray-400/60 bg-gray-400/30 px-4 py-6 text-center text-sm shadow-lg md:text-lg dark:border-gray-600 dark:bg-gray-800/80"
             >
               {/* Telegram */}
               <a
                 href="https://t.me/Igor_Menyailov"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group ml-2 flex items-center gap-1 text-gray-700 transition hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400"
+                className="group relative flex items-center justify-center text-gray-700 transition-all duration-500 dark:text-gray-200"
               >
-                <Send className="h-5 w-5 transition group-hover:scale-110" />
-                <span>@Igor_Menyailov</span>
+                <Image
+                  src="/Telegram.svg"
+                  width={24}
+                  height={24}
+                  alt="icons"
+                  className="h-full w-15 transition-all duration-500 group-hover:scale-50 group-hover:opacity-0"
+                />
+                <span className="absolute left-1/2 flex h-full w-full -translate-x-1/2 scale-90 items-center justify-center rounded-2xl bg-gray-800 py-10 text-gray-200 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-700/90">
+                  Перейти в Telegram
+                </span>
               </a>
-              {/* Email */}
+
+              {/* Вертикальный разделитель */}
+              <span className="mx-3 h-10 border-l border-gray-600 dark:border-gray-500"></span>
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/HANZO-2302"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center justify-center rounded-2xl text-gray-700 transition-all duration-500 dark:text-gray-200"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-auto w-15 transition-all duration-500 group-hover:scale-50 group-hover:opacity-0"
+                >
+                  <path
+                    d="M16.0001 0.82843C7.41003 0.82843 0.444443 7.7928 0.444443 16.384C0.444443 23.257 4.90159 29.0879 11.0824 31.1448C11.8597 31.2888 12.1452 30.8074 12.1452 30.3965C12.1452 30.0256 12.1307 28.8001 12.1241 27.5003C7.79641 28.4413 6.88324 25.665 6.88324 25.665C6.17564 23.8669 5.15608 23.3889 5.15608 23.3889C3.74479 22.4234 5.26247 22.4432 5.26247 22.4432C6.82456 22.553 7.64708 24.0463 7.64708 24.0463C9.03447 26.4244 11.2861 25.7368 12.1738 25.3395C12.3133 24.3339 12.7165 23.6478 13.1614 23.2594C9.70632 22.8659 6.07413 21.5321 6.07413 15.5716C6.07413 13.8734 6.68182 12.4857 7.67697 11.3963C7.51544 11.0045 6.98304 9.42236 7.82764 7.27967C7.82764 7.27967 9.1339 6.86158 12.1065 8.87421C13.3473 8.52944 14.6781 8.35669 16.0001 8.35083C17.3221 8.35669 18.6538 8.52944 19.897 8.87421C22.8661 6.86158 24.1705 7.27967 24.1705 7.27967C25.0172 9.42236 24.4846 11.0045 24.323 11.3963C25.3204 12.4857 25.9239 13.8733 25.9239 15.5716C25.9239 21.5462 22.2849 22.8619 18.8211 23.2469C19.379 23.7297 19.8761 24.6764 19.8761 26.1276C19.8761 28.2089 19.8581 29.8841 19.8581 30.3965C19.8581 30.8104 20.1381 31.2955 20.9267 31.1428C27.104 29.0835 31.5556 23.2547 31.5556 16.384C31.5556 7.7928 24.5909 0.82843 16.0001 0.82843Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M6.27053 22.9878C6.23637 23.065 6.11461 23.0882 6.00396 23.0352C5.89111 22.9845 5.82767 22.8791 5.86427 22.8015C5.89782 22.7219 6.01957 22.6997 6.13218 22.7532C6.24527 22.8038 6.30969 22.9102 6.27053 22.9878ZM7.03571 23.6705C6.96154 23.7393 6.81648 23.7073 6.71802 23.5986C6.61628 23.4902 6.59724 23.3452 6.67252 23.2753C6.74901 23.2066 6.88968 23.2387 6.99167 23.3473C7.09342 23.457 7.11318 23.6011 7.03559 23.6706L7.03571 23.6705ZM7.56068 24.544C7.46528 24.6103 7.30936 24.5482 7.2131 24.4098C7.11782 24.2716 7.11782 24.1057 7.21518 24.0392C7.3118 23.9727 7.46528 24.0325 7.56288 24.1697C7.65804 24.3104 7.65804 24.4763 7.56056 24.5441L7.56068 24.544ZM8.44835 25.5558C8.36308 25.6497 8.18154 25.6246 8.04856 25.4962C7.91265 25.3708 7.87471 25.1928 7.96023 25.0987C8.04648 25.0046 8.22912 25.031 8.36308 25.1583C8.49813 25.2835 8.53937 25.4628 8.44848 25.5558H8.44835ZM9.59564 25.8974C9.55819 26.0191 9.38324 26.0745 9.20707 26.0228C9.03115 25.9695 8.91598 25.8267 8.95148 25.7036C8.98808 25.581 9.16376 25.5233 9.34127 25.5787C9.51695 25.6318 9.63237 25.7734 9.59577 25.8974H9.59564ZM10.9015 26.0422C10.9059 26.1705 10.7565 26.2769 10.5715 26.2792C10.3855 26.2832 10.235 26.1794 10.2331 26.0533C10.2331 25.9237 10.3791 25.8183 10.5651 25.8153C10.75 25.8116 10.9015 25.9147 10.9015 26.0422ZM12.1842 25.993C12.2064 26.1182 12.0779 26.2468 11.8943 26.2809C11.7137 26.3139 11.5465 26.2366 11.5235 26.1126C11.501 25.9842 11.6321 25.8558 11.8123 25.8225C11.9962 25.7905 12.1608 25.8658 12.1842 25.993Z"
+                    fill="white"
+                  />
+                </svg>
+
+                <span className="absolute left-1/2 flex h-full w-full -translate-x-1/2 scale-90 items-center justify-center rounded-2xl bg-gray-800 py-10 text-lg text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-700/90">
+                  Открыть GitHub
+                </span>
+              </a>
+
+              {/* Разделитель */}
+              <span className="mx-3 h-10 border-l border-gray-600 dark:border-gray-500"></span>
+
+              {/* Gmail */}
               <a
                 href="mailto:m2302835@gmail.com"
-                className="group flex items-center gap-1 text-gray-700 transition hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400"
+                className="group relative flex items-center justify-center rounded-2xl text-gray-700 transition-all duration-500 dark:text-gray-200"
               >
-                <Mail className="h-5 w-5 transition group-hover:scale-110" />
-                <span>m2302835@gmail.com</span>
+                <Image
+                  src="/Gmail.svg"
+                  width={24}
+                  height={24}
+                  alt="icons"
+                  className="h-auto w-15 transition-all duration-500 group-hover:scale-50 group-hover:opacity-0"
+                />
+                <span className="absolute left-1/2 flex h-full w-full -translate-x-1/2 scale-90 items-center justify-center rounded-2xl bg-gray-800 py-10 text-lg text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-700/90">
+                  Написать письмо
+                </span>
               </a>
+
+              {/* Разделитель */}
+              <span className="mx-3 h-10 border-l border-gray-600 dark:border-gray-500"></span>
 
               {/* Резюме */}
               <a
                 href="/resume.pdf"
                 download
-                className="group col-span-2 flex items-center justify-center gap-2 rounded-xl border border-blue-500 px-4 py-2 text-blue-500 transition hover:bg-blue-500 hover:text-white md:col-auto"
+                className="group relative flex items-center justify-center rounded-2xl text-gray-700 transition-all duration-500 dark:text-gray-200"
               >
-                <FileText className="h-5 w-5 transition group-hover:scale-110" />
-                <span>Скачать резюме</span>
+                <FileDown className="h-auto w-15 stroke-1 transition-all duration-500 group-hover:scale-50 group-hover:opacity-0" />
+                <span className="absolute left-1/2 flex h-full w-full -translate-x-1/2 scale-90 items-center justify-center rounded-2xl bg-gray-800 py-10 text-lg text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-700/90">
+                  Скачать резюме
+                </span>
               </a>
             </div>
           </motion.div>
@@ -402,7 +461,7 @@ export default function SmoothScrollPage() {
             initial={{ opacity: 0, x: 100, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.3, delay: 2, ease: 'easeOut' }}
-            className="hero-arrows relative mt-5 px-4 md:translate-y-[20px]"
+            className="hero-arrows relative mt-10 px-4 md:translate-y-[20px]"
           >
             <div
               data-speed="0.9"
@@ -465,7 +524,7 @@ export default function SmoothScrollPage() {
                     className="drop-shadow-xs/10"
                   />
                   <span className="px-2">HTML5</span>
-                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-400"></span>
+                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-500"></span>
                   <span className="px-2">CSS3</span>
                   <Image
                     src="/css3.svg"
@@ -494,7 +553,7 @@ export default function SmoothScrollPage() {
                     className="translate-x-[8px] drop-shadow-xs/90"
                   />
                   <span className="px-2">JavaScript</span>
-                  <span className="mx-0 h-6 border-l border-gray-600 dark:border-gray-400"></span>
+                  <span className="mx-0 h-6 border-l border-gray-600 dark:border-gray-500"></span>
                   <span className="px-2">TypeScript</span>
                   <Image
                     src="/ts.svg"
@@ -513,7 +572,7 @@ export default function SmoothScrollPage() {
                     className="drop-shadow-xs/80"
                   />
                   <span className="px-2">React.js</span>
-                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-400"></span>
+                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-500"></span>
                   {/* <span className="px-2">Next.js</span> */}
                   <svg
                     aria-hidden="true"
@@ -541,7 +600,7 @@ export default function SmoothScrollPage() {
                     className="drop-shadow-xs/80"
                   />
                   <span className="px-2">GSAP</span>
-                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-400"></span>
+                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-500"></span>
                   <span className="px-2">Motion</span>
                   <Image
                     src="/motion.svg"
@@ -560,7 +619,7 @@ export default function SmoothScrollPage() {
                     className="drop-shadow-xs/90"
                   />
                   <span className="px-2">Figma</span>
-                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-400"></span>
+                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-500"></span>
                   <span className="px-2">Photoshop</span>
                   <Image
                     src="/ps.svg"
@@ -573,7 +632,7 @@ export default function SmoothScrollPage() {
                 <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image src="/git.svg" alt="" width={65} height={65} />
                   <span className="px-2">Git</span>
-                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-400"></span>
+                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-500"></span>
                   <span className="px-2">GitHub</span>
                   <svg
                     aria-hidden="true"
@@ -638,7 +697,7 @@ export default function SmoothScrollPage() {
                 </div>
                 <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <span className="px-2">SQL</span>
-                  <span className="mx-3 h-6 w-px bg-gray-400"></span>
+                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-500"></span>
                   <span className="px-2">MySQL</span>
                   <Image
                     src="/mysql.svg"
@@ -668,7 +727,7 @@ export default function SmoothScrollPage() {
             {/* </div> */}
           </div>
           <div data-speed="1.5" className="geekbrains relative h-0 -translate-y-80 p-4">
-            <GeometricaTech />
+            <GeekBrains />
           </div>
           <Footer />
         </div>
