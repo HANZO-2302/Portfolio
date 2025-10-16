@@ -45,3 +45,24 @@
     scrollbar-width: none;
   }
 }
+
+/* :root {
+  --my-drop-shadow: 0 4px 15px rgba(0, 200, 255, 0.4);
+  --my-drop-shadow-hover: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+
+.dark {
+  --my-drop-shadow: 0 4px 15px rgba(255, 255, 255, 0.25);
+  --my-drop-shadow-hover: 0 0 25px rgba(255, 255, 255, 0.4);
+}
+
+@layer utilities {
+  .drop-shadow-custom {
+    filter: drop-shadow(var(--my-drop-shadow));
+    transition: filter 0.4s ease;
+  }
+
+  .drop-shadow-custom:hover {
+    filter: drop-shadow(var(--my-drop-shadow-hover));
+  }
+} */

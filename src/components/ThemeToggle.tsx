@@ -72,7 +72,7 @@ export default function ThemeToggle() {
   };
 
   return (
-    <div className="flex items-center space-x-4 rounded-lg bg-gray-200 p-1 dark:bg-gray-800">
+    <div className="flex items-center space-x-4 rounded-lg border border-gray-500 bg-gray-200 p-1 shadow-md dark:border-gray-500 dark:bg-gray-800">
       <button
         onClick={() => handleSetTheme('light')}
         className={`rounded-md p-2 ${
