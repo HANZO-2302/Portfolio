@@ -1,8 +1,8 @@
 'use client';
+
 import { JetBrains_Mono, Outfit } from 'next/font/google';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import ThemeToggle from './ThemeToggle';
@@ -75,7 +75,7 @@ export default function Header() {
     <header
       className={`fixed z-50 w-full bg-gray-200 dark:bg-gray-800 ${jetBrainsMono.className} antialiased`}
     >
-      <div className="mx-auto flex max-w-2xl items-center justify-between px-5 md:px-30 py-2">
+      <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-2 md:px-30">
         {/* Логотип */}
 
         {/* <Image
@@ -139,7 +139,7 @@ export default function Header() {
             <li className="overflow-hidden">
               <Link
                 href="/"
-                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:after:text-gray-200 ${pathname === '/' ? 'translate-y-full' : ''}`}
+                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:after:text-gray-200 ${pathname === '/' ? 'translate-y-full' : ''}`}
                 data-hover="Home"
               >
                 Home
@@ -148,7 +148,7 @@ export default function Header() {
             {/* <li className="overflow-hidden">
               <Link
                 href="/contacts"
-                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:after:text-gray-200 ${pathname.startsWith('/contacts') ? 'translate-y-full' : ' '}`}
+                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-500 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:after:text-gray-200 ${pathname.startsWith('/contacts') ? 'translate-y-full' : ' '}`}
                 data-hover="Contacts"
               >
                 Contacts
@@ -157,7 +157,7 @@ export default function Header() {
             <li className="overflow-hidden">
               <Link
                 href="/projects/photoshop"
-                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:after:text-gray-200 ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
+                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:after:text-gray-200 ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
                 data-hover="Projects"
               >
                 Projects

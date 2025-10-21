@@ -1,6 +1,6 @@
 // import BackgroundDots from '@/components/folderBackgroundDots/BackgroundDots';
 import Animate from '@/components/AnimatePage';
-import PhotoBeforAfter from '@/components/PhotoBeforAfter';
+import PhotoBeforAfter from '@/components/PhotoBeforeAfter';
 
 export default function Projects() {
   return (

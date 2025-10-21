@@ -1,7 +1,7 @@
 // 'use client';
 import Animate from '@/components/AnimatePage';
 import Footer from '@/components/Footer';
-import PhotoBeforAfter from '@/components/PhotoBeforAfter';
+import PhotoBeforAfter from '@/components/PhotoBeforeAfter';
 import Silk from '@/components/Silk';
 import SubmitButton from '@/components/SubmitButton/SubmitButton';
 import { Outfit } from 'next/font/google';

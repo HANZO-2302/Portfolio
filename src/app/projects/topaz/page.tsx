@@ -1,7 +1,7 @@
 // 'use client';
 
 import Animate from '@/components/AnimatePage';
-import PhotoBeforAfter from '@/components/PhotoBeforAfter';
+import PhotoBeforAfter from '@/components/PhotoBeforeAfter';
 
 export default function Topaz() {
   return (
