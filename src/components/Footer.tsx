@@ -4,12 +4,12 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="relative z-40 flex w-full bg-gray-200 py-6 text-gray-100 duration-50 dark:bg-gray-800 dark:duration-50">
+    <footer className="relative z-40 flex w-full bg-gray-200 py-6 text-gray-100 transition-colors duration-50 dark:bg-gray-800 dark:duration-50">
       <div className="absolute top-0 h-1 w-full bg-gray-300 inset-shadow-sm/60"></div>
       <div className="container mx-auto flex flex-wrap items-center justify-center gap-2 px-5">
         <div className="relative flex overflow-hidden">
           <a
-            className="group flex items-center gap-2 rounded-2xl p-4 font-extralight tracking-tighter text-gray-800 dark:text-gray-200"
+            className="group flex items-center gap-2 rounded-2xl px-4 font-extralight tracking-tighter text-gray-800 dark:text-gray-200"
             href="https://t.me/Igor_Menyailov"
             target="_blank"
             rel="noopener noreferrer"
@@ -32,7 +32,7 @@ export default function Footer() {
         {/* Вертикальный разделитель */}
         <span className="mx-4 hidden h-10 border-l border-gray-600 md:block dark:border-gray-500"></span>
         <a
-          className="flex items-center gap-2 p-4 font-extralight tracking-tighter text-gray-800 dark:text-gray-200"
+          className="flex items-center gap-2 px-4 font-extralight tracking-tighter text-gray-800 dark:text-gray-200"
           href="https://github.com/HANZO-2302"
           target="_blank"
           rel="noopener noreferrer"
@@ -60,7 +60,7 @@ export default function Footer() {
         {/* Вертикальный разделитель */}
         <span className="mx-4 hidden h-10 border-l border-gray-600 md:block dark:border-gray-500"></span>
         <a
-          className="flex items-center gap-2 p-4 font-extralight tracking-tighter text-gray-800 dark:text-gray-200"
+          className="flex items-center gap-2 px-4 font-extralight tracking-tighter text-gray-800 dark:text-gray-200"
           href="mailto:m2302835@gmail.com"
           // target="_blank"
           // rel="noopener noreferrer"
@@ -77,7 +77,7 @@ export default function Footer() {
         </a>
         {/* Вертикальный разделитель */}
         <span className="mx-4 hidden h-10 border-l border-gray-600 lg:block dark:border-gray-500"></span>
-        <p className="p-4 font-extralight tracking-tighter text-gray-800 dark:text-gray-200">
+        <p className="px-4 font-extralight tracking-tighter text-gray-800 dark:text-gray-200">
           © 2025 Portfolio
         </p>
       </div>

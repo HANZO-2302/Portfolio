@@ -1,7 +1,6 @@
 // 'use client';
 import Animate from '@/components/AnimatePage';
 import Image from 'next/image';
-import PhotoBeforeAfter2 from '@/components/PhotoBeforeAfter2';
 import PhotoBeforeAfter from '@/components/PhotoBeforeAfter';
 
 export default function Photoshop() {
