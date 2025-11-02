@@ -12,7 +12,6 @@ import { motion } from 'framer-motion';
 import { Comfortaa } from 'next/font/google';
 import { FileDown } from 'lucide-react';
 import GeekBrains from './GeekBrains';
-import ElectricBorder from './ElectricBorder';
 
 const comFortaa = Comfortaa({ subsets: ['cyrillic'] });
 
@@ -88,8 +87,8 @@ export default function SmoothScrollPage() {
         opacity: 0,
         scrollTrigger: {
           trigger: '.hero-arrows',
-          start: 'top 80%',
-          end: '+=300',
+          start: 'top 60%',
+          end: '+=200',
           scrub: true,
           // markers: true,
         },
@@ -135,7 +134,7 @@ export default function SmoothScrollPage() {
     gsap.utils.toArray<HTMLElement>('.gallery__left .gallery__item').forEach(item => {
       gsap.fromTo(
         item,
-        { opacity: 0, y: 200, scale: 0.95 },
+        { opacity: 0, y: 150, scale: 0.95 },
         {
           opacity: 1,
           scale: 1,
@@ -145,7 +144,7 @@ export default function SmoothScrollPage() {
           scrollTrigger: {
             trigger: item,
             start: 'top 90%', // начало анимации
-            end: 'bottom 50%',
+            end: 'bottom 60%',
             scrub: true,
             // markers: true,
           },
@@ -156,7 +155,7 @@ export default function SmoothScrollPage() {
     gsap.utils.toArray<HTMLElement>('.gallery__right .gallery__item').forEach(item => {
       gsap.fromTo(
         item,
-        { opacity: 0, y: 200, scale: 0.95 },
+        { opacity: 0, y: 150, scale: 0.95 },
         {
           opacity: 1,
           scale: 1,
@@ -166,8 +165,9 @@ export default function SmoothScrollPage() {
           scrollTrigger: {
             trigger: item,
             start: 'top 90%', // начало анимации
-            end: 'bottom 50%',
+            end: 'bottom 60%',
             scrub: true,
+            // markers: true,
           },
         },
       );
@@ -192,9 +192,9 @@ export default function SmoothScrollPage() {
         type="button"
         onClick={() => setOpen(prev => !prev)}
         aria-expanded={open}
-        className={`${comFortaa.className} gallery__item h-20 w-full cursor-pointer rounded-xl border border-gray-400/60 bg-gray-400/30 text-gray-800 shadow-lg dark:border-gray-600 dark:bg-gray-800/80 dark:text-gray-200`}
+        className={`${comFortaa.className} gallery__item h-20 w-full cursor-pointer rounded-xl border border-gray-400/60 bg-gray-400/30 text-gray-800 shadow-lg transition-colors duration-300 hover:border-gray-500 hover:bg-gray-300 dark:border-gray-600 dark:bg-gray-800/80 dark:text-gray-200 hover:dark:bg-gray-700`}
       >
-        <div className="relative flex h-full w-full items-center justify-center">
+        <div className="relative flex h-full w-full items-center justify-center rounded-xl">
           <motion.div
             transition={{ ease: 'easeInOut' }}
             whileTap={{ scale: 0.95, opacity: 0 }}
@@ -213,7 +213,7 @@ export default function SmoothScrollPage() {
                 open ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              <p className="flex items-center justify-center p-2 text-left text-sm font-light text-gray-800 dark:text-gray-200">
+              <p className="flex items-center justify-center p-4 text-left text-sm leading-snug font-light text-balance text-gray-800 dark:text-gray-200">
                 {description}
               </p>
             </div>

@@ -7,7 +7,7 @@ import { Comfortaa, Outfit } from 'next/font/google';
 import { useState, useEffect } from 'react';
 
 const comFortaa = Comfortaa({ subsets: ['cyrillic'] });
-const outFit = Outfit({ subsets: ['latin'] });
+// const outFit = Outfit({ subsets: ['latin'] });
 
 interface ImagePair {
   id: number;
@@ -29,17 +29,17 @@ const images: ImagePair[] = [
   },
   {
     id: 2,
-    thumbnail: '/logo2.jpg',
-    before: '/logo2.jpg',
-    after: '/logo2.jpg',
+    thumbnail: '/walking2.jpg',
+    before: '/walking.jpg',
+    after: '/walking2.jpg',
     textH1: 'Выделение и изоляция объектов',
     textP: 'Tочное отделение элементов от фона и интеграция в новые композиции.',
   },
   {
     id: 3,
-    thumbnail: '/logo3.jpg',
-    before: '/logo3.jpg',
-    after: '/logo3.jpg',
+    thumbnail: '/bafiti3.jpg',
+    before: '/bafiti.jpg',
+    after: '/bafiti3.jpg',
     textH1: 'Цветокоррекция и замена цвета',
     textP: 'Настройка оттенков и контраста для достижения нужной атмосферы.',
   },
@@ -77,7 +77,7 @@ const PhotoBeforeAfter = () => {
 
   useEffect(() => {
     // Проверяем ширину экрана
-    const checkScreen = () => setIsMobile(window.innerWidth < 770);
+    const checkScreen = () => setIsMobile(window.innerWidth < 500);
     checkScreen();
     window.addEventListener('resize', checkScreen);
     return () => window.removeEventListener('resize', checkScreen);
@@ -97,18 +97,19 @@ const PhotoBeforeAfter = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 sm:gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 lg:px-8">
+      <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 sm:gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4 lg:px-4 2xl:grid-cols-6">
         {images.map(pair => (
           <motion.div
             key={pair.id}
-            initial={isMobile ? { opacity: 0 } : undefined}
+            initial={isMobile ? { opacity: 0 } : false}
+            animate={!isMobile ? { opacity: 1 } : undefined}
             whileInView={isMobile ? { opacity: 1 } : undefined}
-            transition={isMobile ? { duration: 0.6, ease: 'easeInOut' } : undefined}
-            viewport={isMobile ? { once: false, margin: '-100px' } : undefined}
-            className="overflow-hidden rounded-lg shadow-md/60 ring-1 ring-gray-400 transition-all duration-300 hover:-translate-y-0 hover:scale-95 hover:shadow-lg/70 hover:ring-4 dark:ring-gray-600 hover:dark:ring-gray-400"
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
+            viewport={isMobile ? { once: false, amount: 0.2 } : undefined}
+            className="overflow-hidden rounded-lg shadow-md/60 ring-1 ring-gray-400 transition-all duration-300 hover:scale-95 hover:shadow-lg/70 hover:ring-4 dark:ring-gray-600 hover:dark:ring-gray-400"
           >
             <div
-              className="relative z-0 aspect-video cursor-pointer rounded-lg md:aspect-square lg:aspect-[4/3]"
+              className="relative z-0 aspect-square cursor-pointer rounded-lg md:aspect-auto md:h-[20vh] lg:h-[28vh] xl:h-[29vh] 2xl:h-[60vh]"
               onClick={() => openModal(pair)}
             >
               <Image
@@ -116,9 +117,9 @@ const PhotoBeforeAfter = () => {
                 fill
                 // width={900}
                 // height={900}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 16vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw"
                 alt={`photo ${pair.id}`}
-                className="w-wull h-auto rounded-lg object-cover object-[70%_10%]"
+                className="h-auto w-full rounded-lg object-cover object-[50%_10%]"
                 priority={pair.id === 1}
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-50% to-black/90" />
@@ -131,13 +132,13 @@ const PhotoBeforeAfter = () => {
                 transition={{ type: 'tween', duration: 0.5, delay: 0.6, ease: 'backOut' }}
               >
                 {pair.textH1 && (
-                  <div className="text-lg leading-snug font-bold text-balance text-gray-200 text-shadow-sm sm:text-[9px] md:text-xs lg:text-sm lg:leading-5 xl:text-lg 2xl:text-xl">
+                  <div className="text-lg leading-snug font-bold text-balance text-gray-200 text-shadow-sm sm:text-[9px] md:text-xs lg:text-sm lg:leading-5 xl:text-base 2xl:text-lg">
                     {pair.textH1}
                   </div>
                 )}
 
                 {pair.textP && (
-                  <div className="text-xs leading-snug font-extralight text-balance text-gray-200 text-shadow-sm sm:text-[7px] md:text-[8px] xl:text-[10px] 2xl:text-sm">
+                  <div className="text-xs leading-snug font-extralight text-balance text-gray-200 text-shadow-sm sm:text-[7px] md:text-[8px] xl:text-[10px]">
                     {pair.textP}
                   </div>
                 )}
@@ -201,7 +202,7 @@ const PhotoBeforeAfter = () => {
                       }`}
                     />
                   </div>
-                  {/* крестик закрытия */}
+                  {/* Кнопка закрытия */}
                   <button
                     onClick={closeModal}
                     className="absolute top-1 right-1 z-50 transition-all duration-200 hover:scale-110"
