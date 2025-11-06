@@ -3,18 +3,24 @@
 import Image from 'next/image';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Comfortaa, Outfit } from 'next/font/google';
-import { useState, useEffect } from 'react';
+import { Comfortaa } from 'next/font/google';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
 const comFortaa = Comfortaa({ subsets: ['cyrillic'] });
-// const outFit = Outfit({ subsets: ['latin'] });
+
+// Регистрируем плагины
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 
 interface ImagePair {
   id: number;
   thumbnail: string;
   before: string;
   after: string;
-  textH1?: string; // делаем поле необязательным
+  textH1?: string;
   textP?: string;
 }
 
@@ -69,23 +75,122 @@ const images: ImagePair[] = [
   },
 ];
 
-const PhotoBeforeAfter = () => {
+const PhotoBeforeAfter2 = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPair, setSelectedPair] = useState<ImagePair | null>(null);
   const [showBefore, setShowBefore] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const textsRef = useRef<(HTMLDivElement | null)[]>([]);
+
   useEffect(() => {
-    // Проверяем ширину экрана
-    const checkScreen = () => setIsMobile(window.innerWidth < 500);
-    checkScreen();
-    window.addEventListener('resize', checkScreen);
-    return () => window.removeEventListener('resize', checkScreen);
+    const media = window.matchMedia('(max-width: 500px)');
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
   }, []);
+
+  // useGSAP(
+  //   () => {
+  //     // 1. СНАЧАЛА - устанавливаем начальное состояние для всех карточек
+  //     if (!isMobile) {
+  //       cardsRef.current.forEach(card => {
+  //         if (card) gsap.set(card, { opacity: 0, y: 20, scale: 0.95, immediateRender: true });
+  //       });
+  //     }
+  // GSAP анимации с ScrollTrigger
+  useGSAP(
+    () => {
+      // Cleanup старых ScrollTrigger при изменении isMobile
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      if (!containerRef.current) return;
+
+      // Анимация появления карточек
+      cardsRef.current.forEach((card, index) => {
+        if (!card) return;
+
+        if (isMobile) {
+          // На мобильных - анимация при скролле с ScrollTrigger
+
+          gsap.fromTo(
+            card,
+            {
+              opacity: 0,
+              scale: 1,
+              y: 20,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.1,
+              ease: 'power3.in',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 90%',
+                end: 'top 10%',
+                toggleActions: 'play none none reset',
+                // markers: true, // раскомментируйте для отладки
+              },
+            },
+          );
+        } else {
+          // На десктопе - последовательное появление при загрузке
+          gsap.fromTo(
+            card,
+            {
+              opacity: 0,
+              scale: 0.95,
+              y: 20,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.1,
+              delay: 0.1 + index * 0.08,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 80%',
+                end: 'top 50%',
+                toggleActions: 'play none none reset',
+                // markers: true, // раскомментируйте для отладки
+              },
+            },
+          );
+        }
+      });
+
+      // Анимация текста внутри карточек
+      textsRef.current.forEach((text, index) => {
+        if (!text) return;
+
+        gsap.fromTo(
+          text,
+          {
+            opacity: 0,
+            y: 20,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            delay: 0.4 + index * 0.08,
+            ease: 'power1.out',
+          },
+        );
+      });
+    },
+    { scope: containerRef, dependencies: [isMobile] },
+  );
 
   const openModal = (pair: ImagePair) => {
     setSelectedPair(pair);
-    setShowBefore(false); // сброс при открытии
+    setShowBefore(false);
     setIsOpen(true);
   };
 
@@ -97,15 +202,17 @@ const PhotoBeforeAfter = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 sm:gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4 lg:px-4 2xl:grid-cols-6">
-        {images.map(pair => (
-          <motion.div
+      <div
+        ref={containerRef}
+        className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 sm:gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4 lg:px-4 2xl:grid-cols-6"
+      >
+        {images.map((pair, index) => (
+          <div
             key={pair.id}
-            initial={isMobile ? { opacity: 0, scale: 0.98 } : false}
-            animate={!isMobile ? { opacity: 1 } : undefined}
-            whileInView={isMobile ? { opacity: 1, scale: 1 } : undefined}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            viewport={isMobile ? { once: false, amount: 0.2 } : undefined}
+            ref={el => {
+              cardsRef.current[index] = el;
+            }}
+            style={!isMobile ? { opacity: 0, transform: 'translateY(0px)' } : undefined}
             className="overflow-hidden rounded-lg shadow-md/60 ring-1 ring-gray-400 transition-all duration-300 hover:scale-95 hover:shadow-lg/70 hover:ring-4 dark:ring-gray-600 hover:dark:ring-gray-400"
           >
             <div
@@ -115,8 +222,6 @@ const PhotoBeforeAfter = () => {
               <Image
                 src={pair.thumbnail}
                 fill
-                // width={900}
-                // height={900}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw"
                 alt={`photo ${pair.id}`}
                 className="h-auto w-full rounded-lg object-cover object-[50%_10%]"
@@ -125,11 +230,11 @@ const PhotoBeforeAfter = () => {
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-50% to-black/90" />
 
               {/* Текст для карточек */}
-              <motion.div
+              <div
+                ref={el => {
+                  textsRef.current[index] = el;
+                }}
                 className={`${comFortaa.className} absolute inset-x-0 bottom-0 flex flex-col items-start p-3`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ type: 'tween', duration: 0.5, delay: 0.6, ease: 'backOut' }}
               >
                 {pair.textH1 && (
                   <div className="text-lg leading-snug font-bold text-balance text-gray-200 text-shadow-sm sm:text-[9px] md:text-xs lg:text-sm lg:leading-5 xl:text-base 2xl:text-lg">
@@ -142,9 +247,9 @@ const PhotoBeforeAfter = () => {
                     {pair.textP}
                   </div>
                 )}
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -278,4 +383,4 @@ const PhotoBeforeAfter = () => {
   );
 };
 
-export default PhotoBeforeAfter;
+export default PhotoBeforeAfter2;

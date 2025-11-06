@@ -1,7 +1,9 @@
 // 'use client';
-// import Image from 'next/image';
+import Image from 'next/image';
 import Animate from '@/components/AnimatePage';
 import Photo from '@/components/Photo/Photo';
+import PhotoBeforeAfter from '@/components/PhotoBeforeAfter';
+import PhotoBeforeAfter2 from '@/components/PhotoBeforeAfter2';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import {
   ArchiveBoxXMarkIcon,
@@ -16,7 +18,7 @@ export default function Figma() {
     <div className="mt-20 md:ml-48">
       <div className="flex">
         {/* фиксируем блок под иконку */}
-        <h1 className="m-7.5 mx-auto flex items-center text-4xl leading-none font-semibold lg:text-6xl">
+        <h1 className="mx-auto flex items-center p-[30px] text-4xl leading-none font-semibold lg:text-6xl">
           {/* <span className="relative mr-4 inline-block h-[2em] w-[3em] align-baseline">
             <Image src="/adobe-logo.svg" alt="Icon" fill className="object-contain" />
           </span> */}
@@ -24,7 +26,7 @@ export default function Figma() {
         </h1>
       </div>
 
-      <Photo />
+      <PhotoBeforeAfter2 />
       <Animate />
     </div>
   );

@@ -124,7 +124,7 @@ export default function Sidebar() {
           After Effects
         </Link>
       </div>
-      <div
+      {/* <div
         className={`relative left-0 mt-2 flex w-full items-center justify-start overflow-hidden from-gray-600 to-gray-400 hover:bg-gradient-to-r hover:text-shadow-md/30 dark:from-gray-700 dark:to-gray-800 dark:hover:bg-gradient-to-r ${
           pathname.startsWith('/projects/premiere')
             ? 'bg-gradient-to-r from-gray-600 to-gray-400 text-shadow-md/30'
@@ -163,7 +163,7 @@ export default function Sidebar() {
         >
           Topaz Gigapixel AI
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Animate from '@/components/AnimatePage';
 import Photo from '@/components/Photo/Photo';
+import PhotoBeforeAfter2 from '@/components/PhotoBeforeAfter2';
 import Image from 'next/image';
 
 export default function Lightroom() {
@@ -14,7 +15,7 @@ export default function Lightroom() {
           Lightroom
         </h1>
       </div>
-      <Photo />
+      <PhotoBeforeAfter2 />
       <Animate />
     </div>
   );

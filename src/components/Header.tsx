@@ -16,12 +16,12 @@ const menuItems = [
   { href: '/', text: 'Home', icon: '/home.svg' },
   // { href: '/contacts', text: 'Contacts', icon: '/contacts.svg' },
   { href: '/projects/photoshop', text: 'Photoshop', icon: '/photoshop.svg' },
+  { href: '/projects/figma', text: 'Figma', icon: '/figma.svg' },
   { href: '/projects/illustrator', text: 'Illustrator', icon: '/illustrator.svg' },
   { href: '/projects/lightroom', text: 'Lightroom', icon: '/lightroom.svg' },
-  { href: '/projects/figma', text: 'Figma', icon: '/figma.svg' },
-  { href: '/projects/topaz', text: 'Topaz Gigapixel AI', icon: '/topaz.png' },
   { href: '/projects/after', text: 'After Effects', icon: '/after_effects.svg' },
-  { href: '/projects/premiere', text: 'Premiere Pro', icon: '/premiere.svg' },
+  // { href: '/projects/topaz', text: 'Topaz Gigapixel AI', icon: '/topaz.png' },
+  // { href: '/projects/premiere', text: 'Premiere Pro', icon: '/premiere.svg' },
   // ... остальные пункты
 ];
 

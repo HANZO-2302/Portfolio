@@ -2,6 +2,7 @@
 import Animate from '@/components/AnimatePage';
 import Image from 'next/image';
 import PhotoBeforeAfter from '@/components/PhotoBeforeAfter';
+import PhotoBeforeAfter2 from '@/components/PhotoBeforeAfter2';
 
 export default function Photoshop() {
   return (
@@ -15,7 +16,7 @@ export default function Photoshop() {
           Photoshop
         </h1>
       </div>
-      <PhotoBeforeAfter />
+      <PhotoBeforeAfter2 />
       <Animate />
     </div>
   );

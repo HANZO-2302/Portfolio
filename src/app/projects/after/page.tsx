@@ -2,6 +2,7 @@
 
 import Animate from '@/components/AnimatePage';
 import Photo from '@/components/Photo/Photo';
+import PhotoBeforeAfter2 from '@/components/PhotoBeforeAfter2';
 import Image from 'next/image';
 
 export default function After() {
@@ -16,7 +17,7 @@ export default function After() {
           After Effects
         </h1>
       </div>
-      <Photo />
+      <PhotoBeforeAfter2 />
       <Animate />
     </div>
   );
