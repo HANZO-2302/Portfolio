@@ -187,6 +187,7 @@ export default function SmoothScrollPage() {
   function SkillCard({ title, description }: SkillCardProps) {
     const [open, setOpen] = useState(false);
 
+    //правоя сторона soft skills
     return (
       <button
         type="button"
@@ -294,9 +295,9 @@ export default function SmoothScrollPage() {
         <div className="flex min-h-screen flex-col">
           {/* header */}
           <motion.div
-            initial={{ opacity: 0, y: -50, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, ease: 'backOut' }}
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
             className="p-4"
           >
             <div
@@ -357,9 +358,9 @@ export default function SmoothScrollPage() {
 
           {/* Contacts */}
           <motion.div
-            initial={{ opacity: 0, y: -50, scale: 0.9 }}
+            initial={{ opacity: 0, y: -30, scale: 1 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, delay: 1.5, ease: 'backOut' }}
+            transition={{ duration: 0.5, delay: 0.8, ease: 'easeInOut' }}
             className="px-4"
           >
             <div
@@ -458,9 +459,9 @@ export default function SmoothScrollPage() {
 
           {/* Scroll */}
           <motion.div
-            initial={{ opacity: 0, x: 100, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.3, delay: 2, ease: 'easeOut' }}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 1.5, ease: 'easeInOut' }}
             className="hero-arrows relative mt-10 px-4 md:translate-y-[20px]"
           >
             <div
@@ -468,9 +469,9 @@ export default function SmoothScrollPage() {
               className="mx-auto flex items-center justify-center gap-3 text-xl uppercase"
             >
               <motion.div
-                initial={{ opacity: 0, x: -200, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                transition={{ duration: 0.3, delay: 2, ease: 'easeOut' }}
+                initial={{ opacity: 0, x: -200 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 1.5, ease: 'easeInOut' }}
                 className="flex justify-center"
               >
                 <div className="relative flex h-6 w-6 animate-bounce items-center justify-center rounded-full border-2 border-orange-500 shadow-md/20 lg:h-9 lg:w-9">
