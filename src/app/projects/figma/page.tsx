@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Animate from '@/components/AnimatePage';
 import Photo from '@/components/Photo/Photo';
 import PhotoBeforeAfter from '@/components/PhotoBeforeAfter';
-import PhotoBeforeAfter2 from '@/components/PhotoBeforeAfter2';
+import PhotoBeforeAfter2 from '@/components/PhotoPhotoshop';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import {
   ArchiveBoxXMarkIcon,
@@ -12,6 +12,7 @@ import {
   Square2StackIcon,
   TrashIcon,
 } from '@heroicons/react/16/solid';
+import PhotoFigma from '@/components/PhotoFigma';
 
 export default function Figma() {
   return (
@@ -26,7 +27,7 @@ export default function Figma() {
         </h1>
       </div>
 
-      <PhotoBeforeAfter2 />
+      <PhotoFigma />
       <Animate />
     </div>
   );
