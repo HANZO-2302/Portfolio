@@ -27,7 +27,7 @@ interface ImagePair {
 const images: ImagePair[] = [
   {
     id: 1,
-    thumbnail: '/after.jpg',
+    thumbnail: '/after2.jpg',
     before: '/before2.jpg',
     after: '/after2.jpg',
     textH1: 'Ретушь портретов',
@@ -59,9 +59,9 @@ const images: ImagePair[] = [
   },
   {
     id: 5,
-    thumbnail: '/233.jpg',
+    thumbnail: '/234.jpg',
     before: '/23.jpg',
-    after: '/233.jpg',
+    after: '/234.jpg',
     textH1: 'Фотомонтаж и коллажирование',
     textP: 'Объединение нескольких изображений в единую художественную сцену.',
   },
