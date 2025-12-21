@@ -19,10 +19,10 @@
 //   );
 // }
 import Animate from '@/components/AnimatePage';
-import Cosmos from '@/components/cosmos/cosmos';
-import BackgroundDots from '@/components/folderBackgroundDots/BackgroundDots';
-import Footer from '@/components/Footer';
-import Silk from '@/components/Silk';
+// import Cosmos from '@/components/cosmos/cosmos';
+// import BackgroundDots from '@/components/folderBackgroundDots/BackgroundDots';
+// import Footer from '@/components/Footer';
+// import Silk from '@/components/Silk';
 import SmoothScrollPage from '@/components/SmoothScrollPage';
 import { JetBrains_Mono } from 'next/font/google';
 

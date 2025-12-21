@@ -305,7 +305,7 @@ export default function SmoothScrollPage() {
               className="hero-section relative mx-auto mt-15 grid max-w-5xl grid-cols-1 gap-2 rounded-3xl border border-gray-400/60 bg-gray-400/30 p-4 shadow-lg will-change-transform md:mt-20 md:grid-cols-2 dark:border-gray-600 dark:bg-gray-800/80"
             >
               {/* Анимированная картинка слева */}
-              <div className="relative mx-auto aspect-[4/3] h-full w-full max-w-md overflow-hidden rounded-2xl border border-gray-600/60 shadow-sm/20 md:mx-auto md:ml-0">
+              <div className="relative mx-auto aspect-[4/3] h-full w-full max-w-md overflow-hidden rounded-[12px] border border-gray-600/60 shadow-sm/20 md:mx-auto md:ml-0">
                 {/* фото */}
                 <Image
                   src="/logo5.png"
@@ -697,15 +697,22 @@ export default function SmoothScrollPage() {
                   FastAPI
                 </div>
                 <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
-                  <span className="px-2">SQL</span>
-                  <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-500"></span>
-                  <span className="px-2">MySQL</span>
+                  <Image
+                    src="/postgresql.svg"
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="relative left-3 drop-shadow-xs/10"
+                  />
+                  <span className="px-1 pl-5">PostgreSQL</span>
+                  <span className="mx-4 h-6 border-l border-gray-600 dark:border-gray-500"></span>
+                  <span className="px-1">MySQL</span>
                   <Image
                     src="/mysql.svg"
                     alt=""
                     width={65}
                     height={65}
-                    className="drop-shadow-xs/10"
+                    className="relative right-2 drop-shadow-xs/10"
                   />
                 </div>
               </div>

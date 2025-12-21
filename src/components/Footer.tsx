@@ -78,7 +78,7 @@ export default function Footer() {
         {/* Вертикальный разделитель */}
         <span className="mx-4 hidden h-10 border-l border-gray-600 lg:block dark:border-gray-500"></span>
         <p className="px-4 py-1 font-extralight tracking-tighter text-gray-800 dark:text-gray-200">
-          © 2025 Portfolio
+          © 2026 Portfolio
         </p>
       </div>
     </footer>
