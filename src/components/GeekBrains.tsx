@@ -1,4 +1,5 @@
 import { Comfortaa } from 'next/font/google';
+import Image from 'next/image';
 
 const comFortaa = Comfortaa({ subsets: ['cyrillic'] });
 
