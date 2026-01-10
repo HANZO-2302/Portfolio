@@ -213,7 +213,7 @@ const PhotoPhotoshop = () => {
               cardsRef.current[index] = el;
             }}
             style={!isMobile ? { opacity: 0, transform: 'translateY(0px)' } : undefined}
-            className="overflow-hidden rounded-lg shadow-md/60 ring-1 ring-gray-400 transition-all duration-300 hover:scale-95 hover:shadow-lg/70 hover:ring-4 dark:ring-gray-600 hover:dark:ring-gray-400"
+            className="overflow-hidden rounded-lg shadow-md/60 ring-1 ring-gray-400 transition-all duration-500 ease-in-out hover:shadow-lg/70 dark:ring-gray-600 hover:dark:ring-gray-400"
           >
             <div
               className="relative z-0 aspect-square cursor-pointer rounded-lg md:aspect-auto md:h-[20vh] lg:h-[28vh] xl:h-[29vh] 2xl:h-[60vh]"
@@ -224,10 +224,10 @@ const PhotoPhotoshop = () => {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw"
                 alt={`photo ${pair.id}`}
-                className="h-auto w-full rounded-lg object-cover object-[50%_10%]"
+                className="h-auto w-full rounded-lg object-cover object-[55%_80%] transition-all duration-500 ease-in-out hover:scale-103"
                 priority={pair.id === 1}
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-50% to-black/90" />
+              <div className="pointer-events-none absolute inset-0 rounded-lg bg-gradient-to-b from-transparent from-50% to-black/90" />
 
               {/* Текст для карточек */}
               <div

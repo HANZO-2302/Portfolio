@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
+import { color } from 'framer-motion';
 // import Footer from '@/components/Footer';
 // import Silk from '@/components/Silk';
 // import Animate from '@/components/AnimatePage';

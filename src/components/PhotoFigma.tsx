@@ -28,7 +28,7 @@ interface ImagePair {
 const images: ImagePair[] = [
   {
     id: 1,
-    thumbnail: '/Instagram post5.png',
+    thumbnail: '/Instagram post4.png',
     // before: '/Instagram post5.png',
     // after: '/Instagram post5.png',
     textH1: 'Баннер для рекламы',
@@ -39,21 +39,22 @@ const images: ImagePair[] = [
   },
   {
     id: 2,
-    thumbnail: '/walking2.jpg',
+    thumbnail: '/Desktop.png',
     // before: '/walking.jpg',
     // after: '/walking2.jpg',
-    textH1: 'Выделение и изоляция объектов',
-    textP: 'Tочное отделение элементов от фона и интеграция в новые композиции.',
+    textH1: 'Концепт лендинга.',
+    textP:
+      'Концепт дизайна лендинга конференции с продуманной структурой, визуальной иерархией и UX-логикой.',
     figma:
-      'https://www.figma.com/design/450UIhH6PIR6uuJ3uOtzLy/Untitled?node-id=0-1&t=SLlmkIWCvKI8sX4v-1',
+      'https://www.figma.com/design/ewU1ZDq9K8JAAWoz5MDQDN/Untitled?node-id=0-1&t=QHgwh65a9DR7ALtL-1',
   },
   {
     id: 3,
     thumbnail: '/bafiti3.jpg',
     // before: '/bafiti.jpg',
     // after: '/bafiti3.jpg',
-    textH1: 'Цветокоррекция и замена цвета',
-    textP: 'Настройка оттенков и контраста для достижения нужной атмосферы.',
+    textH1: 'UI/UX мобильного приложения',
+    textP: 'Интерактивный прототип мобильного приложения с продуманным пользовательским потоком.',
     figma:
       'https://www.figma.com/design/450UIhH6PIR6uuJ3uOtzLy/Untitled?node-id=0-1&t=SLlmkIWCvKI8sX4v-1',
   },
@@ -218,7 +219,7 @@ const PhotoFigma = () => {
               cardsRef.current[index] = el;
             }}
             style={!isMobile ? { opacity: 0, transform: 'translateY(0px)' } : undefined}
-            className="overflow-hidden rounded-lg shadow-md/60 ring-1 ring-gray-400 transition-all duration-300 hover:scale-95 hover:shadow-lg/70 hover:ring-4 dark:ring-gray-600 hover:dark:ring-gray-400"
+            className="overflow-hidden rounded-lg shadow-md/60 ring-1 ring-gray-400 transition-all duration-500 hover:shadow-lg/70 dark:ring-gray-600 hover:dark:ring-gray-400"
           >
             <div
               className="relative z-0 aspect-square cursor-pointer rounded-lg md:aspect-auto md:h-[20vh] lg:h-[28vh] xl:h-[29vh] 2xl:h-[60vh]"
@@ -229,10 +230,10 @@ const PhotoFigma = () => {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw"
                 alt={`photo ${pair.id}`}
-                className="h-auto w-full rounded-lg object-cover object-[50%_10%]"
+                className="h-auto w-full rounded-lg object-cover object-[50%_10%] transition-all duration-500 ease-in-out hover:scale-103"
                 priority={pair.id === 1}
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-50% to-black/90" />
+              <div className="pointer-events-none absolute inset-0 rounded-lg bg-gradient-to-b from-transparent from-50% to-black/90" />
 
               {/* Текст для карточек */}
               <div

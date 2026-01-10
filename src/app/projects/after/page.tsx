@@ -1,6 +1,7 @@
 // 'use client';
 
 import Animate from '@/components/AnimatePage';
+import BeforeAfterGallery from '@/components/BeforeAfterGallery';
 import Photo from '@/components/Photo/Photo';
 import PhotoBeforeAfter2 from '@/components/PhotoPhotoshop';
 import Image from 'next/image';
@@ -17,7 +18,8 @@ export default function After() {
           After Effects
         </h1>
       </div>
-      <PhotoBeforeAfter2 />
+      < BeforeAfterGallery />
+      {/* <PhotoBeforeAfter2 /> */}
       <Animate />
     </div>
   );
