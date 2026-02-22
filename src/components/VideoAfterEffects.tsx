@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Comfortaa } from 'next/font/google';
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-// import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
@@ -19,62 +18,44 @@ interface ImagePair {
   thumbnail: string;
   textH1?: string;
   textP?: string;
-  figma: string;
 }
 
 const images: ImagePair[] = [
   {
     id: 1,
     thumbnail: '/video1.mp4',
-    textH1: 'Баннер для рекламы',
-    textP:
-      'Создание визуально привлекательного баннера для соцсетей и промо-акций с акцентом на читаемость и стиль.',
-    figma:
-      'https://www.figma.com/design/450UIhH6PIR6uuJ3uOtzLy/Untitled?node-id=0-1&t=BZYu4kRJcXXFbdUV-1',
+    textH1: 'UI/UX Анимация хедера сайта',
+    textP: 'Оживление интерфейса (Web UI Animation)',
   },
   {
     id: 2,
     thumbnail: '/video2.mp4',
-    textH1: 'Концепт лендинга.',
-    textP:
-      'Концепт дизайна лендинга конференции с продуманной структурой, визуальной иерархией и UX-логикой.',
-    figma:
-      'https://www.figma.com/design/ewU1ZDq9K8JAAWoz5MDQDN/Untitled?node-id=0-1&t=QHgwh65a9DR7ALtL-1',
+    textH1: 'Киберпанк-моушн «Error 404»',
+    textP: 'Концептуальная анимация в стиле Cyberpunk',
   },
   {
     id: 3,
     thumbnail: '/video3.mp4',
-    textH1: 'UI/UX мобильного приложения',
-    textP: 'Интерактивный прототип мобильного приложения с продуманным пользовательским потоком.',
-    figma:
-      'https://www.figma.com/design/wX8rOhtkY7TUMxyaFJs0mu/UI-UX-Design-for-a-Mobile-App?node-id=0-1&t=JbPsFAi7f5i1fTEy-1',
+    textH1: 'Рекламный креатив: Fashion Carousel',
+    textP: 'Динамичная реклама для магазина одежды',
   },
   {
     id: 4,
-    thumbnail: '/video1.mp4',
-    textH1: 'Набор иконок и элементов интерфейса (UI Kit)',
-    textP:
-      'Создание единого визуального стиля для кнопок, форм, карточек и других элементов интерфейса.',
-    figma:
-      'https://www.figma.com/design/0ky7Y3jhrs5TEzbPc4oHRr/Untitled?node-id=16-176&t=wSDcJeb19QiBOd7f-1',
+    thumbnail: '/video4.mp4',
+    textH1: 'Travel-промо: Мальдивы',
+    textP: 'Эстетичное промо с акцентом на типографику',
   },
   {
     id: 5,
-    thumbnail: '/video1.mp4',
-    textH1: 'Редизайн сайта',
-    textP:
-      'Обновлённая версия сайта с улучшенной визуальной структурой и оптимизированным пользовательским опытом.',
-    figma:
-      'https://www.figma.com/design/yHmN9W4VuUKNS62JTBFqfP/Untitled?node-id=0-1&t=diqOtxkfOoRMG9tU-1',
+    thumbnail: '/video5.mp4',
+    textH1: 'Event-анонс: Спикер',
+    textP: 'Рекламный ролик для мероприятия (Event Promo)',
   },
   {
     id: 6,
-    thumbnail: '/video1.mp4',
-    textH1: 'Дашборд / админ-панель',
-    textP:
-      'Интерфейс для панели управления с графиками, таблицами и фильтрами для удобной работы с данными.',
-    figma:
-      'https://www.figma.com/design/7zl4hrgIpLAwIWMv78VlMa/Dashboard?node-id=0-1&t=BQL52qS2vMAFhtTL-1',
+    thumbnail: '/video6.mp4',
+    textH1: 'Instagram Stories для WorldClass',
+    textP: 'Брендированный сторис-контент для фитнес-индустрии',
   },
 ];
 
@@ -266,9 +247,9 @@ const VideoAfterEffects = () => {
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
-                transition: { type: 'tween', ease: 'easeInOut', duration: 0.4 },
+                transition: { type: 'tween', ease: 'easeInOut', duration: 0.3 },
               }}
-              exit={{ opacity: 0, transition: { type: 'tween', ease: 'easeInOut', duration: 0.4 } }}
+              exit={{ opacity: 0, transition: { type: 'tween', ease: 'easeInOut', duration: 0.3 } }}
               className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-3 backdrop-blur-xl"
             >
               <DialogPanel
