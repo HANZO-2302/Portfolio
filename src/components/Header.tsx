@@ -14,12 +14,13 @@ const outfit = Outfit({
 
 const menuItems = [
   { href: '/', text: 'Home', icon: '/home.svg' },
-  // { href: '/contacts', text: 'Contacts', icon: '/contacts.svg' },
-  { href: '/projects/photoshop', text: 'Photoshop', icon: '/photoshop.svg' },
+  { href: '/contacts', text: 'Contacts', icon: '/contacts.svg' },
   { href: '/projects/figma', text: 'Figma', icon: '/figma.svg' },
-  { href: '/projects/illustrator', text: 'Illustrator', icon: '/illustrator.svg' },
-  { href: '/projects/lightroom', text: 'Lightroom', icon: '/lightroom.svg' },
+  { href: '/projects/photoshop', text: 'Photoshop', icon: '/photoshop.svg' },
   { href: '/projects/after', text: 'After Effects', icon: '/after_effects.svg' },
+  // { href: '/projects/illustrator', text: 'Illustrator', icon: '/illustrator.svg' },
+  // { href: '/projects/lightroom', text: 'Lightroom', icon: '/lightroom.svg' },
+
   // { href: '/projects/topaz', text: 'Topaz Gigapixel AI', icon: '/topaz.png' },
   // { href: '/projects/premiere', text: 'Premiere Pro', icon: '/premiere.svg' },
   // ... остальные пункты
@@ -100,7 +101,7 @@ export default function Header() {
           <div className="h-[0.5px] w-full rounded-lg bg-gray-500" />
 
           <h1 className="text-xs font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
-            <Link href="/">Igor Menyailov</Link>
+            <Link href="/">Igor Meniailov</Link>
           </h1>
         </motion.div>
 

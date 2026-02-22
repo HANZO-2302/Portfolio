@@ -6,14 +6,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Comfortaa } from 'next/font/google';
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 const comFortaa = Comfortaa({ subsets: ['cyrillic'] });
 
 // Регистрируем плагины
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 interface ImagePair {
   id: number;
@@ -93,15 +92,6 @@ const PhotoPhotoshop = () => {
     return () => media.removeEventListener('change', update);
   }, []);
 
-  // useGSAP(
-  //   () => {
-  //     // 1. СНАЧАЛА - устанавливаем начальное состояние для всех карточек
-  //     if (!isMobile) {
-  //       cardsRef.current.forEach(card => {
-  //         if (card) gsap.set(card, { opacity: 0, y: 20, scale: 0.95, immediateRender: true });
-  //       });
-  //     }
-  // GSAP анимации с ScrollTrigger
   useGSAP(
     () => {
       // Cleanup старых ScrollTrigger при изменении isMobile
@@ -196,15 +186,15 @@ const PhotoPhotoshop = () => {
 
   const closeModal = () => {
     setIsOpen(false);
-    setSelectedPair(null);
     setShowBefore(false);
+    setTimeout(() => setSelectedPair(null), 400); // 400ms = длина exit анимации фона
   };
 
   return (
     <>
       <div
         ref={containerRef}
-        className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 sm:gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4 lg:px-4 2xl:grid-cols-6"
+        className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 sm:gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-4 lg:px-4 2xl:grid-cols-3"
       >
         {images.map((pair, index) => (
           <div
@@ -213,19 +203,19 @@ const PhotoPhotoshop = () => {
               cardsRef.current[index] = el;
             }}
             style={!isMobile ? { opacity: 0, transform: 'translateY(0px)' } : undefined}
-            className="overflow-hidden rounded-lg shadow-md/60 ring-1 ring-gray-400 transition-all duration-500 ease-in-out hover:shadow-lg/70 dark:ring-gray-600 hover:dark:ring-gray-400"
+            className="overflow-hidden rounded-lg shadow-md/60 ring-2 ring-gray-400 transition-all duration-500 ease-in-out hover:shadow-lg/70 dark:ring-gray-600 hover:dark:ring-gray-400"
           >
             <div
-              className="relative z-0 aspect-square cursor-pointer rounded-lg md:aspect-auto md:h-[20vh] lg:h-[28vh] xl:h-[29vh] 2xl:h-[60vh]"
+              className="relative z-0 aspect-square cursor-pointer overflow-hidden rounded-lg md:aspect-auto md:h-48 lg:h-56 xl:h-80 2xl:h-96"
               onClick={() => openModal(pair)}
             >
               <Image
                 src={pair.thumbnail}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 alt={`photo ${pair.id}`}
-                className="h-auto w-full rounded-lg object-cover object-[55%_80%] transition-all duration-500 ease-in-out hover:scale-103"
-                priority={pair.id === 1}
+                className="object-cover transition-transform duration-500 ease-in-out hover:scale-105"
+                priority={index < 4}
               />
               <div className="pointer-events-none absolute inset-0 rounded-lg bg-gradient-to-b from-transparent from-50% to-black/90" />
 
@@ -253,132 +243,140 @@ const PhotoPhotoshop = () => {
         ))}
       </div>
 
-      {/* <AnimatePresence mode="sync"> */}
-      {isOpen && selectedPair && (
-        <Dialog open={isOpen} onClose={closeModal} className="relative z-50">
-          {/* Затемнённый фон модалки */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-xl">
-            <DialogPanel
-              as={motion.div}
-              initial={{ opacity: 0, scale: 0.95 }}
+      <AnimatePresence mode="sync">
+        {isOpen && selectedPair && (
+          <Dialog open={isOpen} onClose={closeModal} className="relative z-50">
+            {/* Затемнённый фон модалки */}
+            <motion.div
+              initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
-                scale: 1,
-                transition: { type: 'tween', duration: 0.3, ease: 'easeInOut' },
+                transition: { type: 'tween', ease: 'easeInOut', duration: 0.4 },
               }}
-              exit={{
-                opacity: 0,
-                scale: 0.95,
-                transition: { type: 'tween', duration: 0.3, ease: 'easeInOut' },
-              }}
-              className="relative z-0 max-w-md rounded-lg bg-gray-400/40 backdrop-blur-xl sm:-mt-10 md:max-w-5xl"
+              exit={{ opacity: 0, transition: { type: 'tween', ease: 'easeInOut', duration: 0.4 } }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-3 backdrop-blur-xl"
             >
-              {/* Изображение */}
-              <AnimatePresence mode="sync">
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-                  className="relative inset-0 z-0"
+              <DialogPanel
+                as={motion.div}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  transition: { type: 'tween', duration: 0.3, ease: 'easeInOut' },
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.5,
+                  transition: { type: 'tween', duration: 0.3, ease: 'easeInOut' },
+                }}
+                className="relative z-0 max-w-5xl rounded-lg bg-gray-400/40 backdrop-blur-xl sm:-mt-16"
+              >
+                {/* Изображение */}
+                {/* <AnimatePresence mode="sync">
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+                    className="relative inset-0 z-0"
+                  > */}
+                <div className="relative z-0">
+                  <Image
+                    src={selectedPair.after}
+                    alt="After"
+                    width={900}
+                    height={900}
+                    className={`h-full max-h-[75vh] w-full rounded-lg object-cover ring-1 ring-gray-400 transition-all duration-500 ease-in-out ${
+                      showBefore
+                        ? 'translate-x-0 scale-100 opacity-100'
+                        : 'translate-x-0 scale-99 opacity-0'
+                    }`}
+                  />
+                  <Image
+                    src={selectedPair.before}
+                    alt="Before"
+                    width={900}
+                    height={900}
+                    className={`absolute inset-0 h-full max-h-[75vh] w-full rounded-lg object-cover ring-1 ring-gray-400 transition-all duration-500 ease-in-out ${
+                      showBefore
+                        ? 'translate-x-0 scale-99 opacity-0'
+                        : 'translate-x-0 scale-100 opacity-100'
+                    }`}
+                  />
+                </div>
+                {/* Кнопка закрытия */}
+                <button
+                  onClick={closeModal}
+                  className="absolute top-1 right-1 z-50 transition-all duration-200 hover:scale-110"
+                  aria-label="Закрыть модалку"
                 >
-                  <div className="relative z-0">
-                    <Image
-                      src={selectedPair.after}
-                      alt="Before"
-                      width={900}
-                      height={900}
-                      className={`w-full rounded-lg object-cover ring-1 ring-gray-400 transition-all duration-500 ease-in-out sm:h-[80vh] md:h-full ${
-                        showBefore
-                          ? 'translate-x-0 scale-100 opacity-100'
-                          : 'translate-x-0 scale-99 opacity-0'
-                      }`}
-                    />
-                    <Image
-                      src={selectedPair.before}
-                      alt="After"
-                      width={900}
-                      height={900}
-                      className={`absolute inset-0 w-full rounded-lg object-cover ring-1 ring-gray-400 transition-all duration-500 ease-in-out sm:h-[80vh] md:h-full ${
-                        showBefore
-                          ? 'translate-x-0 scale-99 opacity-0'
-                          : 'translate-x-0 scale-100 opacity-100'
-                      }`}
-                    />
-                  </div>
-                  {/* Кнопка закрытия */}
-                  <button
-                    onClick={closeModal}
-                    className="absolute top-1 right-1 z-50 transition-all duration-200 hover:scale-110"
-                    aria-label="Закрыть модалку"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      // className="h-5 w-5 text-gray-800 drop-shadow-md/90 hover:text-black md:h-8 md:w-8"
-                      className="lucide lucide-square-x-icon lucide-square-x h-5 w-5 text-white/80 drop-shadow-md/90 hover:text-white/95 md:h-6 md:w-6"
-                    >
-                      <rect width="18" height="18" x="3" y="3" rx="9" ry="9" />
-                      <path d="m15 9-6 6" />
-                      <path d="m9 9 6 6" />
-                    </svg>
-                  </button>
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Кнопка переключения */}
-              <motion.div>
-                <motion.button
-                  className="absolute -bottom-12 left-1/2 z-0 flex w-33 -translate-x-1/2 justify-between rounded-lg bg-linear-100 from-gray-900 to-gray-500 px-6 py-2 text-sm font-medium text-gray-300 ring-1 ring-gray-400 transition-all hover:scale-100 active:scale-97"
-                  onClick={() => setShowBefore(!showBefore)}
-                >
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={showBefore ? 'before' : 'after'}
-                      initial={{ opacity: 0, x: showBefore ? -10 : 10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: showBefore ? -10 : 10 }}
-                      transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-                      className="relative left-1/2 z-0 flex -translate-x-1/2 justify-center"
-                    >
-                      {showBefore ? 'Before' : 'After'}
-                    </motion.div>
-                  </AnimatePresence>
-                  <motion.svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className={`lucide lucide-arrow-right-to-line absolute z-0 h-5 w-5 text-white/80 drop-shadow-md/90 hover:text-white/70 ${
-                      showBefore ? 'left-4' : 'right-4'
-                    }`}
-                    key={showBefore ? 'after' : 'before'}
-                    initial={{ opacity: 0, x: showBefore ? 30 : -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: showBefore ? -30 : 30 }}
-                    transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+                    // className="h-5 w-5 text-gray-800 drop-shadow-md/90 hover:text-black md:h-8 md:w-8"
+                    className="lucide lucide-square-x-icon lucide-square-x h-9 w-9 text-white/80 drop-shadow-md/90 hover:text-white/95 md:h-6 md:w-6"
                   >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d={showBefore ? 'm14 8-4 4 4 4' : 'm10 8 4 4-4 4'} />
-                  </motion.svg>
-                </motion.button>
-              </motion.div>
-            </DialogPanel>
-          </div>
-        </Dialog>
-      )}
-      {/* </AnimatePresence> */}
+                    <rect width="18" height="18" x="3" y="3" rx="9" ry="9" />
+                    <path d="m15 9-6 6" />
+                    <path d="m9 9 6 6" />
+                  </svg>
+                </button>
+                {/* </motion.div>
+                </AnimatePresence> */}
+
+                {/* Кнопка переключения */}
+                <div>
+                  <button
+                    className="absolute -bottom-17 left-1/2 z-0 flex w-52 -translate-x-1/2 justify-between rounded-lg bg-linear-100 from-gray-900 to-gray-600 px-6 py-4 text-xl font-medium text-gray-300 ring-1 ring-gray-400 transition-all hover:scale-100 active:scale-95"
+                    onClick={() => setShowBefore(!showBefore)}
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={showBefore ? 'before' : 'after'}
+                        initial={{ opacity: 0, x: showBefore ? -10 : 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: showBefore ? -10 : 10 }}
+                        transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+                        className="relative left-1/2 z-0 flex -translate-x-1/2 justify-center"
+                      >
+                        {showBefore ? 'Before' : 'After'}
+                      </motion.div>
+                    </AnimatePresence>
+                    <motion.svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`lucide lucide-arrow-right-to-line absolute z-0 h-7 w-7 text-white/80 drop-shadow-md/90 hover:text-white/70 ${
+                        showBefore ? 'left-4' : 'right-4'
+                      }`}
+                      key={showBefore ? 'after' : 'before'}
+                      initial={{ opacity: 0, x: showBefore ? 30 : -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: showBefore ? -30 : 30 }}
+                      transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path d={showBefore ? 'm14 8-4 4 4 4' : 'm10 8 4 4-4 4'} />
+                    </motion.svg>
+                  </button>
+                </div>
+              </DialogPanel>
+            </motion.div>
+          </Dialog>
+        )}
+      </AnimatePresence>
     </>
   );
 };

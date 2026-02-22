@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="relative flex overflow-hidden">
           <a
             className="group flex items-center gap-2 rounded-2xl px-4 py-1 font-extralight tracking-tighter text-gray-800 dark:text-gray-200"
-            href="https://t.me/Igor_Menyailov"
+            href="https://t.me/Igor_Meniailov"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -22,7 +22,7 @@ export default function Footer() {
               height={24}
               className="drop-shadow-xs/70"
             />
-            Igor_Menyailov
+            Igor Meniailov
             {/* <span className="flex h-full w-29 -translate-x-1/2 scale-90 items-center justify-center rounded-2xl bg-gray-800 py-10 text-gray-200 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-700/90">
             Перейти в Telegram
           </span> */}
