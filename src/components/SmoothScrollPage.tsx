@@ -193,7 +193,7 @@ export default function SmoothScrollPage() {
         type="button"
         onClick={() => setOpen(prev => !prev)}
         aria-expanded={open}
-        className={`${comFortaa.className} gallery__item h-20 w-full cursor-pointer rounded-xl border border-gray-400/60 bg-gray-400/30 text-gray-800 shadow-lg transition-colors duration-300 hover:border-gray-500 hover:bg-gray-300 dark:border-gray-600 dark:bg-gray-800/80 dark:text-gray-200 hover:dark:bg-gray-700`}
+        className={`${comFortaa.className} gallery__item h-20 w-full cursor-pointer rounded-xl border border-zinc-500 bg-zinc-400 text-gray-800 shadow-lg transition-colors duration-300 hover:border-gray-500 hover:bg-gray-300 dark:border-gray-600 dark:bg-gray-800/80 dark:text-gray-200 hover:dark:bg-gray-700`}
       >
         <div className="relative flex h-full w-full items-center justify-center rounded-xl">
           <motion.div
@@ -302,7 +302,7 @@ export default function SmoothScrollPage() {
           >
             <div
               data-speed="0.9"
-              className="hero-section relative mx-auto mt-15 grid max-w-5xl grid-cols-1 gap-2 rounded-3xl border border-gray-400/60 bg-gray-400/30 p-4 shadow-lg will-change-transform md:mt-20 md:grid-cols-2 dark:border-gray-600 dark:bg-gray-800/80"
+              className="hero-section relative mx-auto mt-15 grid max-w-5xl grid-cols-1 gap-2 rounded-3xl border border-zinc-500 bg-zinc-400 p-4 shadow-lg will-change-transform md:mt-20 md:grid-cols-2 dark:border-gray-600 dark:bg-gray-800/90"
             >
               {/* Анимированная картинка слева */}
               <div className="relative mx-auto aspect-[4/3] h-full w-full max-w-md overflow-hidden rounded-xl border border-gray-600/60 shadow-sm/20 md:mx-auto md:ml-0">
@@ -355,7 +355,6 @@ export default function SmoothScrollPage() {
               </div>
             </div>
           </motion.div>
-
           {/* Contacts */}
           <motion.div
             initial={{ opacity: 0, y: -30, scale: 1 }}
@@ -365,7 +364,7 @@ export default function SmoothScrollPage() {
           >
             <div
               data-speed="0.9"
-              className="hero-footer mx-auto mt-12 grid w-full max-w-5xl grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center rounded-3xl border border-gray-400/60 bg-gray-400/30 px-4 py-6 text-center text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80"
+              className="hero-footer mx-auto mt-12 grid w-full max-w-5xl grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center rounded-3xl border border-zinc-500 bg-zinc-400 px-4 py-6 text-center text-xl shadow-lg md:mt-20 dark:border-gray-600 dark:bg-gray-800/70 dark:text-gray-200"
             >
               {/* Telegram */}
               <a
@@ -456,11 +455,10 @@ export default function SmoothScrollPage() {
               </a>
             </div>
           </motion.div>
-
           {/* Scroll */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 1.5, ease: 'easeInOut' }}
             className="hero-arrows relative mt-10 px-4 md:translate-y-[20px]"
           >
@@ -468,13 +466,8 @@ export default function SmoothScrollPage() {
               data-speed="0.9"
               className="mx-auto flex items-center justify-center gap-3 text-xl uppercase"
             >
-              <motion.div
-                initial={{ opacity: 0, x: -200 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.5, ease: 'easeInOut' }}
-                className="flex justify-center"
-              >
-                <div className="relative flex h-6 w-6 animate-bounce items-center justify-center rounded-full border-2 border-orange-500 shadow-md/20 lg:h-9 lg:w-9">
+              <div className="flex justify-center">
+                <div className="relative flex h-6 w-6 animate-bounce items-center justify-center rounded-full border-2 border-gray-800 shadow-md lg:h-9 lg:w-9 dark:border-gray-300">
                   <svg
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
@@ -482,7 +475,7 @@ export default function SmoothScrollPage() {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={3}
-                    className="relative flex size-6 items-center justify-center text-gray-800 md:size-12 dark:text-gray-300"
+                    className="h-3 w-3 text-gray-800 lg:h-5 lg:w-5 dark:text-gray-300"
                   >
                     <path
                       strokeLinecap="round"
@@ -491,7 +484,7 @@ export default function SmoothScrollPage() {
                     />
                   </svg>
                 </div>
-              </motion.div>
+              </div>
               SCROLL
             </div>
           </motion.div>
@@ -516,7 +509,7 @@ export default function SmoothScrollPage() {
                 </div>
                 {/* </motion.div> */}
 
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/html5.svg"
                     alt=""
@@ -535,7 +528,7 @@ export default function SmoothScrollPage() {
                     className="drop-shadow-xs/10"
                   />
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/tailwind.svg"
                     alt="CSS3 logo"
@@ -545,7 +538,7 @@ export default function SmoothScrollPage() {
                   />
                   Tailwind CSS
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/js.svg"
                     alt=""
@@ -564,7 +557,7 @@ export default function SmoothScrollPage() {
                     className="-translate-x-[8px] drop-shadow-xs/90"
                   />
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/react.svg"
                     alt=""
@@ -592,7 +585,7 @@ export default function SmoothScrollPage() {
                     />
                   </svg>
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/gsap.svg"
                     alt=""
@@ -611,7 +604,7 @@ export default function SmoothScrollPage() {
                     className="drop-shadow-xs/80"
                   />
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/figma2.svg"
                     alt=""
@@ -630,7 +623,7 @@ export default function SmoothScrollPage() {
                     className="translate-x-[4px] drop-shadow-xs/30"
                   />
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image src="/git.svg" alt="" width={65} height={65} />
                   <span className="px-2">Git</span>
                   <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-500"></span>
@@ -652,7 +645,7 @@ export default function SmoothScrollPage() {
                     />
                   </svg>
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/docker.svg"
                     alt=""
@@ -662,7 +655,7 @@ export default function SmoothScrollPage() {
                   />
                   Docker
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/python.svg"
                     alt=""
@@ -672,7 +665,7 @@ export default function SmoothScrollPage() {
                   />
                   Python
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/django.svg"
                     alt=""
@@ -682,7 +675,7 @@ export default function SmoothScrollPage() {
                   />
                   Django
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/fastapi.svg"
                     alt=""
@@ -705,7 +698,7 @@ export default function SmoothScrollPage() {
                     />
                   </svg>
                 </div>
-                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/postgresql.svg"
                     alt=""
@@ -752,246 +745,3 @@ export default function SmoothScrollPage() {
     </div>
   );
 }
-
-// 'use client';
-// // import { Zen_Dots } from 'next/font/google';
-// import Image from 'next/image';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import { ScrollSmoother } from 'gsap/ScrollSmoother';
-// import { TextPlugin } from 'gsap/TextPlugin';
-// import { useRef } from 'react';
-// import { useGSAP } from '@gsap/react';
-
-// // const geistZen = Zen_Dots({
-// //   weight: '400', // Zen Dots доступен только с этим весом
-// //   subsets: ['latin'],
-// // });
-
-// gsap.registerPlugin(ScrollTrigger, ScrollSmoother, TextPlugin, useGSAP);
-
-// export default function SmoothScrollPage() {
-//   const smoother = useRef();
-
-//   useGSAP(() => {
-//     smoother.current = ScrollSmoother.create({
-//       smooth: 2.5,
-//       effects: true,
-//       normalizeScroll: true,
-//     });
-
-//     //replaces yourElement's text with "This is the new text"
-//     gsap.to('.stagnation', {
-//       duration: 1,
-//       text: 'stagnation',
-//       ease: 'power2.inOut',
-//       delay: 2,
-//       repeat: 100,
-//     });
-
-//     // Исчезновение hero
-//     gsap.fromTo(
-//       '.hero-section',
-//       { opacity: 1 },
-//       {
-//         opacity: 0,
-//         scrollTrigger: {
-//           trigger: '.hero-section',
-//           start: 'center',
-//           end: '600',
-//           scrub: true,
-//         },
-//       },
-//     );
-
-//     // Галерея — элементы слева
-//     gsap.utils.toArray('.gallery__left .gallery__item').forEach(item => {
-//       gsap.fromTo(
-//         item,
-//         { opacity: 0, x: -100, scale: 0.9 },
-//         {
-//           opacity: 1,
-//           x: 0,
-//           scale: 1,
-//           duration: 1.2,
-//           ease: 'power2.out',
-//           scrollTrigger: {
-//             trigger: item,
-//             start: 'top 90%',
-//             end: 'top 40%',
-//             scrub: true,
-//           },
-//         },
-//       );
-//     });
-
-//     // Галерея — элементы справа
-//     gsap.utils.toArray('.gallery__right .gallery__item').forEach(item => {
-//       gsap.fromTo(
-//         item,
-//         { opacity: 0, x: 100, scale: 0.9 },
-//         {
-//           opacity: 1,
-//           x: 0,
-//           scale: 1,
-//           duration: 1.2,
-//           ease: 'power2.out',
-//           scrollTrigger: {
-//             trigger: item,
-//             start: 'top 90%',
-//             end: 'top 40%',
-//             scrub: true,
-//           },
-//         },
-//       );
-//     });
-//   }, []);
-
-//   return (
-//     <div id="smooth-wrapper ">
-//       <div className="will-change-transform" id="smooth-content">
-//         {/* Hero Section */}
-//         <header className="hero-section relative">
-//           <div
-//             data-speed=".6"
-//             className="hero absolute left-70 z-10 flex w-[90vw] max-w-[700px] -translate-x-1/2 transform sm:left-2/3"
-//           >
-//             <Image
-//               src="/img/hero.png"
-//               alt="Hero image"
-//               width={400}
-//               height={400}
-//               className="h-full w-full object-cover"
-//               priority
-//             />
-//           </div>
-//           <div className="container mx-auto px-[2vw]">
-//             <div data-speed=".75" className="main-header max-w-6xs relative h-180 text-9xl">
-//               <h1
-//                 className={
-//                   'main-title absolute bottom-[30vh] left-20 leading-[0.9] text-gray-50 uppercase'
-//                 }
-//               >
-//                 super position
-//               </h1>
-//             </div>
-//             <div
-//               data-speed=".75"
-//               className="stagnation relative bottom-[20vh] left-20 w-1200 bg-amber-800 p-2 text-3xl font-semibold text-gray-50 uppercase"
-//             >
-//               <h1>stagnation</h1>
-//             </div>
-//           </div>
-//         </header>
-
-//         {/* Portfolio Gallery */}
-
-//         <div className="portfolio">
-//           <div className="container mx-auto px-[7vw]">
-//             <main className="gallery flex py-[calc(1vw_+_1vh_*_20)]">
-//               {/* Left Column */}
-//               <div
-//                 data-speed=".9"
-//                 className="gallery__left mt-[calc(1vw_+_1vh_*_7.5_*_1.75)] flex flex-1 flex-col items-center"
-//               >
-//                 <div className="gallery__item mb-[calc(1vw_+_1vh_*_7.5)] max-h-[540vh] max-w-[540vh] overflow-hidden rounded-lg will-change-transform">
-//                   <Image
-//                     src="/img/work/1.jpg"
-//                     alt="Work 1"
-//                     width={400}
-//                     height={400}
-//                     className="h-full w-full object-cover"
-//                   />
-//                 </div>
-
-//                 <div className="gallery__item mb-[calc(1vw_+_1vh_*_7.5)] max-h-[300vh] max-w-[calc(1vw_+_1vh_*_50)] overflow-hidden rounded-lg will-change-transform">
-//                   <video
-//                     src="/img/work/v2.mp4" // Убедитесь, что видео лежит в public/videos/
-//                     autoPlay
-//                     muted
-//                     loop
-//                     playsInline
-//                     className="h-full w-full object-cover"
-//                   />
-//                 </div>
-
-//                 <div className="text-block gallery__item relative mb-[calc(1vw_+_1vh_*_7.5)] max-w-[calc(1vw_+_1vh_*_50)] text-gray-200">
-//                   <h2 className="text-block__h mb-6 text-4xl leading-[2.4rem]">
-//                     Creative floating scroll with amazing parallax effect
-//                   </h2>
-//                   <p className="text-block__p leading-[1.75]">
-//                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-//                     amount scrolling.
-//                   </p>
-//                 </div>
-
-//                 <div className="gallery__item mb-[calc(1vw_+_1vh_*_7.5)] h-100 w-120 overflow-hidden rounded-lg will-change-transform">
-//                   <Image
-//                     src="/img/work/6.jpg"
-//                     alt="Work 6"
-//                     width={400}
-//                     height={400}
-//                     className="h-full w-full object-cover object-[10%_15%]"
-//                   />
-//                 </div>
-//               </div>
-
-//               {/* Right Column */}
-//               <div data-speed="1.4" className="gallery__right flex flex-1 flex-col items-center">
-//                 <div className="text-block gallery__item relative mb-[calc(1vw_+_1vh_*_7.5)] max-w-[calc(1vw_+_1vh_*_50)] text-gray-200">
-//                   <h2 className="text-block__h mb-6 text-4xl leading-[2.4rem]">
-//                     Creative floating scroll with amazing parallax effect
-//                   </h2>
-//                   <p className="text-block__p leading-[1.75]">
-//                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-//                     amount scrolling.
-//                   </p>
-//                 </div>
-
-//                 <div className="gallery__item max-h-[180vh] max-w-[calc(1vw_+_1vh_*_47)] overflow-hidden rounded-lg will-change-transform">
-//                   <video
-//                     src="/img/work/v1.mp4" // Убедитесь, что видео лежит в public/videos/
-//                     autoPlay
-//                     muted
-//                     loop
-//                     playsInline
-//                     className="h-full w-full object-cover"
-//                   />
-//                 </div>
-
-//                 <div className="gallery__item mt-[calc(1vw_+_1vh_*_7.5)] max-h-[180vh] max-w-[calc(1vw_+_1vh_*_50)] overflow-hidden rounded-lg will-change-transform">
-//                   <Image
-//                     src="/img/work/5.jpg"
-//                     alt="Work 5"
-//                     width={400}
-//                     height={400}
-//                     className="h-full w-full object-cover"
-//                   />
-//                 </div>
-
-//                 <div className="gallery__item mt-[calc(1vw_+_1vh_*_7.5)] max-h-[180vh] max-w-[calc(1vw_+_1vh_*_50)] overflow-hidden rounded-lg will-change-transform">
-//                   <Image
-//                     src="/img/work/3.jpg"
-//                     alt="Work 3"
-//                     width={400}
-//                     height={400}
-//                     className="h-full w-full object-cover"
-//                   />
-//                 </div>
-//                 <div className="text-block gallery__item relative mt-[calc(1vw_+_1vh_*_10)] max-w-[calc(1vw_+_1vh_*_50)] text-gray-200">
-//                   <h2 className="text-block__h mb-6 text-4xl leading-[2.4rem]">
-//                     Creative floating scroll with amazing parallax effect
-//                   </h2>
-//                   <p className="text-block__p leading-[1.75]">
-//                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-//                     amount scrolling.
-//                   </p>
-//                 </div>
-//               </div>
-//             </main>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

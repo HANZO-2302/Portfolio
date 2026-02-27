@@ -18,8 +18,6 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 interface ImagePair {
   id: number;
   thumbnail: string;
-  // before: string;
-  // after: string;
   textH1?: string;
   textP?: string;
   figma: string;
@@ -29,8 +27,6 @@ const images: ImagePair[] = [
   {
     id: 1,
     thumbnail: '/Instagram post4.png',
-    // before: '/Instagram post5.png',
-    // after: '/Instagram post5.png',
     textH1: 'Баннер для рекламы',
     textP:
       'Создание визуально привлекательного баннера для соцсетей и промо-акций с акцентом на читаемость и стиль.',
@@ -40,8 +36,6 @@ const images: ImagePair[] = [
   {
     id: 2,
     thumbnail: '/Desktop.png',
-    // before: '/walking.jpg',
-    // after: '/walking2.jpg',
     textH1: 'Концепт лендинга.',
     textP:
       'Концепт дизайна лендинга конференции с продуманной структурой, визуальной иерархией и UX-логикой.',
@@ -51,8 +45,6 @@ const images: ImagePair[] = [
   {
     id: 3,
     thumbnail: '/Group 88.png',
-    // before: '/bafiti.jpg',
-    // after: '/bafiti3.jpg',
     textH1: 'UI/UX мобильного приложения',
     textP: 'Интерактивный прототип мобильного приложения с продуманным пользовательским потоком.',
     figma:
@@ -61,8 +53,6 @@ const images: ImagePair[] = [
   {
     id: 4,
     thumbnail: '/preview2.png',
-    // before: '/7.jpg',
-    // after: '/6.jpg',
     textH1: 'Набор иконок и элементов интерфейса (UI Kit)',
     textP:
       'Создание единого визуального стиля для кнопок, форм, карточек и других элементов интерфейса.',
@@ -72,8 +62,6 @@ const images: ImagePair[] = [
   {
     id: 5,
     thumbnail: '/Frame 2.4.png',
-    // before: '/23.jpg',
-    // after: '/233.jpg',
     textH1: 'Редизайн сайта',
     textP:
       'Обновлённая версия сайта с улучшенной визуальной структурой и оптимизированным пользовательским опытом.',
@@ -83,8 +71,6 @@ const images: ImagePair[] = [
   {
     id: 6,
     thumbnail: '/dashboard2.png',
-    // before: '/25.jpg',
-    // after: '/28.jpg',
     textH1: 'Дашборд / админ-панель',
     textP:
       'Интерфейс для панели управления с графиками, таблицами и фильтрами для удобной работы с данными.',
@@ -96,7 +82,6 @@ const images: ImagePair[] = [
 const PhotoFigma = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPair, setSelectedPair] = useState<ImagePair | null>(null);
-  // const [showBefore, setShowBefore] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -117,18 +102,16 @@ const PhotoFigma = () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       if (!containerRef.current) return;
 
-      // Анимация появления карточек
+      // на мобильных анимация появления карточек при скролле с ScrollTrigger
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
 
         if (isMobile) {
-          // На мобильных - анимация при скролле с ScrollTrigger
-
           gsap.fromTo(
             card,
             {
               opacity: 0,
-              scale: 1,
+              scale: 0.98,
               y: 20,
             },
             {
@@ -147,7 +130,7 @@ const PhotoFigma = () => {
             },
           );
         } else {
-          // На десктопе - последовательное появление при загрузке
+          // На десктопе - последовательное появление карточек
           gsap.fromTo(
             card,
             {
@@ -160,7 +143,7 @@ const PhotoFigma = () => {
               y: 0,
               scale: 1,
               duration: 0.1,
-              delay: 0.1 + index * 0.08,
+              delay: 0.2 + index * 0.1,
               ease: 'power3.out',
               scrollTrigger: {
                 trigger: card,
@@ -174,7 +157,7 @@ const PhotoFigma = () => {
         }
       });
 
-      // Анимация текста внутри карточек
+      // текст анимация  внутри карточек
       textsRef.current.forEach((text, index) => {
         if (!text) return;
 
@@ -188,8 +171,14 @@ const PhotoFigma = () => {
             opacity: 1,
             y: 0,
             duration: 0.3,
-            delay: 0.4 + index * 0.08,
+            delay: 0.4 + index * 0.1,
             ease: 'power1.out',
+            // scrollTrigger: {
+            //   trigger: text,
+            //   start: 'top 90%',
+            //   toggleActions: 'play reverse play reverse',
+            // markers: true, // раскомментируйте для отладки
+            // },
           },
         );
       });
@@ -205,8 +194,7 @@ const PhotoFigma = () => {
 
   const closeModal = () => {
     setIsOpen(false);
-    setSelectedPair(null);
-    // setShowBefore(false);
+    setTimeout(() => setSelectedPair(null), 300); // ✅ ждём exit анимацию
   };
 
   return (
@@ -232,7 +220,7 @@ const PhotoFigma = () => {
                 src={pair.thumbnail}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw"
-                alt={`photo ${pair.id}`}
+                alt={pair.textH1 || 'photo'}
                 className="object-cover transition-transform duration-500 ease-in-out hover:scale-105"
                 priority={pair.id === 1}
               />
@@ -262,97 +250,95 @@ const PhotoFigma = () => {
         ))}
       </div>
 
-      {/* <AnimatePresence mode="sync"> */}
-      {isOpen && selectedPair && (
-        <Dialog open={isOpen} onClose={closeModal} className="relative z-50">
-          {/* Затемнённый фон модалки */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-3 backdrop-blur-xl">
-            <DialogPanel
-              as={motion.div}
-              initial={{ opacity: 0, scale: 0.95 }}
+      <AnimatePresence>
+        {isOpen && selectedPair && (
+          <Dialog open={isOpen} onClose={closeModal} className="relative z-50">
+            {/* Затемнённый фон модалки */}
+            <motion.div
+              initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
-                scale: 1,
-                transition: { type: 'tween', duration: 0.3, ease: 'easeInOut' },
+                transition: { type: 'tween', ease: 'easeInOut', duration: 0.4 },
               }}
-              exit={{
-                opacity: 0,
-                scale: 0.95,
-                transition: { type: 'tween', duration: 0.3, ease: 'easeInOut' },
-              }}
-              className="relative z-0 max-w-5xl rounded-lg bg-gray-400/40 backdrop-blur-xl sm:-mt-16"
+              exit={{ opacity: 0, transition: { type: 'tween', ease: 'easeInOut', duration: 0.4 } }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-3 backdrop-blur-xl"
             >
-              {/* Изображение */}
-              <AnimatePresence mode="sync">
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-                  className="relative inset-0 z-0"
-                >
-                  {/* Одна картинка */}
-                  <div className="relative z-0">
-                    <Image
-                      src={selectedPair.thumbnail} // или thumbnail — как тебе нужно
-                      alt="Image"
-                      width={900}
-                      height={900}
-                      className="h-full max-h-[75vh] w-full rounded-lg object-cover ring-1 ring-gray-400"
-                    />
-                  </div>
-                  {/* Кнопка закрытия */}
-                  <button
-                    onClick={closeModal}
-                    className="absolute top-1 right-1 z-50 transition-all duration-200 hover:scale-110"
-                    aria-label="Закрыть модалку"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      // className="h-5 w-5 text-gray-800 drop-shadow-md/90 hover:text-black md:h-8 md:w-8"
-                      className="lucide lucide-square-x-icon lucide-square-x h-9 w-9 text-white/80 drop-shadow-md/90 hover:text-white/95 md:h-6 md:w-6"
-                    >
-                      <rect width="18" height="18" x="3" y="3" rx="9" ry="9" />
-                      <path d="m15 9-6 6" />
-                      <path d="m9 9 6 6" />
-                    </svg>
-                  </button>
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Кнопка переключения */}
-              {/* <motion.div> */}
-              <motion.button
-                className="absolute -bottom-17 left-1/2 z-0 flex w-52 -translate-x-1/2 justify-between rounded-lg bg-linear-100 from-gray-900 to-gray-500 px-6 py-4 text-lg font-medium text-gray-300 ring-1 ring-gray-400 transition-all hover:scale-100 active:scale-97"
-                onClick={() => window.open(selectedPair.figma, '_blank')}
+              <DialogPanel
+                as={motion.div}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  transition: { type: 'tween', duration: 0.3, ease: 'easeInOut' },
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.5,
+                  transition: { type: 'tween', duration: 0.3, ease: 'easeInOut' },
+                }}
+                className="relative z-0 max-w-5xl rounded-lg bg-gray-400/40 backdrop-blur-xl sm:-mt-16"
               >
-                Перейти в Figma
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="size-5"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
-                    clipRule="evenodd"
+                {/* Изображение в модальнои окне */}
+                <div className="relative z-0">
+                  <Image
+                    src={selectedPair.thumbnail} // или thumbnail — как тебе нужно
+                    alt="Image"
+                    width={900}
+                    height={900}
+                    className="h-full max-h-[75vh] w-full rounded-lg object-cover ring-1 ring-gray-400"
                   />
-                </svg>
-              </motion.button>
-              {/* </motion.div> */}
-            </DialogPanel>
-          </div>
-        </Dialog>
-      )}
-      {/* </AnimatePresence> */}
+                </div>
+                {/* Кнопка закрытия */}
+                <button
+                  onClick={closeModal}
+                  className="absolute top-1 right-1 z-50 transition-all duration-200 hover:scale-110"
+                  aria-label="Закрыть модалку"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    // className="h-5 w-5 text-gray-800 drop-shadow-md/90 hover:text-black md:h-8 md:w-8"
+                    className="lucide lucide-square-x-icon lucide-square-x h-9 w-9 text-white/80 drop-shadow-md/90 hover:text-white/95 md:h-6 md:w-6"
+                  >
+                    <rect width="18" height="18" x="3" y="3" rx="9" ry="9" />
+                    <path d="m15 9-6 6" />
+                    <path d="m9 9 6 6" />
+                  </svg>
+                </button>
+                {/* </motion.div> */}
+                {/* </AnimatePresence> */}
+
+                {/* Кнопка переключения */}
+                {/* <motion.div> */}
+                <button
+                  className="group absolute -bottom-17 left-1/2 z-0 flex w-52 -translate-x-1/2 justify-between rounded-lg bg-linear-100 from-gray-900 to-gray-500 px-6 py-4 text-lg font-medium text-gray-300 ring-1 ring-gray-400 transition-transform hover:scale-95 active:scale-97"
+                  onClick={() => window.open(selectedPair.figma, '_blank')}
+                >
+                  Перейти в Figma
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="size-5 transition-all duration-200 group-hover:translate-x-3 group-hover:-translate-y-1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+                {/* </motion.div> */}
+              </DialogPanel>
+            </motion.div>
+          </Dialog>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -1,108 +1,48 @@
-// 'use client';
-
-// import { useEffect, useState } from 'react';
-// import { Moon, Sun } from 'lucide-react';
-
-// export default function ThemeToggle() {
-//   const [isDark, setIsDark] = useState(false);
-
-//   useEffect(() => {
-//     const theme = localStorage.theme;
-//     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-//     if (theme === 'dark' || (!theme && systemPrefersDark)) {
-//       document.documentElement.classList.add('dark');
-//       setIsDark(true);
-//     } else {
-//       document.documentElement.classList.remove('dark');
-//       setIsDark(false);
-//     }
-//   }, []);
-
-//   const toggleTheme = () => {
-//     const newTheme = isDark ? 'light' : 'dark';
-//     localStorage.theme = newTheme;
-//     document.documentElement.classList.toggle('dark');
-//     setIsDark(!isDark);
-//   };
-
-//   return (
-//     <button
-//       onClick={toggleTheme}
-//       aria-label="Toggle theme"
-//       className="rounded-full bg-gray-200 p-2 text-gray-800 transition dark:bg-gray-700 dark:text-gray-200"
-//     >
-//       {isDark ? <Sun size={20} /> : <Moon size={20} />}
-//     </button>
-//   );
-// }
-
 'use client';
 
 import { useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark' | 'system';
+type Theme = 'light' | 'dark';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>('system');
+  const [theme, setTheme] = useState<Theme>('dark');
 
   useEffect(() => {
-    const savedTheme = localStorage.theme as Theme | undefined;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'light' || savedTheme === 'dark') {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-    } else {
-      setTheme('system');
-      document.documentElement.classList.toggle('dark', prefersDark);
-    }
+    const saved = localStorage.theme as Theme | undefined;
+    if (saved) setTheme(saved);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
 
   const handleSetTheme = (newTheme: Theme) => {
     setTheme(newTheme);
-    if (newTheme === 'system') {
-      localStorage.removeItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.classList.toggle('dark', prefersDark);
-    } else {
-      localStorage.theme = newTheme;
-      document.documentElement.classList.toggle('dark', newTheme === 'dark');
-    }
+    localStorage.theme = newTheme;
   };
 
   return (
-    <div className="flex items-center space-x-4 rounded-lg border border-gray-500 bg-gray-200 p-1 shadow-md dark:border-gray-500 dark:bg-gray-800">
+    <div className="flex items-center space-x-4 rounded-lg border-2 border-zinc-700 bg-zinc-400 p-1 dark:border-zinc-500 dark:bg-gray-800 dark:shadow-xs/50">
       <button
         onClick={() => handleSetTheme('light')}
-        className={`rounded-md p-2 ${
-          theme === 'light' ? 'bg-gray-800 text-gray-100' : 'text-gray-700 dark:text-gray-300'
+        className={`rounded-md p-2 transition-all duration-500 ${
+          theme === 'light'
+            ? 'bg-zinc-700 text-zinc-200'
+            : 'text-zinc-700 hover:ring hover:ring-zinc-400 dark:text-zinc-300'
         }`}
-        aria-label="Светлая тема"
       >
-        <SunIcon />
+        <SunIcon className="hover:animate-spin" />
       </button>
-
-      {/* <button
-        onClick={() => handleSetTheme('system')}
-        className={`rounded-md p-2 duration-500 ${
-          theme === 'system'
-            ? 'bg-gray-400 text-gray-900 dark:bg-gray-500 dark:text-white'
-            : 'text-gray-600 dark:text-gray-300'
-        }`}
-        aria-label="Системная тема"
-      >
-        <ComputerIcon />
-      </button> */}
 
       <button
         onClick={() => handleSetTheme('dark')}
-        className={`rounded-md p-2 ${
-          theme === 'dark' ? 'bg-gray-200 text-gray-900' : 'text-gray-700 dark:text-gray-300'
+        className={`rounded-md p-2 transition-all duration-500 ${
+          theme === 'dark'
+            ? 'bg-blue-400 text-zinc-50'
+            : 'text-zinc-700 hover:ring hover:ring-zinc-700 dark:text-zinc-300'
         }`}
-        aria-label="Темная тема"
       >
-        <MoonIcon />
+        <MoonIcon className="hover:animate-spin dark:drop-shadow-xs/90" />
       </button>
     </div>
   );
@@ -110,7 +50,7 @@ export default function ThemeToggle() {
 
 // Иконки
 
-function SunIcon() {
+function SunIcon({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +58,7 @@ function SunIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="h-5 w-5"
+      className={`h-5 w-5 ${className || ''}`}
     >
       <path
         strokeLinecap="round"
@@ -129,7 +69,7 @@ function SunIcon() {
   );
 }
 
-function MoonIcon() {
+function MoonIcon({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -137,31 +77,12 @@ function MoonIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="h-5 w-5"
+      className={`h-5 w-5 hover:animate-spin ${className || ''}`}
     >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-      />
-    </svg>
-  );
-}
-
-function ComputerIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      className="h-5 w-5"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M9 17.25h6m-8.25 0h-1.5A1.5 1.5 0 0 1 4.5 15.75V5.25A1.5 1.5 0 0 1 6 3.75h12a1.5 1.5 0 0 1 1.5 1.5v10.5a1.5 1.5 0 0 1-1.5 1.5h-1.5M9 17.25a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5M9 17.25h6"
       />
     </svg>
   );

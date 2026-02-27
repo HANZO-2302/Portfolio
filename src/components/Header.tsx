@@ -20,7 +20,6 @@ const menuItems = [
   { href: '/projects/after', text: 'After Effects', icon: '/after_effects.svg' },
   // { href: '/projects/illustrator', text: 'Illustrator', icon: '/illustrator.svg' },
   // { href: '/projects/lightroom', text: 'Lightroom', icon: '/lightroom.svg' },
-
   // { href: '/projects/topaz', text: 'Topaz Gigapixel AI', icon: '/topaz.png' },
   // { href: '/projects/premiere', text: 'Premiere Pro', icon: '/premiere.svg' },
   // ... остальные пункты
@@ -74,11 +73,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed z-50 w-full bg-gray-200 dark:bg-gray-800 ${jetBrainsMono.className} antialiased`}
+      className={`fixed z-50 w-full bg-zinc-400 transition-colors duration-500 dark:bg-zinc-600 dark:duration-500 ${jetBrainsMono.className} antialiased`}
     >
-      <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-2 md:px-30">
+      <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-2">
         {/* Логотип */}
-
         {/* <Image
             src="/logo_mob.jpg"
             alt="logo Icon"
@@ -93,12 +91,12 @@ export default function Header() {
 
         <motion.div
           whileTap={{ scale: 0.95 }}
-          className="relative flex flex-col rounded-xl border-2 border-orange-500 p-2"
+          className="relative flex flex-col rounded-lg bg-zinc-300/20 p-2 ring-2 ring-gray-700 transition-colors duration-500 dark:bg-gray-800 dark:text-gray-200 dark:shadow-xs/50 dark:ring-blue-400 dark:duration-500"
         >
-          <h1 className="text-lg leading-4.5 font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
+          <h1 className="text-[1.2rem] leading-4.5 font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
             <Link href="/">Portfolio</Link>
           </h1>
-          <div className="h-[0.5px] w-full rounded-lg bg-gray-500" />
+          {/* <div className="h-[1px] w-20 mx-auto rounded-lg bg-blue-400" /> */}
 
           <h1 className="text-xs font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
             <Link href="/">Igor Meniailov</Link>
@@ -122,7 +120,7 @@ export default function Header() {
             }`}
           >
             Menu
-            <span className="absolute bottom-0 left-0 h-0.5 w-10 bg-orange-500"></span>
+            <span className="absolute bottom-0 left-0 h-0.5 w-10 bg-gray-800 transition-colors duration-500 dark:bg-blue-400"></span>
           </div>
           <div
             className={`relative right-2 bottom-4 flex text-gray-950 transition-all duration-300 dark:text-gray-200 ${
@@ -130,7 +128,7 @@ export default function Header() {
             }`}
           >
             Close
-            <span className="absolute bottom-0 left-0 h-0.5 w-full bg-orange-500"></span>
+            <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gray-800 transition-colors duration-500 dark:bg-blue-400"></span>
           </div>
         </button>
 
@@ -140,7 +138,7 @@ export default function Header() {
             <li className="overflow-hidden">
               <Link
                 href="/"
-                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:after:text-gray-200 ${pathname === '/' ? 'translate-y-full' : ''}`}
+                className={`" relative inline-block py-[0.1em] text-gray-700 transition-all duration-500 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-gray-900 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:before:bg-blue-400 dark:after:text-gray-50 ${pathname === '/' ? 'translate-y-full' : ''}`}
                 data-hover="Home"
               >
                 Home
@@ -149,7 +147,7 @@ export default function Header() {
             {/* <li className="overflow-hidden">
               <Link
                 href="/contacts"
-                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-500 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:after:text-gray-200 ${pathname.startsWith('/contacts') ? 'translate-y-full' : ' '}`}
+                className={`" relative inline-block py-[0.1em] text-gray-700 transition-all duration-500 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-gray-900 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:before:bg-blue-400 dark:after:text-gray-50 ${pathname.startsWith('/contacts') ? 'translate-y-full' : ' '}`}
                 data-hover="Contacts"
               >
                 Contacts
@@ -158,7 +156,7 @@ export default function Header() {
             <li className="overflow-hidden">
               <Link
                 href="/projects/photoshop"
-                className={`" relative inline-block py-[0.1em] text-gray-500 transition-normal duration-300 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-orange-500 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:after:text-gray-200 ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
+                className={`" relative inline-block py-[0.1em] text-gray-700 transition-all duration-500 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-gray-900 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:before:bg-blue-400 dark:after:text-gray-50 ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
                 data-hover="Projects"
               >
                 Projects

@@ -5,7 +5,7 @@ const comFortaa = Comfortaa({ subsets: ['cyrillic'] });
 
 export default function GeekBrains() {
   return (
-    <div className="mx-auto grid h-auto w-full max-w-5xl justify-items-center rounded-xl border border-gray-400/60 bg-gray-400/30 shadow-lg md:grid-cols-[1fr_auto_1fr] dark:border-gray-600 dark:bg-gray-800/80">
+    <div className="mx-auto grid h-auto w-full max-w-5xl justify-items-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg md:grid-cols-[1fr_auto_1fr] dark:border-gray-600 dark:bg-gray-800/80">
       <div className="flex items-center gap-4">
         <svg
           id="layer_2"

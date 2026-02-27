@@ -83,17 +83,16 @@ const VideoAfterEffects = () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       if (!containerRef.current) return;
 
-      // Анимация появления карточек
+      // на мобильных анимация появления карточек при скролле с ScrollTrigger
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
 
         if (isMobile) {
-          // На мобильных - анимация при скролле с ScrollTrigger
           gsap.fromTo(
             card,
             {
               opacity: 0,
-              scale: 1,
+              scale: 0.98,
               y: 20,
             },
             {
@@ -107,11 +106,12 @@ const VideoAfterEffects = () => {
                 start: 'top 90%',
                 end: 'top 10%',
                 toggleActions: 'play none none reset',
+                // markers: true, // раскомментируйте для отладки
               },
             },
           );
         } else {
-          // На десктопе - последовательное появление при загрузке
+          // На десктопе - последовательное появление карточек
           gsap.fromTo(
             card,
             {
@@ -124,20 +124,21 @@ const VideoAfterEffects = () => {
               y: 0,
               scale: 1,
               duration: 0.1,
-              delay: 0.1 + index * 0.08,
+              delay: 0.2 + index * 0.1,
               ease: 'power3.out',
               scrollTrigger: {
                 trigger: card,
                 start: 'top 80%',
                 end: 'top 50%',
                 toggleActions: 'play none none reset',
+                // markers: true, // раскомментируйте для отладки
               },
             },
           );
         }
       });
 
-      // Анимация текста внутри карточек
+      // текст анимация  внутри карточек
       textsRef.current.forEach((text, index) => {
         if (!text) return;
 
@@ -151,8 +152,14 @@ const VideoAfterEffects = () => {
             opacity: 1,
             y: 0,
             duration: 0.3,
-            delay: 0.4 + index * 0.08,
+            delay: 0.6 + index * 0.08,
             ease: 'power1.out',
+            // scrollTrigger: {
+            // trigger: text,
+            // start: 'top 95%',
+            // toggleActions: 'play reverse play reverse',
+            // markers: true, // раскомментируйте для отладки
+            // },
           },
         );
       });
