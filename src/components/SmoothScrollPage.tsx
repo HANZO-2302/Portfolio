@@ -406,7 +406,7 @@ export default function SmoothScrollPage() {
                   viewBox="0 0 32 32"
                   fill="currentColor"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-auto w-15 text-gray-800 drop-shadow-xs/70 transition-all duration-500 group-hover:scale-50 group-hover:opacity-0 dark:text-gray-200"
+                  className="h-auto w-15 text-gray-800 drop-shadow-xs/30 transition-all duration-500 group-hover:scale-50 group-hover:opacity-0 dark:text-gray-200"
                 >
                   <path
                     d="M16.0001 0.82843C7.41003 0.82843 0.444443 7.7928 0.444443 16.384C0.444443 23.257 4.90159 29.0879 11.0824 31.1448C11.8597 31.2888 12.1452 30.8074 12.1452 30.3965C12.1452 30.0256 12.1307 28.8001 12.1241 27.5003C7.79641 28.4413 6.88324 25.665 6.88324 25.665C6.17564 23.8669 5.15608 23.3889 5.15608 23.3889C3.74479 22.4234 5.26247 22.4432 5.26247 22.4432C6.82456 22.553 7.64708 24.0463 7.64708 24.0463C9.03447 26.4244 11.2861 25.7368 12.1738 25.3395C12.3133 24.3339 12.7165 23.6478 13.1614 23.2594C9.70632 22.8659 6.07413 21.5321 6.07413 15.5716C6.07413 13.8734 6.68182 12.4857 7.67697 11.3963C7.51544 11.0045 6.98304 9.42236 7.82764 7.27967C7.82764 7.27967 9.1339 6.86158 12.1065 8.87421C13.3473 8.52944 14.6781 8.35669 16.0001 8.35083C17.3221 8.35669 18.6538 8.52944 19.897 8.87421C22.8661 6.86158 24.1705 7.27967 24.1705 7.27967C25.0172 9.42236 24.4846 11.0045 24.323 11.3963C25.3204 12.4857 25.9239 13.8733 25.9239 15.5716C25.9239 21.5462 22.2849 22.8619 18.8211 23.2469C19.379 23.7297 19.8761 24.6764 19.8761 26.1276C19.8761 28.2089 19.8581 29.8841 19.8581 30.3965C19.8581 30.8104 20.1381 31.2955 20.9267 31.1428C27.104 29.0835 31.5556 23.2547 31.5556 16.384C31.5556 7.7928 24.5909 0.82843 16.0001 0.82843Z"
@@ -450,9 +450,9 @@ export default function SmoothScrollPage() {
               <a
                 href="/resume.pdf"
                 download
-                className="group relative flex items-center justify-center rounded-2xl text-gray-700 transition-all duration-500 dark:text-gray-200"
+                className="group relative flex items-center justify-center rounded-2xl text-gray-900 transition-all duration-500 dark:text-gray-200"
               >
-                <FileDown className="h-auto w-15 stroke-1 drop-shadow-xs/70 transition-all duration-500 group-hover:scale-50 group-hover:opacity-0" />
+                <FileDown className="h-auto w-15 stroke-1 drop-shadow-xs/30 transition-all duration-500 group-hover:scale-50 group-hover:opacity-0" />
                 <span className="absolute left-1/2 flex h-full w-full -translate-x-1/2 scale-90 items-center justify-center rounded-2xl bg-gray-800 py-10 text-lg text-gray-200 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-700/90">
                   Скачать резюме
                 </span>

@@ -78,18 +78,18 @@ export default function Sidebar() {
       </div>
       <div
         className={`" relative left-0 mt-2 flex w-full items-center justify-start overflow-hidden from-zinc-600 to-zinc-400 hover:bg-linear-to-r hover:text-shadow-md/30 dark:from-zinc-700 dark:to-zinc-800 dark:hover:bg-linear-to-r ${
-          pathname.startsWith('/projects/illustrator')
+          pathname.startsWith('/projects/tagris')
             ? 'bg-linear-to-r from-zinc-600 to-zinc-400 text-shadow-md/30'
             : ' '
         }`}
       >
-        <div className="relative left-3 h-5 w-5">
-          <Image src="/globe.svg" alt="Icon" width={24} height={24} className="h-full w-full" />
+        <div className="relative left-3 h-5 w-5 text-gray-900 dark:text-white">
+          <Image src="/globe.svg" alt="Icon" width={24} height={24} className="h-full w-full dark:brightness-0 dark:invert" />
         </div>
         <Link
-          href="/projects/illustrator"
+          href="/projects/tagris"
           className={`relative left-2 inline-block w-40 p-2 text-zinc-900 transition-all duration-300 before:absolute before:bottom-full after:absolute after:bottom-full after:left-0 after:w-40 after:p-2 after:whitespace-nowrap after:text-zinc-50 after:content-[attr(data-hover)] hover:translate-y-9 dark:text-zinc-300/90 ${
-            pathname.startsWith('/projects/illustrator') ? 'translate-y-9 text-zinc-50' : ' '
+            pathname.startsWith('/projects/tagris') ? 'translate-y-9 text-zinc-50' : ' '
           }`}
           data-hover="Tagris website"
         >
@@ -98,18 +98,18 @@ export default function Sidebar() {
       </div>
       <div
         className={`relative left-0 mt-2 flex w-full items-center justify-start overflow-hidden from-zinc-600 to-zinc-400 hover:bg-linear-to-r hover:text-shadow-md/30 dark:from-zinc-700 dark:to-zinc-800 dark:hover:bg-linear-to-r ${
-          pathname.startsWith('/projects/lightroom')
+          pathname.startsWith('/projects/robottech')
             ? 'bg-linear-to-r from-zinc-600 to-zinc-400 text-shadow-md/30'
             : ' '
         }`}
       >
         <div className="relative left-3 h-5 w-5">
-          <Image src="/globe.svg" alt="Icon" width={24} height={24} className="h-full w-full" />
+          <Image src="/globe.svg" alt="Icon" width={24} height={24} className="h-full w-full dark:brightness-0 dark:invert" />
         </div>
         <Link
-          href="/projects/lightroom"
+          href="/projects/robottech"
           className={`relative left-2 inline-block w-40 p-2 text-zinc-900 transition-all duration-300 before:absolute before:bottom-full after:absolute after:bottom-full after:left-0 after:w-40 after:p-2 after:whitespace-nowrap after:text-zinc-50 after:content-[attr(data-hover)] hover:translate-y-9 dark:text-zinc-300/90 ${
-            pathname.startsWith('/projects/lightroom') ? 'translate-y-9 text-zinc-50' : ' '
+            pathname.startsWith('/projects/robottech') ? 'translate-y-9 text-zinc-50' : ' '
           }`}
           data-hover="RobotTech website"
         >
@@ -144,7 +144,7 @@ export default function Sidebar() {
         }`}
       >
         <div className="relative left-3 h-5 w-5">
-          <Image src="/globe.svg" alt="Icon" width={24} height={24} className="h-full w-full" />
+          <Image src="/globe.svg" alt="Icon" width={24} height={24} className="h-full w-full dark:brightness-0 dark:invert"/>
         </div>
         <Link
           href="/projects/topaz"
