@@ -11,7 +11,7 @@ export default function Animate() {
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
-        className="pointer-events-none fixed inset-0 z-20 bg-zinc-400 dark:bg-gray-900"
+        className="pointer-events-none fixed inset-0 z-20 bg-zinc-400 dark:bg-zinc-800"
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
         exit={{ opacity: 1 }}

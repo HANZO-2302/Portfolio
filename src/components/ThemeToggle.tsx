@@ -22,13 +22,13 @@ export default function ThemeToggle() {
   };
 
   return (
-    <div className="flex items-center space-x-4 rounded-lg border-2 border-zinc-700 bg-zinc-400 p-1 dark:border-zinc-500 dark:bg-gray-800 dark:shadow-xs/50">
+    <div className="flex items-center space-x-4 rounded-lg border-0 border-zinc-700 bg-zinc-400 p-1 dark:border-zinc-500 dark:bg-zinc-500/0 dark:shadow-xs/0">
       <button
         onClick={() => handleSetTheme('light')}
         className={`rounded-md p-2 transition-all duration-500 ${
           theme === 'light'
-            ? 'bg-zinc-700 text-zinc-200'
-            : 'text-zinc-700 hover:ring hover:ring-zinc-400 dark:text-zinc-300'
+            ? 'text-zinc-800 ring-2 ring-zinc-800'
+            : 'text-zinc-100 hover:ring hover:ring-zinc-400'
         }`}
       >
         <SunIcon className="hover:animate-spin" />
@@ -38,11 +38,11 @@ export default function ThemeToggle() {
         onClick={() => handleSetTheme('dark')}
         className={`rounded-md p-2 transition-all duration-500 ${
           theme === 'dark'
-            ? 'bg-blue-400 text-zinc-50'
-            : 'text-zinc-700 hover:ring hover:ring-zinc-700 dark:text-zinc-300'
+            ? 'text-zinc-100 ring-2 ring-blue-400'
+            : 'text-zinc-800 hover:ring hover:ring-zinc-800'
         }`}
       >
-        <MoonIcon className="hover:animate-spin dark:drop-shadow-xs/90" />
+        <MoonIcon className="hover:animate-spin" />
       </button>
     </div>
   );

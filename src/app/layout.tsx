@@ -41,7 +41,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${outFit.className} overflow-x-hidden bg-zinc-500 text-gray-800 antialiased transition-colors duration-300 dark:bg-zinc-700 dark:text-gray-200`}
+        suppressHydrationWarning className={`${outFit.className} overflow-x-hidden bg-zinc-500 text-gray-800 antialiased transition-colors duration-300 dark:bg-zinc-700 dark:text-gray-200`}
       >
         <div className="flex min-h-screen flex-col">
           <Header />

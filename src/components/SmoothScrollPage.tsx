@@ -5,10 +5,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { SplitText } from 'gsap/SplitText';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import Footer from './Footer';
-import { motion } from 'framer-motion';
+import { easeOut, motion } from 'framer-motion';
 import { Comfortaa } from 'next/font/google';
 import { FileDown } from 'lucide-react';
 import GeekBrains from './GeekBrains';
@@ -29,10 +29,7 @@ const trailerVariants = {
     rotate: 0,
     x: 0,
     filter: 'blur(0px)',
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut',
-    },
+    transition: { duration: 0.5, ease: easeOut },
   },
 };
 
@@ -41,6 +38,11 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, useGSAP);
 
 export default function SmoothScrollPage() {
   const smoother = useRef<ScrollSmoother | null>(null);
+  // const [isMounted, setIsMounted] = useState(false);
+
+  //   useEffect(() => {
+  //   setIsMounted(true);
+  // }, []);
 
   useGSAP(() => {
     smoother.current = ScrollSmoother.create({
@@ -85,10 +87,12 @@ export default function SmoothScrollPage() {
       { opacity: 1 },
       {
         opacity: 0,
+        duration: 3,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: '.hero-arrows',
           start: 'top 60%',
-          end: '+=200',
+          end: '+=100',
           scrub: true,
           // markers: true,
         },
@@ -105,7 +109,7 @@ export default function SmoothScrollPage() {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '.hero-footer',
-          start: 'top 20%',
+          start: 'top 10%',
           end: 'bottom 10%',
           scrub: true,
           // markers: true,
@@ -120,7 +124,7 @@ export default function SmoothScrollPage() {
         scale: 1,
 
         duration: 5,
-        ease: 'power4.out',
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: '.geekbrains',
           start: 'top 80%', // начало анимации
@@ -301,11 +305,11 @@ export default function SmoothScrollPage() {
             className="p-4"
           >
             <div
-              data-speed="0.9"
+              // data-speed="0.9"
               className="hero-section relative mx-auto mt-15 grid max-w-5xl grid-cols-1 gap-2 rounded-3xl border border-zinc-500 bg-zinc-400 p-4 shadow-lg will-change-transform md:mt-20 md:grid-cols-2 dark:border-gray-600 dark:bg-gray-800/90"
             >
               {/* Анимированная картинка слева */}
-              <div className="relative mx-auto aspect-[4/3] h-full w-full max-w-md overflow-hidden rounded-xl border border-gray-600/60 shadow-sm/20 md:mx-auto md:ml-0">
+              <div className="relative mx-auto aspect-4/3 h-full w-full max-w-md overflow-hidden rounded-xl border border-gray-600/60 shadow-sm/20 md:mx-auto md:ml-0">
                 {/* фото */}
                 <Image
                   src="/logo5.png"
@@ -368,7 +372,7 @@ export default function SmoothScrollPage() {
             >
               {/* Telegram */}
               <a
-                href="https://t.me/Igor_Menyailov"
+                href="https://t.me/Igor_Meniailov"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex items-center justify-center text-gray-700 transition-all duration-500 dark:text-gray-200"
@@ -390,7 +394,7 @@ export default function SmoothScrollPage() {
 
               {/* GitHub */}
               <a
-                href="https://github.com/HANZO-2302"
+                href="https://github.com/HANZO-2302?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex items-center justify-center rounded-2xl text-gray-700 transition-all duration-500 dark:text-gray-200"
@@ -457,17 +461,26 @@ export default function SmoothScrollPage() {
           </motion.div>
           {/* Scroll */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 1.5, ease: 'easeInOut' }}
-            className="hero-arrows relative mt-10 px-4 md:translate-y-[20px]"
+            initial={{ opacity: 0, y: -30, width: '30px' }}
+            animate={{ opacity: [0, 1, 1], y: [-30, 0, 0], width: ['30px', '30px','180px'] }}
+            transition={{
+              duration: 1,
+              delay: 1.5,
+              ease: 'easeInOut',
+              times: [0, 0.3, 1], // 0-40% — держим 20px, 40-100% — расширяем
+            }}
+            className="hero-arrows relative mx-auto mt-10 px-4 md:translate-y-5"
           >
             <div
               data-speed="0.9"
               className="mx-auto flex items-center justify-center gap-3 text-xl uppercase"
             >
-              <div className="flex justify-center">
-                <div className="relative flex h-6 w-6 animate-bounce items-center justify-center rounded-full border-2 border-gray-800 shadow-md lg:h-9 lg:w-9 dark:border-gray-300">
+              {/* <div className="relative flex h-6 w-6 overflow-hidden rounded-full border-2 border-gray-800 shadow-md lg:h-9 lg:w-9 dark:border-gray-300">
+                <motion.div
+                  animate={{ y: ['-40%', '40%'], opacity: [0, 0.5, 1, 1, 1, 0.5, 0] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                  className="flex w-full items-center justify-center"
+                >
                   <svg
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
@@ -483,15 +496,53 @@ export default function SmoothScrollPage() {
                       d="M12 4v16m0 0-6-6m6 6 6-6"
                     />
                   </svg>
-                </div>
+                </motion.div>
+              </div> */}
+
+              <div className="relative flex h-6 w-28 justify-center overflow-hidden rounded-lg border-r-2 border-l-2 border-gray-800 lg:h-8 lg:w-28 dark:border-gray-300">
+                <motion.span
+                  animate={{ y: ['90%', '-90%',], opacity: [0, 1, 1, 0] }}
+                  transition={{
+                    duration: 1.8,
+                    delay: 1.3,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    repeatType: 'loop',
+                  }}
+                  className="block font-bold tracking-wide text-gray-900 uppercase dark:text-gray-200"
+                >
+                  SCROLL
+                </motion.span>
               </div>
-              SCROLL
+              {/* <div className="relative flex h-6 w-6 overflow-hidden rounded-full border-2 border-gray-800 shadow-md lg:h-9 lg:w-9 dark:border-gray-300">
+                <motion.div
+                  animate={{ y: ['-40%', '40%'], opacity: [0, 0.5, 1, 1, 1, 0.5, 0] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                  className="flex w-full items-center justify-center"
+                >
+                  <svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={3}
+                    className="h-3 w-3 text-gray-800 lg:h-5 lg:w-5 dark:text-gray-300"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 4v16m0 0-6-6m6 6 6-6"
+                    />
+                  </svg>
+                </motion.div>
+              </div> */}
             </div>
           </motion.div>
           {/* portfolio */}
           <div className="portfolio mt-0 flex flex-col items-center justify-center">
             {/* <div className="container mx-auto border"> */}
-            <main className="gallery mx-auto mt-20 grid w-full max-w-6xl grid-cols-1 justify-items-center gap-x-2 gap-y-10 px-4 pb-[29rem] md:mt-30 md:grid-cols-2">
+            <main className="gallery mx-auto mt-20 grid w-full max-w-6xl grid-cols-1 justify-items-center gap-x-2 gap-y-10 px-4 pb-116 md:mt-30 md:grid-cols-2">
               {/* Left */}
               <div
                 data-speed="0.9"
@@ -544,7 +595,7 @@ export default function SmoothScrollPage() {
                     alt=""
                     width={60}
                     height={60}
-                    className="translate-x-[8px] drop-shadow-xs/90"
+                    className="translate-x-2 drop-shadow-xs/90"
                   />
                   <span className="px-2">JavaScript</span>
                   <span className="mx-0 h-6 border-l border-gray-600 dark:border-gray-500"></span>
@@ -554,7 +605,7 @@ export default function SmoothScrollPage() {
                     alt=""
                     width={60}
                     height={60}
-                    className="-translate-x-[8px] drop-shadow-xs/90"
+                    className="-translate-x-2 drop-shadow-xs/90"
                   />
                 </div>
                 <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
@@ -573,7 +624,7 @@ export default function SmoothScrollPage() {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
                     viewBox="0 0 400 90"
-                    className="size-25 translate-x-[10px]"
+                    className="size-25 translate-x-2.5"
                   >
                     <path
                       fill="currentColor"
@@ -620,7 +671,7 @@ export default function SmoothScrollPage() {
                     alt=""
                     width={35}
                     height={30}
-                    className="translate-x-[4px] drop-shadow-xs/30"
+                    className="translate-x-1 drop-shadow-xs/30"
                   />
                 </div>
                 <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
@@ -671,7 +722,7 @@ export default function SmoothScrollPage() {
                     alt=""
                     width={65}
                     height={65}
-                    className="translate-x-[4px] drop-shadow-xs/90"
+                    className="translate-x-1 drop-shadow-xs/90"
                   />
                   Django
                 </div>
@@ -704,7 +755,7 @@ export default function SmoothScrollPage() {
                     alt=""
                     width={65}
                     height={65}
-                    className="translate-x-[12px] p-3 drop-shadow-xs/10"
+                    className="translate-x-3 p-3 drop-shadow-xs/10"
                   />
                   <span className="pl-4">PostgreSQL</span>
                   <span className="mx-4 h-6 border-l border-gray-600 dark:border-gray-500"></span>
@@ -714,13 +765,14 @@ export default function SmoothScrollPage() {
                     alt=""
                     width={65}
                     height={65}
-                    className="-translate-x-[4px] drop-shadow-xs/10"
+                    className="-translate-x-1 drop-shadow-xs/10"
                   />
                 </div>
               </div>
 
               {/* Right */}
               <div
+                // data-lag="0.2"
                 data-speed="0.9"
                 className="gallery__right flex w-full max-w-md flex-col gap-y-4 pb-10 text-gray-800 will-change-transform dark:text-gray-200"
               >

@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer className="relative z-40 flex w-full bg-zinc-400 py-6 transition-colors duration-500 dark:bg-zinc-600 dark:duration-500">
-      <div className="absolute top-0 h-1 w-full bg-gray-300 inset-shadow-sm/60"></div>
+      <div className="absolute top-0 h-1 w-full bg-gray-300 shadow-[inset_0_-4px_6px_-1px_rgba(0,0,0,0.5)]"></div>
       <div className="container mx-auto flex flex-wrap items-center justify-center gap-2 px-5">
         <div className="relative flex overflow-hidden">
           <a

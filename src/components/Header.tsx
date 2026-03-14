@@ -14,15 +14,14 @@ const outfit = Outfit({
 
 const menuItems = [
   { href: '/', text: 'Home', icon: '/home.svg' },
-  { href: '/contacts', text: 'Contacts', icon: '/contacts.svg' },
+  // { href: '/contacts', text: 'Contacts', icon: '/contacts.svg' },
   { href: '/projects/figma', text: 'Figma', icon: '/figma.svg' },
   { href: '/projects/photoshop', text: 'Photoshop', icon: '/photoshop.svg' },
   { href: '/projects/after', text: 'After Effects', icon: '/after_effects.svg' },
-  // { href: '/projects/illustrator', text: 'Illustrator', icon: '/illustrator.svg' },
-  // { href: '/projects/lightroom', text: 'Lightroom', icon: '/lightroom.svg' },
+  { href: '/projects/illustrator', text: 'Tagris website', icon: '/illustrator.svg' },
+  { href: '/projects/lightroom', text: 'RobotTech website', icon: '/lightroom.svg' },
   // { href: '/projects/topaz', text: 'Topaz Gigapixel AI', icon: '/topaz.png' },
   // { href: '/projects/premiere', text: 'Premiere Pro', icon: '/premiere.svg' },
-  // ... остальные пункты
 ];
 
 const jetBrainsMono = JetBrains_Mono({
@@ -32,40 +31,12 @@ const jetBrainsMono = JetBrains_Mono({
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
-  // Закрытие меню при клике вне его области
-  // useEffect(() => {
-  //   const handleClickOutside = (event: MouseEvent) => {
-  //     // 1. Добавляем проверку на buttonRef (кнопку меню)
-  //     if (
-  //       menuRef.current &&
-  //       !menuRef.current.contains(event.target as Node) &&
-  //       buttonRef.current &&
-  //       !buttonRef.current.contains(event.target as Node)
-  //     ) {
-  //       setIsOpen(false);
-  //     }
-  //   };
-
-  //   // 2. Добавляем закрытие по клавише Escape
-  //   const handleEscape = (event: KeyboardEvent) => {
-  //     if (event.key === 'Escape') {
-  //       setIsOpen(false);
-  //     }
-  //   };
-
-  //   // 3. Используем 'click' вместо 'mousedown' для лучшей совместимости
-  //   document.addEventListener('click', handleClickOutside);
-  //   document.addEventListener('keydown', handleEscape);
-
-  //   return () => {
-  //     document.removeEventListener('click', handleClickOutside);
-  //     document.removeEventListener('keydown', handleEscape);
-  //   };
-  // }, []);
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   const toggleMenu = () => {
     setIsOpen(prev => !prev);
@@ -75,7 +46,7 @@ export default function Header() {
     <header
       className={`fixed z-50 w-full bg-zinc-400 transition-colors duration-500 dark:bg-zinc-600 dark:duration-500 ${jetBrainsMono.className} antialiased`}
     >
-      <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-2">
+      <div className="mx-auto flex max-w-xl items-center justify-between px-4 py-2">
         {/* Логотип */}
         {/* <Image
             src="/logo_mob.jpg"
@@ -91,16 +62,16 @@ export default function Header() {
 
         <motion.div
           whileTap={{ scale: 0.95 }}
-          className="relative flex flex-col rounded-lg bg-zinc-300/20 p-2 ring-2 ring-gray-700 transition-colors duration-500 dark:bg-gray-800 dark:text-gray-200 dark:shadow-xs/50 dark:ring-blue-400 dark:duration-500"
+          className="relative flex flex-col rounded-lg bg-zinc-300/30 p-2 ring-2 ring-gray-700 transition-colors duration-500 dark:bg-zinc-700 dark:text-gray-200 dark:shadow-xs/50 dark:ring-blue-400 dark:duration-500"
         >
           <h1 className="text-[1.2rem] leading-4.5 font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
             <Link href="/">Portfolio</Link>
           </h1>
           {/* <div className="h-[1px] w-20 mx-auto rounded-lg bg-blue-400" /> */}
 
-          <h1 className="text-xs font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
+          <p className="text-xs font-normal text-gray-950 transition-colors duration-500 dark:text-gray-200 dark:duration-500">
             <Link href="/">Igor Meniailov</Link>
-          </h1>
+          </p>
         </motion.div>
 
         <div className="flex items-center justify-center md:hidden">
@@ -108,7 +79,6 @@ export default function Header() {
         </div>
         {/* Кнопка меню для мобильных устройств  */}
         <button
-          ref={buttonRef}
           className="relative block focus:outline-none md:hidden"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
@@ -116,7 +86,7 @@ export default function Header() {
         >
           <div
             className={`relative top-2 flex text-gray-950 transition-all duration-300 dark:text-gray-200 ${
-              isOpen ? 'translate-y-5 scale-0 opacity-0' : 'scle-100 translate-y-0 opacity-100'
+              isOpen ? 'translate-y-5 scale-0 opacity-0' : 'translate-y-0 scale-100 opacity-100'
             }`}
           >
             Menu
@@ -134,11 +104,11 @@ export default function Header() {
 
         {/* Меню для больших экранов */}
         <nav className="relative hidden max-w-full font-normal uppercase md:flex md:items-center md:justify-center">
-          <ul className="flex space-x-8">
+          <ul className="flex space-x-12">
             <li className="overflow-hidden">
               <Link
                 href="/"
-                className={`" relative inline-block py-[0.1em] text-gray-700 transition-all duration-500 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-gray-900 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:before:bg-blue-400 dark:after:text-gray-50 ${pathname === '/' ? 'translate-y-full' : ''}`}
+                className={`relative inline-block py-[0.1em] text-gray-700 transition-all duration-500 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-gray-900 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:before:bg-blue-400 dark:after:text-gray-50 ${pathname === '/' ? 'translate-y-full' : ''}`}
                 data-hover="Home"
               >
                 Home
@@ -170,113 +140,52 @@ export default function Header() {
       </div>
 
       {/* Выпадающее меню для маленьких экранов */}
-      {/* mode="wait" */}
-      {/* <AnimatePresence mode="wait">
-        {isOpen && (
-          <motion.nav
-            ref={menuRef}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            // exit={{ opacity: 0 }}
-            transition={{ duration: 0.03, ease: 'easeInOut' }}
-            className={`absolute top-17 left-0 flex h-screen w-full justify-center bg-gray-300 from-gray-900 to-gray-500 to-100% dark:bg-linear-150 dark:duration-500 ${outfit.className} overflow-hidden antialiased md:hidden`}
-            aria-modal="true"
-          >
-            <motion.ul
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    duration: 0.09,
-                    ease: 'easeInOut',
-                    staggerChildren: 0.03,
-                    // delayChildren: 0.03, //задержкка
-                  },
-                },
-              }}
-              className="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent mt-2 flex h-full w-full flex-col items-start space-y-5 overflow-y-auto overscroll-contain pr-6 pl-6 sm:max-h-[calc(100vh-4rem)] sm:py-4"
-              style={{
-                scrollbarWidth: 'thin',
-                scrollbarColor: '#9CA3AF transparent',
-              }}
-            >
-              {menuItems.map((item, index) => (
-                <motion.li
-                  key={index}
-                  variants={{
-                    hidden: { opacity: 0 },
-                    visible: { opacity: 1 },
-                  }}
-                  className="relative flex w-full flex-shrink-0 py-2 text-left text-2xl text-gray-800 dark:text-gray-200"
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setTimeout(() => setIsOpen(false), 400)}
-                    // onClick={() => setIsOpen(false)}
-                    className="flex w-full touch-manipulation items-center"
-                  >
-                    {/* {item.icon && (
-                <Image src={item.icon} alt="Icon" width={24} height={24} className="mr-2" />
-              )} */}
-      {/* {item.text}
-                  </Link>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.nav>
-        )}
-      </AnimatePresence> */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {isOpen && (
           <motion.nav
             ref={menuRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.03, ease: 'easeInOut' }}
-            className={`absolute flex h-screen w-full justify-center bg-gray-300 from-gray-950 to-gray-600 to-100% select-none dark:bg-linear-100 dark:duration-500 ${outfit.className} antialiased md:hidden`}
-            aria-modal="true"
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className={`absolute flex h-screen w-full justify-center bg-zinc-400 select-none dark:bg-zinc-600 ${outfit.className} antialiased md:hidden`}
+            role="dialog"
           >
             <motion.ul
               initial="hidden"
               animate="visible"
               variants={{
-                hidden: { opacity: 0 },
+                hidden: { opacity: 0, y: -10 },
                 visible: {
                   opacity: 1,
+                  y: 0,
                   transition: {
-                    duration: 0.1,
+                    duration: 0.5,
                     ease: 'easeInOut',
-                    staggerChildren: 0.05,
-                    // delayChildren: 0.3, //задержкка
+                    staggerChildren: 0.05, //задержка между анимацией детей
+                    delayChildren: 0.2, //задержкка
                   },
                 },
               }}
-              className="scroll-touch-smooth mt-6 flex max-h-[calc(100vh-7rem)] w-full flex-col items-start space-y-5 overflow-y-scroll overscroll-contain pr-6 pl-6"
+              className="mt-2 flex max-h-[calc(100vh-7rem)] w-full flex-col items-center overflow-y-auto overscroll-contain pr-6 pl-6"
             >
               {/* <Cosmos />
               <BackgroundDots /> */}
-              {menuItems.map((item, index) => (
+              {menuItems.map(item => (
                 <motion.li
-                  key={index}
+                  key={item.href}
                   variants={{
                     hidden: { opacity: 0 },
                     visible: { opacity: 1 },
                   }}
-                  className="relative flex w-full border-b border-gray-400/40 pb-5 text-left text-2xl text-gray-800 dark:text-gray-200"
+                  className="relative flex w-full border-b border-zinc-500 text-center text-2xl text-gray-800 dark:text-gray-200"
                 >
                   <Link
                     href={item.href}
-                    onClick={() => setTimeout(() => setIsOpen(false), 400)}
                     // onClick={() => setIsOpen(false)}
-                    className="flex items-center"
+                    onClick={() => setTimeout(() => setIsOpen(false), 300)}
+                    className="flex h-20 w-full items-center justify-start"
                   >
-                    {/* {item.icon && (
-                      <Image src={item.icon} alt="Icon" width={24} height={24} className="mr-2" />
-                    )} */}
                     {item.text}
                   </Link>
                 </motion.li>
@@ -286,7 +195,7 @@ export default function Header() {
         )}
       </AnimatePresence>
 
-      <div className="botton-0 fixed z-50 h-1 w-full bg-gray-300 inset-shadow-sm/60"></div>
+      <div className="fixed z-50 h-1 w-full bg-gray-300 inset-shadow-sm/60"></div>
     </header>
   );
 }
