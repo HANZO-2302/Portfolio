@@ -62,14 +62,14 @@ export default function Header() {
 
         <motion.div
           whileTap={{ scale: 0.95 }}
-          className="relative flex flex-col rounded-lg bg-zinc-300/30 p-2 ring-2 ring-gray-700 transition-colors duration-500 dark:bg-zinc-700 dark:text-gray-200 dark:shadow-xs/50 dark:ring-blue-400 dark:duration-500"
+          className="relative flex flex-col rounded-lg bg-zinc-300/30 p-2 ring-2 ring-gray-700 transition-colors duration-300 dark:bg-zinc-700 dark:text-gray-200 dark:shadow-xs/50 dark:ring-blue-400 dark:duration-300"
         >
-          <h1 className="text-[1.2rem] leading-4.5 font-normal text-gray-950 transition-all duration-500 dark:text-gray-200 dark:duration-500">
+          <h1 className="text-[1.2rem] leading-4.5 font-normal text-gray-950 transition-all duration-300 dark:text-gray-200 dark:duration-300">
             <Link href="/">Portfolio</Link>
           </h1>
           {/* <div className="h-[1px] w-20 mx-auto rounded-lg bg-blue-400" /> */}
 
-          <p className="text-xs font-normal text-gray-950 transition-colors duration-500 dark:text-gray-200 dark:duration-500">
+          <p className="text-xs font-normal text-gray-950 transition-colors 3-300 dark:text-gray-200 dark:3-300">
             <Link href="/">Igor Meniailov</Link>
           </p>
         </motion.div>
@@ -90,7 +90,7 @@ export default function Header() {
             }`}
           >
             Menu
-            <span className="absolute bottom-0 left-0 h-0.5 w-10 bg-gray-800 transition-colors duration-500 dark:bg-blue-400"></span>
+            <span className="absolute bottom-0 left-0 h-0.5 w-10 bg-gray-800 transition-colors duration-300 dark:bg-blue-400"></span>
           </div>
           <div
             className={`relative right-2 bottom-4 flex text-gray-950 transition-all duration-300 dark:text-gray-200 ${
@@ -98,7 +98,7 @@ export default function Header() {
             }`}
           >
             Close
-            <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gray-800 transition-colors duration-500 dark:bg-blue-400"></span>
+            <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gray-800 transition-colors duration-300 dark:bg-blue-400"></span>
           </div>
         </button>
 
@@ -108,7 +108,7 @@ export default function Header() {
             <li className="overflow-hidden">
               <Link
                 href="/"
-                className={`relative inline-block py-[0.1em] text-gray-700 transition-all duration-500 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-gray-900 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:before:bg-blue-400 dark:after:text-gray-50 ${pathname === '/' ? 'translate-y-full' : ''}`}
+                className={`relative inline-block py-[0.1em] text-gray-700 transition-all duration-300 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-gray-900 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-300 dark:before:bg-blue-400 dark:after:text-gray-50 ${pathname === '/' ? 'translate-y-full' : ''}`}
                 data-hover="Home"
               >
                 Home
@@ -125,8 +125,8 @@ export default function Header() {
             </li> */}
             <li className="overflow-hidden">
               <Link
-                href="/projects/photoshop"
-                className={`" relative inline-block py-[0.1em] text-gray-700 transition-all duration-500 before:absolute before:bottom-full before:h-[2px] before:w-full before:rounded-sm before:bg-gray-900 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-500 dark:before:bg-blue-400 dark:after:text-gray-50 ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
+                href="/projects/figma"
+                className={`" relative inline-block py-[0.1em] text-gray-700 transition-all duration-300 before:absolute before:bottom-full before:h-0.5 before:w-full before:rounded-sm before:bg-gray-900 after:absolute after:bottom-full after:left-0 after:whitespace-nowrap after:text-gray-900 after:content-[attr(data-hover)] hover:translate-y-full dark:text-gray-400 dark:duration-300 dark:before:bg-blue-400 dark:after:text-gray-50 ${pathname.startsWith('/projects') ? 'translate-y-full' : ' '}`}
                 data-hover="Projects"
               >
                 Projects
