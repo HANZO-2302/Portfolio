@@ -2,8 +2,6 @@
 import Animate from '@/components/AnimatePage';
 import Footer from '@/components/Footer';
 import PhotoBeforAfter from '@/components/PhotoBeforeAfter';
-import Silk from '@/components/Silk';
-import SubmitButton from '@/components/SubmitButton/SubmitButton';
 import { Outfit } from 'next/font/google';
 
 const outfit = Outfit({
@@ -18,7 +16,7 @@ export default function Contacts() {
         <PhotoBeforAfter />
       </main>
 
-      {/* <Animate /> */}
+      <Animate />
       <Footer />
     </div>
     // <div className="flex min-h-screen flex-col">

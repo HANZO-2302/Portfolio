@@ -15,8 +15,8 @@ export default function Topaz() {
           Topaz Gigapixel AI
         </h1>
       </div>
-      <PhotoBeforAfter />
       <Animate />
+      <PhotoBeforAfter />
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Comfortaa, Outfit } from 'next/font/google';
+import { Comfortaa } from 'next/font/google';
 import { useState, useEffect } from 'react';
 
 const comFortaa = Comfortaa({ subsets: ['cyrillic'] });

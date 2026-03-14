@@ -14,8 +14,8 @@ export default function Premiere() {
           Premiere Pro
         </h1>
       </div>
-      <Photo />
       <Animate />
+      <Photo />
     </div>
   );
 }

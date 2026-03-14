@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useState, useRef } from 'react';
 import Image from 'next/image';
 import type { Swiper as SwiperType } from 'swiper';

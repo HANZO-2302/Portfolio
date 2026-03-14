@@ -224,7 +224,7 @@ const PhotoFigma = () => {
                 className="object-cover transition-transform duration-500 ease-in-out hover:scale-105"
                 priority={pair.id === 1}
               />
-              <div className="pointer-events-none absolute inset-0 rounded-lg bg-gradient-to-b from-transparent from-50% to-black/90" />
+              <div className="pointer-events-none absolute inset-0 rounded-lg bg-linear-to-b from-transparent from-50% to-black/90" />
 
               {/* Текст для карточек */}
               <div

@@ -5,10 +5,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { SplitText } from 'gsap/SplitText';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import Footer from './Footer';
-import { easeOut, motion } from 'framer-motion';
+import { easeOut, motion } from 'motion/react';
 import { Comfortaa } from 'next/font/google';
 import { FileDown } from 'lucide-react';
 import GeekBrains from './GeekBrains';
@@ -504,7 +504,7 @@ export default function SmoothScrollPage() {
                   animate={{ y: ['90%', '-90%',], opacity: [0, 1, 1, 0] }}
                   transition={{
                     duration: 1.8,
-                    delay: 1.3,
+                    delay: 1.5,
                     repeat: Infinity,
                     ease: 'easeInOut',
                     repeatType: 'loop',
