@@ -51,8 +51,8 @@ export default function SmoothScrollPage() {
       normalizeScroll: true,
       ignoreMobileResize: false,
     });
-    // const handleResize = () => smoother.current?.refresh();
-    // window.addEventListener('resize', handleResize);
+    const handleResize = () => smoother.current?.refresh();
+    window.addEventListener('resize', handleResize);
 
     const split = new SplitText('.aboutText', { type: 'chars, words' });
 
@@ -177,10 +177,10 @@ export default function SmoothScrollPage() {
       );
     });
     // cleanup
-    // return () => {
-    //   window.removeEventListener('resize', handleResize);
-    //   smoother.current?.kill();
-    // };
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      smoother.current?.kill();
+    };
   }, []);
 
   interface SkillCardProps {

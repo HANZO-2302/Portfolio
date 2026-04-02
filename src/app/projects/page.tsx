@@ -4,7 +4,7 @@ import PhotoBeforAfter from '@/components/PhotoBeforeAfter';
 
 export default function Projects() {
   return (
-    <div className="md:ml-[194px]">
+    <div className="md:ml-48.5">
       {/* <h1 className="mt-26 flex justify-center text-5xl md:mt-23 lg:text-8xl">Adobe Photoshop</h1>
       <PhotoBeforAfter />
       <Animate /> */}

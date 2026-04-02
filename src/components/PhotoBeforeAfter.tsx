@@ -122,7 +122,7 @@ const PhotoBeforeAfter = () => {
                 className="h-auto w-full rounded-lg object-cover object-[50%_10%]"
                 priority={pair.id === 1}
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-50% to-black/90" />
+              <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-transparent from-50% to-black/90" />
 
               {/* Текст для карточек */}
               <motion.div

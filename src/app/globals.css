@@ -25,10 +25,10 @@
   }
 }
 @layer utilities {
-  .scroll-touch-smooth {
+  /* .scroll-touch-smooth {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-  }
+  } */
 }
 
 /* html, body {

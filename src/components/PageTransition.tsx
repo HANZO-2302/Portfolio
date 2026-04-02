@@ -43,7 +43,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
 
   return (
     <>
-      <div className="page-transition pointer-events-none fixed inset-0 z-[9999] bg-black opacity-0" />
+      <div className="page-transition pointer-events-none fixed inset-0 z-9999 bg-black opacity-0" />
       <div className="page-content relative overflow-hidden">{children}</div>
     </>
   );
