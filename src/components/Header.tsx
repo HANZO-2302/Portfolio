@@ -18,8 +18,8 @@ const menuItems = [
   { href: '/projects/figma', text: 'Figma', icon: '/figma.svg' },
   { href: '/projects/photoshop', text: 'Photoshop', icon: '/photoshop.svg' },
   { href: '/projects/after', text: 'After Effects', icon: '/after_effects.svg' },
-  { href: '/projects/illustrator', text: 'Tagris website', icon: '/illustrator.svg' },
-  { href: '/projects/lightroom', text: 'RobotTech website', icon: '/lightroom.svg' },
+  { href: 'https://tagris.vercel.app/', text: 'Tagris website',external: true },
+  { href: '/projects/robottech', text: 'RobotTech website' },
   // { href: '/projects/topaz', text: 'Topaz Gigapixel AI', icon: '/topaz.png' },
   // { href: '/projects/premiere', text: 'Premiere Pro', icon: '/premiere.svg' },
 ];
@@ -185,7 +185,7 @@ export default function Header() {
                     // onClick={() => setIsOpen(false)}
                     onClick={() => setTimeout(() => setIsOpen(false), 300)}
                     className="flex h-20 w-full items-center justify-start"
-                  >
+                      {...(item.external && { target: '_blank', rel: 'noopener noreferrer' })}>
                     {item.text}
                   </Link>
                 </motion.li>

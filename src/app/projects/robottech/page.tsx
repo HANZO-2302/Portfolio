@@ -4,18 +4,18 @@ import Image from 'next/image';
 
 export default function Lightroom() {
   return (
-    <div className="mt-20 md:ml-48">
-      <div className="flex">
+    <div className="mt-30 md:ml-48">
+      <div className="flex  items-center justify-center">
         {/* фиксируем блок под иконку */}
-        <h1 className="mx-auto flex items-center text-4xl leading-none font-semibold lg:text-6xl">
-          <span className="relative mr-4 inline-block h-[2em] w-[3em] align-baseline">
+        <h1 className="mx-auto flex items-center justify-center text-4xl leading-none font-semibold lg:text-6xl">
+          {/* <span className="relative mr-4 inline-block h-[2em] w-[3em] align-baseline">
             <Image src="/adobe-logo.svg" alt="Icon" fill className="object-contain" />
-          </span>
-          Lightroom
+          </span> */}
+          Идет разработка...
         </h1>
       </div>
       <Animate />
-      <PhotoBeforeAfter2 />
+      {/* <PhotoBeforeAfter2 /> */}
     </div>
   );
 }
