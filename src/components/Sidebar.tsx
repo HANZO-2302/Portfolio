@@ -93,7 +93,9 @@ export default function Sidebar() {
           />
         </div>
         <Link
-          href="/projects/tagris"
+          href="https://tagris.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
           className={`relative left-2 inline-block w-40 p-2 text-zinc-900 transition-all duration-300 before:absolute before:bottom-full after:absolute after:bottom-full after:left-0 after:w-40 after:p-2 after:whitespace-nowrap after:text-zinc-50 after:content-[attr(data-hover)] hover:translate-y-9 dark:text-zinc-300/90 ${
             pathname.startsWith('/projects/tagris') ? 'translate-y-9 text-zinc-50' : ' '
           }`}
