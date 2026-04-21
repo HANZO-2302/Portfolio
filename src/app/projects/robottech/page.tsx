@@ -11,7 +11,7 @@ export default function RobotTech() {
           {/* <span className="relative mr-4 inline-block h-[2em] w-[3em] align-baseline">
             <Image src="/adobe-logo.svg" alt="Icon" fill className="object-contain" />
           </span> */}
-          Идет разработка...
+          Идет разработка....
         </h1>
       </div>
       <Animate />
