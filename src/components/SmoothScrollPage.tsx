@@ -46,7 +46,7 @@ export default function SmoothScrollPage() {
 
   useGSAP(() => {
     smoother.current = ScrollSmoother.create({
-      smooth: 2.5,
+      smooth: 1.8, // продолжительность анимации (в секундах)
       effects: true,
       normalizeScroll: true,
       ignoreMobileResize: false,
@@ -462,7 +462,7 @@ export default function SmoothScrollPage() {
           {/* Scroll */}
           <motion.div
             initial={{ opacity: 0, y: -30, width: '30px' }}
-            animate={{ opacity: [0, 1, 1], y: [-30, 0, 0], width: ['30px', '30px','180px'] }}
+            animate={{ opacity: [0, 1, 1], y: [-30, 0, 0], width: ['30px', '30px', '180px'] }}
             transition={{
               duration: 1,
               delay: 1.5,
@@ -501,7 +501,7 @@ export default function SmoothScrollPage() {
 
               <div className="relative flex h-6 w-28 justify-center overflow-hidden rounded-lg border-r-2 border-l-2 border-gray-800 lg:h-8 lg:w-28 dark:border-gray-300">
                 <motion.span
-                  animate={{ y: ['90%', '-90%',], opacity: [0, 1, 1, 0] }}
+                  animate={{ y: ['90%', '-90%'], opacity: [0, 1, 1, 0] }}
                   transition={{
                     duration: 1.8,
                     delay: 1.5,

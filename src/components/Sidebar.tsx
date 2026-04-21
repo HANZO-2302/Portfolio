@@ -84,7 +84,13 @@ export default function Sidebar() {
         }`}
       >
         <div className="relative left-3 h-5 w-5 text-gray-900 dark:text-white">
-          <Image src="/globe.svg" alt="Icon" width={24} height={24} className="h-full w-full dark:brightness-0 dark:invert" />
+          <Image
+            src="/globe.svg"
+            alt="Icon"
+            width={24}
+            height={24}
+            className="h-full w-full dark:brightness-0 dark:invert"
+          />
         </div>
         <Link
           href="/projects/tagris"
@@ -104,7 +110,13 @@ export default function Sidebar() {
         }`}
       >
         <div className="relative left-3 h-5 w-5">
-          <Image src="/globe.svg" alt="Icon" width={24} height={24} className="h-full w-full dark:brightness-0 dark:invert" />
+          <Image
+            src="/globe.svg"
+            alt="Icon"
+            width={24}
+            height={24}
+            className="h-full w-full dark:brightness-0 dark:invert"
+          />
         </div>
         <Link
           href="/projects/robottech"
@@ -144,7 +156,13 @@ export default function Sidebar() {
         }`}
       >
         <div className="relative left-3 h-5 w-5">
-          <Image src="/globe.svg" alt="Icon" width={24} height={24} className="h-full w-full dark:brightness-0 dark:invert"/>
+          <Image
+            src="/globe.svg"
+            alt="Icon"
+            width={24}
+            height={24}
+            className="h-full w-full dark:brightness-0 dark:invert"
+          />
         </div>
         <Link
           href="/projects/topaz"

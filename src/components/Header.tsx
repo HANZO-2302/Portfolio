@@ -69,7 +69,7 @@ export default function Header() {
           </h1>
           {/* <div className="h-[1px] w-20 mx-auto rounded-lg bg-blue-400" /> */}
 
-          <p className="text-xs font-normal text-gray-950 transition-colors 3-300 dark:text-gray-200 dark:3-300">
+          <p className="3-300 dark:3-300 text-xs font-normal text-gray-950 transition-colors dark:text-gray-200">
             <Link href="/">Igor Meniailov</Link>
           </p>
         </motion.div>
