@@ -17,7 +17,7 @@ export default function Sidebar() {
         }`}
       >
         <div className="relative left-3 h-6 w-6">
-          <Image src="/Figma.svg" alt="Icon" width={24} height={24} className="h-full w-full" />
+          <Image src="/figma.svg" alt="Icon" width={24} height={24} className="h-full w-full" />
         </div>
         <Link
           href="/projects/figma"
