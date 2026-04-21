@@ -2,7 +2,7 @@ import Animate from '@/components/AnimatePage';
 import PhotoBeforeAfter2 from '@/components/PhotoPhotoshop';
 import Image from 'next/image';
 
-export default function Lightroom() {
+export default function RobotTech() {
   return (
     <div className="mt-30 md:ml-48">
       <div className="flex  items-center justify-center">
