@@ -560,7 +560,7 @@ export default function SmoothScrollPage() {
                 </div>
                 {/* </motion.div> */}
 
-                <div className="gallery__item  flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/html5.svg"
                     alt=""
@@ -579,7 +579,7 @@ export default function SmoothScrollPage() {
                     className="drop-shadow-xs/10"
                   />
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/tailwind.svg"
                     alt="CSS3 logo"
@@ -589,7 +589,7 @@ export default function SmoothScrollPage() {
                   />
                   Tailwind CSS
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/js.svg"
                     alt=""
@@ -608,7 +608,7 @@ export default function SmoothScrollPage() {
                     className="-translate-x-3 drop-shadow-xs/90"
                   />
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/react.svg"
                     alt=""
@@ -636,7 +636,7 @@ export default function SmoothScrollPage() {
                     />
                   </svg>
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/gsap.svg"
                     alt=""
@@ -655,7 +655,7 @@ export default function SmoothScrollPage() {
                     className="drop-shadow-xs/80"
                   />
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/figma2.svg"
                     alt=""
@@ -674,7 +674,7 @@ export default function SmoothScrollPage() {
                     className="translate-x-1 drop-shadow-xs/30"
                   />
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image src="/git.svg" alt="" width={65} height={65} />
                   <span className="px-2">Git</span>
                   <span className="mx-3 h-6 border-l border-gray-600 dark:border-gray-500"></span>
@@ -696,7 +696,7 @@ export default function SmoothScrollPage() {
                     />
                   </svg>
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/docker.svg"
                     alt=""
@@ -706,7 +706,7 @@ export default function SmoothScrollPage() {
                   />
                   Docker
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/python.svg"
                     alt=""
@@ -716,7 +716,7 @@ export default function SmoothScrollPage() {
                   />
                   Python
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/django.svg"
                     alt=""
@@ -726,7 +726,7 @@ export default function SmoothScrollPage() {
                   />
                   Django
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/fastapi.svg"
                     alt=""
@@ -749,7 +749,7 @@ export default function SmoothScrollPage() {
                     />
                   </svg>
                 </div>
-                <div className="gallery__item flex h-20 text-xl w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
+                <div className="gallery__item flex h-20 w-full items-center justify-center rounded-xl border border-zinc-500 bg-zinc-400 text-xl shadow-lg dark:border-gray-600 dark:bg-gray-800/80">
                   <Image
                     src="/postgresql.svg"
                     alt=""
@@ -779,7 +779,7 @@ export default function SmoothScrollPage() {
                 <div className="gallery__item mt-20 flex w-full items-center justify-center text-6xl font-bold md:mt-0">
                   Soft Skills
                 </div>
-                <div className="flex flex-col  gap-y-4">
+                <div className="flex flex-col gap-y-4">
                   {skills.map(s => (
                     <SkillCard key={s.title} {...s} />
                   ))}
