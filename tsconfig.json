@@ -30,8 +30,6 @@
     ".next/types/**/*.ts",
     "src/components/Carousel/Carousel.tsx",
     "tailwind.config.ts"
-    
   ],
   "exclude": ["node_modules"]
-  
 }
