@@ -170,7 +170,7 @@ export default function Header() {
               }}
               className="mt-2 flex max-h-[calc(100vh-7rem)] w-full flex-col items-center overflow-y-auto overscroll-contain pr-6 pl-6"
             >
-              {/* <Cosmos /> */}              
+              {/* <Cosmos /> */}
               <BackgroundDots />
               {menuItems.map(item => (
                 <motion.li
