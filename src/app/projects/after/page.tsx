@@ -16,7 +16,7 @@ export default function After() {
           After Effects
         </h1>
       </div>
-      <Animate />
+      {/* <Animate /> */}
       <VideoAfterEffects />
     </div>
   );

@@ -14,7 +14,7 @@ export default function Figma() {
           Figma
         </h1>
       </div>
-      <Animate />
+      {/* <Animate /> */}
       <PhotoFigma />
     </div>
   );

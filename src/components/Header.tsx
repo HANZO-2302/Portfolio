@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import ThemeToggle from './ThemeToggle';
+import BackgroundDots from './folderBackgroundDots/BackgroundDots';
 
 const outfit = Outfit({
   variable: '--font-outfit',
@@ -169,8 +170,8 @@ export default function Header() {
               }}
               className="mt-2 flex max-h-[calc(100vh-7rem)] w-full flex-col items-center overflow-y-auto overscroll-contain pr-6 pl-6"
             >
-              {/* <Cosmos />
-              <BackgroundDots /> */}
+              {/* <Cosmos /> */}              
+              <BackgroundDots />
               {menuItems.map(item => (
                 <motion.li
                   key={item.href}
@@ -182,8 +183,8 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    // onClick={() => setIsOpen(false)}
-                    onClick={() => setTimeout(() => setIsOpen(false), 300)}
+                    onClick={() => setIsOpen(false)}
+                    // onClick={() => setTimeout(() => setIsOpen(false), 300)}
                     className="flex h-20 w-full items-center justify-start"
                     {...(item.external && { target: '_blank', rel: 'noopener noreferrer' })}
                   >

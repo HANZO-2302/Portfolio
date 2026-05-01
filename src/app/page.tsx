@@ -10,7 +10,7 @@ const jetBrainsMono = JetBrains_Mono({
 export default function Home() {
   return (
     <div>
-      <Animate />
+      {/* <Animate /> */}
       <SmoothScrollPage />
       {/* <Footer /> */}
     </div>

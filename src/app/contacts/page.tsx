@@ -16,7 +16,7 @@ export default function Contacts() {
         <PhotoBeforAfter />
       </main>
 
-      <Animate />
+      {/* <Animate /> */}
       <Footer />
     </div>
     // <div className="flex min-h-screen flex-col">

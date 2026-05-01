@@ -15,7 +15,7 @@ export default function Photoshop() {
           Photoshop
         </h1>
       </div>
-      <Animate />
+      {/* <Animate /> */}
       <PhotoPhotoshop />
     </div>
   );

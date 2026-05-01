@@ -14,7 +14,7 @@ export default function RobotTech() {
           Идет разработка....
         </h1>
       </div>
-      <Animate />
+      {/* <Animate /> */}
       {/* <PhotoBeforeAfter2 /> */}
     </div>
   );
