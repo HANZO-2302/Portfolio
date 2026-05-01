@@ -169,12 +169,12 @@ const PhotoPhotoshop = () => {
             duration: 0.3,
             delay: 0.6 + index * 0.1,
             ease: 'power1.out',
-            // scrollTrigger: {
-            //   trigger: text,
-            //   start: 'top 90%',
-            //   toggleActions: 'play reverse play reverse',
+            scrollTrigger: {
+              trigger: text,
+              start: 'top 90%',
+              toggleActions: 'play reverse play reverse',
             // markers: true, // раскомментируйте для отладки
-            // },
+            },
           },
         );
       });
@@ -229,6 +229,7 @@ const PhotoPhotoshop = () => {
                   textsRef.current[index] = el;
                 }}
                 className={`${comFortaa.className} absolute inset-x-0 bottom-0 flex flex-col items-start p-3`}
+                // style={{ opacity: 0 }}
               >
                 {pair.textH1 && (
                   <div className="text-lg leading-snug font-bold text-balance text-gray-200 text-shadow-sm sm:text-[9px] md:text-xs lg:text-sm lg:leading-5 xl:text-base 2xl:text-lg">
