@@ -173,7 +173,7 @@ const PhotoPhotoshop = () => {
               trigger: text,
               start: 'top 90%',
               toggleActions: 'play reverse play reverse',
-            // markers: true, // раскомментируйте для отладки
+              // markers: true, // раскомментируйте для отладки
             },
           },
         );
